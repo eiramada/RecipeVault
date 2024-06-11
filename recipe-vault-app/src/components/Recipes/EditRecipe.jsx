@@ -1,42 +1,78 @@
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import recipesFromFile from "../../data/recipes.json";
+import EditableTagList from "../Common/EditableTagList";
+import { Ingredient } from "../Common/IngredientInput";
 
 function EditRecipe() {
   const { id } = useParams();
   const recipe = recipesFromFile.find((r) => r.id === id);
-
   const [editedRecipe, setEditedRecipe] = useState(recipe);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEditedRecipe({
-      ...editedRecipe,
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
       [name]: value,
-    });
+    }));
   };
 
-  const handleIngredientChange = (index, e) => {
-    const { name, value } = e.target;
-    const newIngredients = editedRecipe.ingredients.map((ingredient, i) => {
-      if (i === index) {
-        return { ...ingredient, [name]: value };
-      }
-      return ingredient;
-    });
-    setEditedRecipe({ ...editedRecipe, ingredients: newIngredients });
+  const addIngredient = (newIngredient) => {
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
+      ingredients: [...prevRecipe.ingredients, newIngredient],
+    }));
+  };
+
+  const handleIngredientChange = (index, updatedIngredient) => {
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
+      ingredients: prevRecipe.ingredients.map((ingredient, i) =>
+        i === index ? updatedIngredient : ingredient
+      ),
+    }));
+  };
+
+  const handleRemoveIngredient = (index) => {
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
+      ingredients: prevRecipe.ingredients.filter((_, i) => i !== index),
+    }));
   };
 
   const handleInstructionChange = (index, e) => {
     const { name, value } = e.target;
-    const newInstructions = editedRecipe.instructions.map((instruction, i) => {
-      if (i === index) {
-        return { ...instruction, [name]: value };
-      }
-      return instruction;
-    });
-    setEditedRecipe({ ...editedRecipe, instructions: newInstructions });
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
+      instructions: prevRecipe.instructions.map((instruction, i) =>
+        i === index ? { ...instruction, [name]: value } : instruction
+      ),
+    }));
+  };
+
+  const handleRemoveInstruction = (index) => {
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
+      instructions: prevRecipe.instructions.filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleRemoveImage = (index) => {
+    setEditedRecipe((prevRecipe) => ({
+      ...prevRecipe,
+      images: prevRecipe.images.filter((_, i) => i !== index),
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -72,66 +108,114 @@ function EditRecipe() {
           multiline
           rows={4}
         />
+        <TextField
+          label="Servings"
+          type="number"
+          name="servings"
+          value={editedRecipe.servings}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Prep Time (mins)"
+          type="number"
+          name="prepTime"
+          value={editedRecipe.prepTime}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Cook Time (mins)"
+          type="number"
+          name="cookTime"
+          value={editedRecipe.cookTime}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Author"
+          name="author"
+          value={editedRecipe.author}
+          onChange={handleChange}
+          fullWidth
+          margin="normal"
+        />
+
         <Typography variant="h6" component="h3" gutterBottom>
           Ingredients
         </Typography>
+        <Ingredient
+          ingredient={{ name: "", quantity: "", unit: "", notes: "" }}
+          isNew={true}
+          addIngredient={addIngredient}
+        />
+        <br />
         {editedRecipe.ingredients.map((ingredient, index) => (
-          <Grid container spacing={2} key={index}>
-            <Grid item xs={3}>
-              <TextField
-                label="Name"
-                name="name"
-                value={ingredient.name}
-                onChange={(e) => handleIngredientChange(index, e)}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Quantity"
-                name="quantity"
-                value={ingredient.quantity}
-                onChange={(e) => handleIngredientChange(index, e)}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Unit"
-                name="unit"
-                value={ingredient.unit}
-                onChange={(e) => handleIngredientChange(index, e)}
-                fullWidth
-              />
-            </Grid>
-            <Grid item xs={3}>
-              <TextField
-                label="Notes"
-                name="notes"
-                value={ingredient.notes}
-                onChange={(e) => handleIngredientChange(index, e)}
-                fullWidth
-              />
-            </Grid>
-          </Grid>
+          <React.Fragment key={index}>
+            <Ingredient
+              ingredient={ingredient}
+              index={index}
+              handleIngredientChange={handleIngredientChange}
+              handleRemoveIngredient={handleRemoveIngredient}
+            />
+            <br />
+          </React.Fragment>
         ))}
+
         <Typography variant="h6" component="h3" gutterBottom>
           Instructions
         </Typography>
-        {editedRecipe.instructions.map((instruction, index) => (
-          <TextField
-            key={index}
-            label="Instruction"
-            name="description"
-            value={instruction.description}
-            onChange={(e) => handleInstructionChange(index, e)}
-            fullWidth
-            margin="normal"
-            multiline
-            rows={2}
-          />
-        ))}
-        <Button type="submit" variant="contained" color="primary">
+        <List>
+          {editedRecipe.instructions.map((instruction, index) => (
+            <ListItem key={index}>
+              <Grid container spacing={2} alignItems="center">
+                <Grid item xs={10}>
+                  <TextField
+                    label="Instruction"
+                    name="description"
+                    value={instruction.description}
+                    onChange={(e) => handleInstructionChange(index, e)}
+                    fullWidth
+                    margin="normal"
+                    multiline
+                    rows={2}
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <IconButton
+                    onClick={() => handleRemoveInstruction(index)}
+                    edge="end"
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </Grid>
+              </Grid>
+            </ListItem>
+          ))}
+        </List>
+        <Typography variant="h6" component="h3" gutterBottom>
+          Images
+        </Typography>
+        <List>
+          {editedRecipe.images.map((image, index) => (
+            <ListItem key={index}>
+              {image}
+              <IconButton onClick={() => handleRemoveImage(index)} edge="end">
+                <DeleteIcon />
+              </IconButton>
+            </ListItem>
+          ))}
+        </List>
+        <EditableTagList tagsList={editedRecipe.tags} />
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          style={{ marginTop: "16px" }}
+        >
           Save Recipe
         </Button>
       </form>

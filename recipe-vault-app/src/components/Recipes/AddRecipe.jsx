@@ -1,48 +1,89 @@
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
-  Autocomplete,
   Button,
   Container,
+  Grid,
+  IconButton,
   List,
   ListItem,
   TextField,
   Typography,
 } from "@mui/material";
 import React, { useRef, useState } from "react";
+import EditableTagList from "../Common/EditableTagList";
+import { Ingredient } from "../Common/IngredientInput";
 
 function AddRecipe() {
   const titleRef = useRef();
   const descriptionRef = useRef();
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
-  const [newIngredient, setNewIngredient] = useState("");
-  const [newInstruction, setNewInstruction] = useState("");
+  const [newInstruction, setNewInstruction] = useState({ description: "" });
   const [images, setImages] = useState([]);
   const [newImage, setNewImage] = useState("");
   const [tags, setTags] = useState([]);
-  const [newTag, setNewTag] = useState("");
   const servingsRef = useRef();
   const prepTimeRef = useRef();
   const cookTimeRef = useRef();
   const authorRef = useRef();
 
-  const addIngredient = () => {
-    setIngredients([...ingredients, newIngredient]);
-    setNewIngredient("");
+  const addIngredient = (newIngredient) => {
+    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+  };
+
+  const handleIngredientChange = (index, updatedIngredient) => {
+    setIngredients((prevIngredients) =>
+      prevIngredients.map((ingredient, i) =>
+        i === index ? updatedIngredient : ingredient
+      )
+    );
+  };
+
+  const handleRemoveIngredient = (index) => {
+    setIngredients((prevIngredients) =>
+      prevIngredients.filter((_, i) => i !== index)
+    );
   };
 
   const addInstruction = () => {
-    setInstructions([...instructions, newInstruction]);
-    setNewInstruction("");
+    setInstructions((prevInstructions) => [
+      ...prevInstructions,
+      newInstruction,
+    ]);
+    setNewInstruction({ description: "" });
+  };
+
+  const handleNewInstructionChange = (e) => {
+    const { name, value } = e.target;
+    setNewInstruction({
+      ...newInstruction,
+      [name]: value,
+    });
+  };
+
+  const handleInstructionChange = (index, e) => {
+    const { name, value } = e.target;
+    setInstructions((prevInstructions) =>
+      prevInstructions.map((instruction, i) =>
+        i === index ? { ...instruction, [name]: value } : instruction
+      )
+    );
   };
 
   const addImage = () => {
-    setImages([...images, newImage]);
+    setImages((prevImages) => [...prevImages, newImage]);
     setNewImage("");
   };
 
-  const addTag = () => {
-    setTags([...tags, newTag]);
-    setNewTag("");
+  const handleRemoveInstruction = (index) => {
+    setInstructions((prevInstructions) =>
+      prevInstructions.filter((_, i) => i !== index)
+    );
+  };
+
+  const handleRemoveImage = (index) => {
+    setImages((prevImages) => prevImages.filter((_, i) => i !== index));
   };
 
   return (
@@ -59,67 +100,6 @@ function AddRecipe() {
         multiline
         rows={4}
       />
-      <TextField
-        label="New Ingredient"
-        value={newIngredient}
-        onChange={(e) => setNewIngredient(e.target.value)}
-        fullWidth
-        margin="normal"
-      />
-      <Button variant="contained" color="primary" onClick={addIngredient}>
-        Add Ingredient
-      </Button>
-      <List>
-        {ingredients.map((ingredient, index) => (
-          <ListItem key={index}>{ingredient}</ListItem>
-        ))}
-      </List>
-      <TextField
-        label="New Instruction"
-        value={newInstruction}
-        onChange={(e) => setNewInstruction(e.target.value)}
-        fullWidth
-        margin="normal"
-      />
-      <Button variant="contained" color="primary" onClick={addInstruction}>
-        Add Instruction
-      </Button>
-      <List>
-        {instructions.map((instruction, index) => (
-          <ListItem key={index}>{instruction}</ListItem>
-        ))}
-      </List>
-      <TextField
-        label="New Image"
-        value={newImage}
-        onChange={(e) => setNewImage(e.target.value)}
-        fullWidth
-        margin="normal"
-      />
-      <Button variant="contained" color="primary" onClick={addImage}>
-        Add Image
-      </Button>
-      <List>
-        {images.map((image, index) => (
-          <ListItem key={index}>{image}</ListItem>
-        ))}
-      </List>
-      <TextField
-        label="New Tag"
-        value={newTag}
-        onChange={(e) => setNewTag(e.target.value)}
-        fullWidth
-        margin="normal"
-      />
-      <Button variant="contained" color="primary" onClick={addTag}>
-        Add Tag
-      </Button>
-      <List>
-        {tags.map((tag, index) => (
-          <ListItem key={index}>{tag}</ListItem>
-        ))}
-      </List>
-
       <TextField
         label="Servings"
         type="number"
@@ -147,6 +127,114 @@ function AddRecipe() {
         fullWidth
         margin="normal"
       />
+      <Typography variant="h6" component="h3" gutterBottom>
+        Ingredients
+      </Typography>
+      <Ingredient
+        ingredient={{ name: "", quantity: "", unit: "", notes: "" }}
+        isNew={true}
+        addIngredient={addIngredient}
+      />
+      <br />
+      {ingredients.map((ingredient, index) => (
+        <React.Fragment key={index}>
+          <Ingredient
+            ingredient={ingredient}
+            index={index}
+            handleIngredientChange={handleIngredientChange()}
+            handleRemoveIngredient={handleRemoveIngredient()}
+          />
+          <br />
+        </React.Fragment>
+      ))}
+
+      <Typography variant="h6" component="h3" gutterBottom>
+        Instructions
+      </Typography>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={10}>
+          <TextField
+            label="New Instruction"
+            name="description"
+            value={newInstruction.description}
+            onChange={handleNewInstructionChange}
+            fullWidth
+            margin="normal"
+            multiline
+            rows={2}
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <IconButton
+            variant="contained"
+            color="primary"
+            onClick={addInstruction}
+          >
+            <AddIcon />
+          </IconButton>
+        </Grid>
+      </Grid>
+      <List>
+        {instructions.map((instruction, index) => (
+          <ListItem key={index}>
+            <Grid container spacing={2} alignItems="center">
+              <Grid item xs={10}>
+                <TextField
+                  label="Instruction"
+                  name="description"
+                  value={instruction.description}
+                  onChange={(e) => handleInstructionChange(index, e)}
+                  fullWidth
+                  margin="normal"
+                  multiline
+                  rows={2}
+                />
+              </Grid>
+              <Grid item xs={2}>
+                <IconButton
+                  onClick={() => handleRemoveInstruction(index)}
+                  edge="end"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </Grid>
+            </Grid>
+          </ListItem>
+        ))}
+      </List>
+      <Typography variant="h6" component="h3" gutterBottom>
+        Images
+      </Typography>
+      <Grid container spacing={2} alignItems="center">
+        <Grid item xs={10}>
+          <TextField
+            label="New Image"
+            value={newImage}
+            onChange={(e) => setNewImage(e.target.value)}
+            fullWidth
+            margin="normal"
+          />
+        </Grid>
+        <Grid item xs={2}>
+          <IconButton variant="contained" color="primary" onClick={addImage}>
+            <AddIcon />
+          </IconButton>
+        </Grid>
+      </Grid>
+      <List>
+        {images.map((image, index) => (
+          <ListItem key={index}>
+            {image}
+            <IconButton onClick={() => handleRemoveImage(index)} edge="end">
+              <DeleteIcon />
+            </IconButton>
+          </ListItem>
+        ))}
+      </List>
+      <EditableTagList tagsList={tags} />
+      <Button variant="contained" color="primary" style={{ marginTop: "16px" }}>
+        Save Recipe
+      </Button>
     </Container>
   );
 }

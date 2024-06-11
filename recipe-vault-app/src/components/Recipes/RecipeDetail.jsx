@@ -1,10 +1,12 @@
 import {
   Button,
+  Chip,
   Container,
   Grid,
   List,
   ListItem,
   ListItemText,
+  Stack,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -111,16 +113,11 @@ function RecipeDetail() {
         ))}
       </Grid>
 
-      <Typography variant="h6" component="h3" gutterBottom>
-        Tags
-      </Typography>
-      <List>
-        {recipe.tags.map((tag, index) => (
-          <ListItem key={index}>
-            <ListItemText primary={tag} />
-          </ListItem>
+      <Stack direction="row" spacing={1}>
+        {recipe.tags.map((tag) => (
+          <Chip key={tag} label={tag} variant="outlined" />
         ))}
-      </List>
+      </Stack>
     </Container>
   );
 }
