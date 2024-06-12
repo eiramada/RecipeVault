@@ -6,7 +6,7 @@ const EditableTagList = ({ tagsList, setTags }) => {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter" && inputValue) {
-      setTags((prev) => [...prev, { title: inputValue }]);
+      setTags((prev) => [...prev, inputValue]);
       setInputValue("");
       event.preventDefault();
     }
@@ -16,15 +16,11 @@ const EditableTagList = ({ tagsList, setTags }) => {
     <Autocomplete
       multiple
       freeSolo
-      options={tagsList.map((tag) => tag.title)}
+      options={tagsList.map((tag) => tag)}
       value={tagsList}
-      getOptionLabel={(option) => option.title || ""}
+      getOptionLabel={(option) => option || ""}
       onChange={(event, newValue) => {
-        setTags(
-          newValue.map((title) =>
-            typeof title === "string" ? { title } : title
-          )
-        );
+        setTags(newValue);
       }}
       inputValue={inputValue}
       onInputChange={(event, newInputValue) => {
@@ -35,12 +31,7 @@ const EditableTagList = ({ tagsList, setTags }) => {
         value.map((option, index) => {
           const { key, ...tagProps } = getTagProps({ index });
           return (
-            <Chip
-              key={key}
-              variant="outlined"
-              label={option.title}
-              {...tagProps}
-            />
+            <Chip key={index} variant="outlined" label={option} {...tagProps} />
           );
         })
       }
