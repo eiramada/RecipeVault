@@ -36,8 +36,8 @@ const RecipeCard = ({ recipe }) => {
           {recipe.description}
         </Typography>
         <Stack direction="row" spacing={1}>
-          {recipe.tags.map((tag) => (
-            <Chip key={tag} label={tag} variant="outlined" />
+          {recipe.tags.map((tag, index) => (
+            <Chip key={`${tag}-${index}`} label={tag} variant="outlined" />
           ))}
         </Stack>
       </CardContent>

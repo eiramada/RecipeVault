@@ -1,11 +1,12 @@
 import { Button, Container, TextField, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
-import recipesFromFile from "../../data/recipes.json";
 import EditableTagList from "../Common/EditableTagList";
 import ImageList from "../Common/ImageList";
 import IngredientList from "../Common/IngredientList";
 import InstructionList from "../Common/InstructionList";
+
+const recipesUrl = process.env.REACT_APP_RECIPES_DB_URL;
 
 function AddEditRecipe({ isEditMode = false }) {
   const { id } = useParams();
@@ -13,7 +14,7 @@ function AddEditRecipe({ isEditMode = false }) {
   const descriptionRef = useRef();
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
-  const [recipes, setRecipes] = useState(recipesFromFile);
+  const [recipes, setRecipes] = useState([]);
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
   const servingsRef = useRef();
@@ -23,17 +24,19 @@ function AddEditRecipe({ isEditMode = false }) {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const storedRecipes = localStorage.getItem("recipes");
-    const recipesFromLocal = storedRecipes ? JSON.parse(storedRecipes) : [];
-    if (Array.isArray(recipesFromLocal)) {
-      setRecipes((prevRecipes) => [...prevRecipes, ...recipesFromLocal]);
-    }
+    fetch(recipesUrl)
+      .then((result) => result.json())
+      .then((json) => {
+        setRecipes(json || []);
+        console.log(json);
+      });
   }, []);
 
   const [existingRecipe, setExistingRecipe] = useState(null);
 
   useEffect(() => {
-    const recipe = recipes.find((r) => r.id === id);
+    const recipe = recipes.find((r) => Number(r.id) === Number(id));
+    console.log("recipe", recipe);
     setExistingRecipe(recipe);
   }, [recipes, id]);
 
@@ -67,53 +70,54 @@ function AddEditRecipe({ isEditMode = false }) {
   const saveRecipe = () => {
     if (!isValidated()) return;
 
-    const storedRecipes = localStorage.getItem("recipes");
-    const recipesFromLocal = storedRecipes ? JSON.parse(storedRecipes) : [];
-    let newId;
-    let updatedRecipes;
+    let newId = isEditMode ? existingRecipe.id : recipes.length ? Number(recipes[recipes.length - 1].id) + 1 : 1;
+
+    const updatedRecipe = {
+      id: newId,
+      title: titleRef.current.value,
+      description: descriptionRef.current.value,
+      servings: Number(servingsRef.current.value),
+      prepTime: Number(prepTimeRef.current.value),
+      cookTime: Number(cookTimeRef.current.value),
+      author: authorRef.current.value,
+      ingredients,
+      instructions,
+      images,
+      tags,
+    };
 
     if (isEditMode) {
-      newId = existingRecipe.id;
-      updatedRecipes = recipesFromLocal.map((recipe) =>
-        recipe.id === newId
-          ? {
-              ...recipe,
-              title: titleRef.current.value,
-              description: descriptionRef.current.value,
-              servings: Number(servingsRef.current.value),
-              prepTime: Number(prepTimeRef.current.value),
-              cookTime: Number(cookTimeRef.current.value),
-              author: authorRef.current.value,
-              ingredients,
-              instructions,
-              images,
-              tags,
-            }
-          : recipe
-      );
+      const index = recipes.indexOf(existingRecipe);
+      recipes[index] = updatedRecipe;
+   
+      fetch(recipesUrl, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(recipes),
+      })
+        .then(setMessage("Recipe added successfully!"))
+
+        .catch((error) => {
+          console.error("Error updating recipe:", error);
+          setMessage("Error updating recipe.");
+        });
     } else {
-      newId = recipes.length ? Number(recipes[recipes.length - 1].id) + 1 : 1;
-
-      const newRecipe = {
-        id: newId.toString(),
-        title: titleRef.current.value,
-        description: descriptionRef.current.value,
-        servings: Number(servingsRef.current.value),
-        prepTime: Number(prepTimeRef.current.value),
-        cookTime: Number(cookTimeRef.current.value),
-        author: authorRef.current.value,
-        ingredients,
-        instructions,
-        images,
-        tags,
-      };
-
-      updatedRecipes = [...recipesFromLocal, newRecipe];
+      recipes.push(updatedRecipe);
+      fetch(recipesUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(recipes),
+      })
+        .then(setMessage("Recipe added successfully!"))
+        .catch((error) => {
+          console.error("Error adding recipe:", error);
+          setMessage("Error adding recipe.");
+        });
     }
-
-    localStorage.setItem("recipes", JSON.stringify(updatedRecipes));
-    setRecipes(updatedRecipes);
-    setMessage("Success!");
   };
 
   const isValidated = () => {

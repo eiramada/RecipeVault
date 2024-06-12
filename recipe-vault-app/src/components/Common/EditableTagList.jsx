@@ -32,13 +32,17 @@ const EditableTagList = ({ tagsList, setTags }) => {
       }}
       onKeyDown={handleKeyDown}
       renderTags={(value, getTagProps) =>
-        value.map((option, index) => (
-          <Chip
-            variant="outlined"
-            label={option.title}
-            {...getTagProps({ index })}
-          />
-        ))
+        value.map((option, index) => {
+          const { key, ...tagProps } = getTagProps({ index });
+          return (
+            <Chip
+              key={key}
+              variant="outlined"
+              label={option.title}
+              {...tagProps}
+            />
+          );
+        })
       }
       renderInput={(params) => (
         <TextField

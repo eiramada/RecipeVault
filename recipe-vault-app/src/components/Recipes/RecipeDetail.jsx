@@ -9,15 +9,26 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
-import recipesFromFile from "../../data/recipes.json";
 
 function RecipeDetail() {
   const { id } = useParams();
 
-  const recipe = recipesFromFile.find((r) => r.id === id);
+  const [recipes, setRecipes] = useState([]);
+  const recipesUrl = process.env.REACT_APP_RECIPES_DB_URL;
+
+  useEffect(() => {
+    fetch(recipesUrl)
+      .then((result) => result.json())
+      .then((json) => {
+        setRecipes(json || []);
+        console.log(json);
+      });
+  }, [recipesUrl]);
+
+  const recipe = recipes.find((r) => Number(r.id) === Number(id));
 
   if (!recipe) {
     return <div>Loading...</div>;
