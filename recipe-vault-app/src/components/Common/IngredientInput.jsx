@@ -1,31 +1,36 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Grid, IconButton, TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Ingredient = ({
-  ingredient,
-  index,
-  handleIngredientChange,
-  handleRemoveIngredient,
-  isNew,
-  addIngredient,
-}) => {
-  const [newIngredient, setNewIngredient] = useState(ingredient);
+const IngredientInput = ({ ingredient, index, isNew, onAdd, onUpdate, onRemove }) => {
+  const [currentIngredient, setCurrentIngredient] = useState(ingredient);
+
+  useEffect(() => {
+    if (!isNew) {
+      setCurrentIngredient(ingredient);
+    }
+  }, [ingredient, isNew]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     const updatedIngredient = {
-      ...newIngredient,
+      ...currentIngredient,
       [name]: value,
     };
-    setNewIngredient(updatedIngredient);
-    handleIngredientChange(index, updatedIngredient);
+    setCurrentIngredient(updatedIngredient);
+    if (!isNew) {
+      onUpdate(index, updatedIngredient);
+    }
   };
 
-  const handleAddIngredient = () => {
-    addIngredient(newIngredient);
-    setNewIngredient({ name: "", quantity: "", unit: "", notes: "" });
+  const handleAdd = () => {
+    onAdd(currentIngredient);
+    setCurrentIngredient({ name: "", quantity: "", unit: "", notes: "" });
+  };
+
+  const handleRemove = () => {
+    onRemove(index);
   };
 
   return (
@@ -34,7 +39,7 @@ const Ingredient = ({
         <TextField
           label="Name"
           name="name"
-          value={newIngredient.name}
+          value={currentIngredient.name}
           onChange={handleChange}
           fullWidth
         />
@@ -43,7 +48,7 @@ const Ingredient = ({
         <TextField
           label="Quantity"
           name="quantity"
-          value={newIngredient.quantity}
+          value={currentIngredient.quantity}
           onChange={handleChange}
           fullWidth
         />
@@ -52,7 +57,7 @@ const Ingredient = ({
         <TextField
           label="Unit"
           name="unit"
-          value={newIngredient.unit}
+          value={currentIngredient.unit}
           onChange={handleChange}
           fullWidth
         />
@@ -61,22 +66,18 @@ const Ingredient = ({
         <TextField
           label="Notes"
           name="notes"
-          value={newIngredient.notes}
+          value={currentIngredient.notes}
           onChange={handleChange}
           fullWidth
         />
       </Grid>
       <Grid item xs={2}>
         {isNew ? (
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={handleAddIngredient}
-          >
+          <IconButton variant="contained" color="primary" onClick={handleAdd}>
             <AddIcon />
           </IconButton>
         ) : (
-          <IconButton onClick={() => handleRemoveIngredient(index)} edge="end">
+          <IconButton onClick={handleRemove} edge="end">
             <DeleteIcon />
           </IconButton>
         )}
@@ -85,5 +86,4 @@ const Ingredient = ({
   );
 };
 
-export { Ingredient };
-
+export default IngredientInput;

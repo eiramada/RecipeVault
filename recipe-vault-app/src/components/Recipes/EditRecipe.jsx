@@ -9,16 +9,34 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import recipesFromFile from "../../data/recipes.json";
 import EditableTagList from "../Common/EditableTagList";
-import { Ingredient } from "../Common/IngredientInput";
+import Ingredient from "../Common/IngredientInput";
 
 function EditRecipe() {
   const { id } = useParams();
-  const recipe = recipesFromFile.find((r) => r.id === id);
-  const [editedRecipe, setEditedRecipe] = useState(recipe);
+  const [recipes, setRecipes] = useState([]);
+  const [editedRecipe, setEditedRecipe] = useState(null);
+
+  useEffect(() => {
+    const storedRecipes = localStorage.getItem("recipes");
+    const recipesFromLocal = storedRecipes ? JSON.parse(storedRecipes) : [];
+    const allRecipes = Array.isArray(recipesFromLocal) 
+      ? [...recipesFromFile, ...recipesFromLocal] 
+      : [...recipesFromFile];
+      
+    // Remove duplicate recipes based on unique `id`
+    const mergedRecipes = Array.from(new Map(allRecipes.map(item => [item.id, item])).values());
+
+    setRecipes(mergedRecipes);
+  }, []);
+
+  useEffect(() => {
+    const recipe = recipes.find((r) => r.id === id);
+    setEditedRecipe(recipe);
+  }, [recipes, id]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -93,7 +111,7 @@ function EditRecipe() {
         <TextField
           label="Title"
           name="title"
-          value={editedRecipe.title}
+          value={editedRecipe.title || ""}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -101,7 +119,7 @@ function EditRecipe() {
         <TextField
           label="Description"
           name="description"
-          value={editedRecipe.description}
+          value={editedRecipe.description || ""}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -112,7 +130,7 @@ function EditRecipe() {
           label="Servings"
           type="number"
           name="servings"
-          value={editedRecipe.servings}
+          value={editedRecipe.servings || ""}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -121,7 +139,7 @@ function EditRecipe() {
           label="Prep Time (mins)"
           type="number"
           name="prepTime"
-          value={editedRecipe.prepTime}
+          value={editedRecipe.prepTime || ""}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -130,7 +148,7 @@ function EditRecipe() {
           label="Cook Time (mins)"
           type="number"
           name="cookTime"
-          value={editedRecipe.cookTime}
+          value={editedRecipe.cookTime || ""}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -138,7 +156,7 @@ function EditRecipe() {
         <TextField
           label="Author"
           name="author"
-          value={editedRecipe.author}
+          value={editedRecipe.author || ""}
           onChange={handleChange}
           fullWidth
           margin="normal"
@@ -153,7 +171,7 @@ function EditRecipe() {
           addIngredient={addIngredient}
         />
         <br />
-        {editedRecipe.ingredients.map((ingredient, index) => (
+        {editedRecipe.ingredients && editedRecipe.ingredients.map((ingredient, index) => (
           <React.Fragment key={index}>
             <Ingredient
               ingredient={ingredient}
@@ -169,14 +187,14 @@ function EditRecipe() {
           Instructions
         </Typography>
         <List>
-          {editedRecipe.instructions.map((instruction, index) => (
+          {editedRecipe.instructions && editedRecipe.instructions.map((instruction, index) => (
             <ListItem key={index}>
               <Grid container spacing={2} alignItems="center">
                 <Grid item xs={10}>
                   <TextField
                     label="Instruction"
                     name="description"
-                    value={instruction.description}
+                    value={instruction.description || ""}
                     onChange={(e) => handleInstructionChange(index, e)}
                     fullWidth
                     margin="normal"
@@ -200,7 +218,7 @@ function EditRecipe() {
           Images
         </Typography>
         <List>
-          {editedRecipe.images.map((image, index) => (
+          {editedRecipe.images && editedRecipe.images.map((image, index) => (
             <ListItem key={index}>
               {image}
               <IconButton onClick={() => handleRemoveImage(index)} edge="end">

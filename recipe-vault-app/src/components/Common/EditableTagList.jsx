@@ -1,8 +1,7 @@
 import { Autocomplete, Chip, TextField } from "@mui/material";
 import React, { useState } from "react";
 
-const EditableTagList = ({ tagsList }) => {
-  const [tags, setTags] = useState(tagsList || []);
+const EditableTagList = ({ tagsList, setTags }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (event) => {
@@ -17,8 +16,8 @@ const EditableTagList = ({ tagsList }) => {
     <Autocomplete
       multiple
       freeSolo
-      options={tags.map((tag) => tag.title)}
-      value={tags}
+      options={tagsList.map((tag) => tag.title)}
+      value={tagsList}
       getOptionLabel={(option) => option.title || ""}
       onChange={(event, newValue) => {
         setTags(
@@ -47,6 +46,7 @@ const EditableTagList = ({ tagsList }) => {
           variant="outlined"
           label="Tags"
           placeholder="Add New Tag"
+          margin="normal"
         />
       )}
     />
