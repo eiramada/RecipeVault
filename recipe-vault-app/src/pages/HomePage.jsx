@@ -1,11 +1,4 @@
-import {
-  Box,
-  Container,
-  Grid,
-  Paper,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
 
 const HomePage = () => {
@@ -27,9 +20,7 @@ const HomePage = () => {
           <Typography variant="h6">Carousel Placeholder</Typography>
         </Paper>
       </Box>
-      <Box sx={{ my: 4 }}>
-        <TextField fullWidth label="Search Recipes" variant="outlined" />
-      </Box>
+
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" gutterBottom>
           Popular Categories
