@@ -9,24 +9,14 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
+import { RecipeContext } from "../../contexts/RecipeContext";
 
 function RecipeDetail() {
   const { id } = useParams();
-
-  const [recipes, setRecipes] = useState([]);
-  const recipesUrl = process.env.REACT_APP_RECIPES_DB_URL;
-
-  useEffect(() => {
-    fetch(recipesUrl)
-      .then((result) => result.json())
-      .then((json) => {
-        setRecipes(json || []);
-        console.log(json);
-      });
-  }, [recipesUrl]);
+  const { recipes } = useContext(RecipeContext);
 
   const recipe = recipes.find((r) => Number(r.id) === Number(id));
 

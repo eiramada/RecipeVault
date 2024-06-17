@@ -7,14 +7,19 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useParams } from "react-router-dom";
+import { RecipeContext } from "../../contexts/RecipeContext";
 import EditableTagList from "../Common/EditableTagList";
 import ImageList from "../Common/ImageList";
 import IngredientList from "../Common/IngredientList";
 import InstructionList from "../Common/InstructionList";
-
-const recipesUrl = process.env.REACT_APP_RECIPES_DB_URL;
 
 const AddEditRecipe = ({ isEditMode = false }) => {
   const { id } = useParams();
@@ -27,46 +32,21 @@ const AddEditRecipe = ({ isEditMode = false }) => {
 
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
-  const [recipes, setRecipes] = useState([]);
   const [images, setImages] = useState([]);
   const [tags, setTags] = useState([]);
   const [message, setMessage] = useState("");
   const [existingRecipe, setExistingRecipe] = useState(null);
-
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
-    fetchRecipes();
-  }, []);
+  const { recipes, addNewRecipe, updateExistingRecipe } =
+    useContext(RecipeContext);
 
-  useEffect(() => {
-    if (recipes.length) {
-      findExistingRecipe();
-    }
-  }, [recipes, id]);
-
-  useEffect(() => {
-    if (isEditMode && existingRecipe) {
-      populateFormWithExistingRecipe();
-    }
-  }, [isEditMode, existingRecipe]);
-
-  const fetchRecipes = async () => {
-    try {
-      const response = await fetch(recipesUrl);
-      const data = await response.json();
-      setRecipes(data || []);
-    } catch (error) {
-      console.error("Error fetching recipes:", error);
-    }
-  };
-
-  const findExistingRecipe = () => {
+  const findExistingRecipe = useCallback(() => {
     const recipe = recipes.find((r) => Number(r.id) === Number(id));
     setExistingRecipe(recipe);
-  };
+  }, [recipes, id]);
 
-  const populateFormWithExistingRecipe = () => {
+  const populateFormWithExistingRecipe = useCallback(() => {
     if (existingRecipe) {
       titleRef.current.value = existingRecipe.title || "";
       descriptionRef.current.value = existingRecipe.description || "";
@@ -79,7 +59,19 @@ const AddEditRecipe = ({ isEditMode = false }) => {
       setImages(existingRecipe.images || []);
       setTags(existingRecipe.tags || []);
     }
-  };
+  }, [existingRecipe]);
+
+  useEffect(() => {
+    if (recipes.length && isEditMode) {
+      findExistingRecipe();
+    }
+  }, [recipes, id, isEditMode, findExistingRecipe]);
+
+  useEffect(() => {
+    if (isEditMode && existingRecipe) {
+      populateFormWithExistingRecipe();
+    }
+  }, [isEditMode, existingRecipe, populateFormWithExistingRecipe]);
 
   const handleInstructionsChange = (updatedInstructions) => {
     setInstructions(updatedInstructions);
@@ -131,7 +123,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
 
     try {
       if (isEditMode) {
-        await updateRecipe(updatedRecipe);
+        await updateExistingRecipe(updatedRecipe);
       } else {
         await addNewRecipe(updatedRecipe);
       }
@@ -160,25 +152,6 @@ const AddEditRecipe = ({ isEditMode = false }) => {
       images,
       tags,
     };
-  };
-
-  const updateRecipe = async (updatedRecipe) => {
-    const index = recipes.indexOf(existingRecipe);
-    recipes[index] = updatedRecipe;
-    await fetch(recipesUrl, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(recipes),
-    });
-  };
-
-  const addNewRecipe = async (updatedRecipe) => {
-    recipes.push(updatedRecipe);
-    await fetch(recipesUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(recipes),
-    });
   };
 
   return (
