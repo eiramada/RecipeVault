@@ -1,4 +1,5 @@
 # RecipeVault
+https://recipevaultpro.web.app/
 
 ## Table of Contents
 1. [Project Proposal](#project-proposal)
@@ -70,7 +71,6 @@ RecipeVault is a mobile and web application that allows users to browse, select,
   - `robots.txt`
   - **assets**:
     - **images**: []
-
 - **src**:
   - **assets**:
     - **images**: []
@@ -88,7 +88,6 @@ RecipeVault is a mobile and web application that allows users to browse, select,
     - **Layout**:
       - `Header.js`
       - `Footer.js`
-      - `Sidebar.js`
     - **Recipe**:
       - `RecipeList.js`
       - `RecipeDetail.js`
@@ -176,9 +175,10 @@ RecipeVault is a mobile and web application that allows users to browse, select,
 
 **Core Features to Focus On**
 - Recipe Management: Allow users to add, view, and edit recipes.
+- Saving & Firebase hosting
 - Basic Search: Implement basic search functionality for recipes.
-- Shopping List: Enable users to generate and manage shopping lists from recipes.
 - Menu Planning: Provide a simple interface for users to plan their meals.
+- Shopping List: Enable users to generate and manage shopping lists from recipes.
 - User Authentication: Ensure users can register, login, and reset passwords.
 
 

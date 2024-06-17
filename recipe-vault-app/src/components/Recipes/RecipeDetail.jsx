@@ -1,6 +1,7 @@
 import {
   Button,
   Chip,
+  CircularProgress,
   Container,
   Grid,
   List,
@@ -16,12 +17,38 @@ import { RecipeContext } from "../../contexts/RecipeContext";
 
 function RecipeDetail() {
   const { id } = useParams();
-  const { recipes } = useContext(RecipeContext);
-
+  const { recipes, loading, error } = useContext(RecipeContext);
   const recipe = recipes.find((r) => Number(r.id) === Number(id));
 
+  if (loading) {
+    return (
+      <Container>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "80vh",
+          }}
+        >
+          <CircularProgress />
+        </div>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <Typography variant="h6" color="error" align="center">
+          {error}
+        </Typography>
+      </Container>
+    );
+  }
+
   if (!recipe) {
-    return <div>Loading...</div>;
+    return <div>Recipe not found</div>;
   }
 
   return (
@@ -115,8 +142,8 @@ function RecipeDetail() {
       </Grid>
 
       <Stack direction="row" spacing={1}>
-        {recipe.tags.map((tag) => (
-          <Chip key={tag} label={tag} variant="outlined" />
+        {recipe.tags.map((tag, index) => (
+          <Chip label={tag} key={index} variant="outlined" />
         ))}
       </Stack>
     </Container>

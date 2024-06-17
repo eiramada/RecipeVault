@@ -11,6 +11,8 @@ const RecipeContext = createContext();
 const RecipeProvider = ({ children }) => {
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const includesSearchQuery = (field, query) => {
     return (field?.toLowerCase() || "").includes(query.toLowerCase());
@@ -32,12 +34,17 @@ const RecipeProvider = ({ children }) => {
 
   useEffect(() => {
     const debouncedFetchRecipes = _.debounce(async (query) => {
+      setLoading(true);
       try {
         const allRecipes = await fetchRecipes();
         const filteredRecipes = filterRecipes(allRecipes, query);
         setRecipes(filteredRecipes);
+        setError(null);
       } catch (error) {
         console.error("Error loading recipes:", error);
+        setError("Error loading recipes. Please try again later.");
+      } finally {
+        setLoading(false);
       }
     }, 300);
 
@@ -55,6 +62,7 @@ const RecipeProvider = ({ children }) => {
       setRecipes([...recipes, newRecipe]);
     } catch (error) {
       console.error("Error adding recipe:", error);
+      setError("Error adding recipe. Please try again later.");
     }
   };
 
@@ -66,6 +74,7 @@ const RecipeProvider = ({ children }) => {
       );
     } catch (error) {
       console.error("Error updating recipe:", error);
+      setError("Error updating recipe. Please try again later.");
     }
   };
 
@@ -77,6 +86,8 @@ const RecipeProvider = ({ children }) => {
         setSearchQuery,
         addNewRecipe,
         updateExistingRecipe,
+        loading,
+        error,
       }}
     >
       {children}
@@ -85,3 +96,4 @@ const RecipeProvider = ({ children }) => {
 };
 
 export { RecipeContext, RecipeProvider };
+

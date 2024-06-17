@@ -6,17 +6,16 @@ import Header from "./components/Layout/Header";
 import AddEditRecipe from "./components/Recipes/AddEditRecipe";
 import RecipeDetail from "./components/Recipes/RecipeDetail";
 import RecipeList from "./components/Recipes/RecipeList";
-import SearchRecipe from "./components/Recipes/SearchRecipe";
+import { RecipeProvider } from "./contexts/RecipeContext";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFoundPage";
-import { RecipeProvider } from "./contexts/RecipeContext";
 
 function App() {
   return (
     <RecipeProvider>
       <div>
         <Header />
-        <SearchRecipe />
+
         <Box
           sx={{ display: "flex", flexDirection: "column", flexGrow: 1, p: 3 }}
         >

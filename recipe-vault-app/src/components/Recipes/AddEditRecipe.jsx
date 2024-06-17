@@ -2,6 +2,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import {
   Alert,
   Button,
+  CircularProgress,
   Container,
   IconButton,
   TextField,
@@ -37,6 +38,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
   const [message, setMessage] = useState("");
   const [existingRecipe, setExistingRecipe] = useState(null);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const { recipes, addNewRecipe, updateExistingRecipe } =
     useContext(RecipeContext);
@@ -117,8 +119,8 @@ const AddEditRecipe = ({ isEditMode = false }) => {
   const saveRecipe = async () => {
     if (!validateFields()) return;
 
+    setLoading(true);
     const newId = isEditMode ? existingRecipe.id : generateNewId();
-
     const updatedRecipe = createUpdatedRecipe(newId);
 
     try {
@@ -131,6 +133,8 @@ const AddEditRecipe = ({ isEditMode = false }) => {
     } catch (error) {
       console.error("Error saving recipe:", error);
       setMessage("Error saving recipe.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -156,114 +160,130 @@ const AddEditRecipe = ({ isEditMode = false }) => {
 
   return (
     <Container>
-      {message && (
-        <Alert
-          severity={message.includes("Error") ? "error" : "success"}
-          action={
-            <IconButton
-              aria-label="close"
-              color="inherit"
-              size="small"
-              onClick={() => setMessage("")}
-            >
-              <CloseIcon fontSize="inherit" />
-            </IconButton>
-          }
-          sx={{ mb: 2 }}
+      {loading && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "80vh",
+          }}
         >
-          {message}
-        </Alert>
+          <CircularProgress />
+        </div>
       )}
+      {!loading && (
+        <>
+          {message && (
+            <Alert
+              severity={message.includes("Error") ? "error" : "success"}
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => setMessage("")}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+              sx={{ mb: 2 }}
+            >
+              {message}
+            </Alert>
+          )}
 
-      <Typography variant="h4" component="h2" gutterBottom>
-        {isEditMode ? "Edit Recipe" : "Add New Recipe"}
-      </Typography>
+          <Typography variant="h4" component="h2" gutterBottom>
+            {isEditMode ? "Edit Recipe" : "Add New Recipe"}
+          </Typography>
 
-      <TextField
-        label="Title"
-        inputRef={titleRef}
-        fullWidth
-        margin="normal"
-        error={!!errors.title}
-        helperText={errors.title}
-      />
-      <TextField
-        label="Description"
-        inputRef={descriptionRef}
-        fullWidth
-        margin="normal"
-        multiline
-        rows={4}
-        error={!!errors.description}
-        helperText={errors.description}
-      />
-      <TextField
-        label="Servings"
-        type="number"
-        inputRef={servingsRef}
-        fullWidth
-        margin="normal"
-        error={!!errors.servings}
-        helperText={errors.servings}
-      />
-      <TextField
-        label="Prep Time (mins)"
-        type="number"
-        inputRef={prepTimeRef}
-        fullWidth
-        margin="normal"
-        error={!!errors.prepTime}
-        helperText={errors.prepTime}
-      />
-      <TextField
-        label="Cook Time (mins)"
-        type="number"
-        inputRef={cookTimeRef}
-        fullWidth
-        margin="normal"
-        error={!!errors.cookTime}
-        helperText={errors.cookTime}
-      />
-      <TextField
-        label="Author"
-        inputRef={authorRef}
-        fullWidth
-        margin="normal"
-        error={!!errors.author}
-        helperText={errors.author}
-      />
+          <TextField
+            label="Title"
+            inputRef={titleRef}
+            fullWidth
+            margin="normal"
+            error={!!errors.title}
+            helperText={errors.title}
+          />
+          <TextField
+            label="Description"
+            inputRef={descriptionRef}
+            fullWidth
+            margin="normal"
+            multiline
+            rows={4}
+            error={!!errors.description}
+            helperText={errors.description}
+          />
+          <TextField
+            label="Servings"
+            type="number"
+            inputRef={servingsRef}
+            fullWidth
+            margin="normal"
+            error={!!errors.servings}
+            helperText={errors.servings}
+          />
+          <TextField
+            label="Prep Time (mins)"
+            type="number"
+            inputRef={prepTimeRef}
+            fullWidth
+            margin="normal"
+            error={!!errors.prepTime}
+            helperText={errors.prepTime}
+          />
+          <TextField
+            label="Cook Time (mins)"
+            type="number"
+            inputRef={cookTimeRef}
+            fullWidth
+            margin="normal"
+            error={!!errors.cookTime}
+            helperText={errors.cookTime}
+          />
+          <TextField
+            label="Author"
+            inputRef={authorRef}
+            fullWidth
+            margin="normal"
+            error={!!errors.author}
+            helperText={errors.author}
+          />
 
-      <Typography variant="h6" component="h3" gutterBottom>
-        Ingredients
-      </Typography>
-      <IngredientList
-        ingredients={ingredients}
-        onIngredientsChange={handleIngredientsChange}
-      />
+          <Typography variant="h6" component="h3" gutterBottom>
+            Ingredients
+          </Typography>
+          <IngredientList
+            ingredients={ingredients}
+            onIngredientsChange={handleIngredientsChange}
+          />
 
-      <Typography variant="h6" component="h3" gutterBottom>
-        Instructions
-      </Typography>
-      <InstructionList
-        instructions={instructions}
-        onInstructionsChange={handleInstructionsChange}
-      />
+          <Typography variant="h6" component="h3" gutterBottom>
+            Instructions
+          </Typography>
+          <InstructionList
+            instructions={instructions}
+            onInstructionsChange={handleInstructionsChange}
+          />
 
-      <Typography variant="h6" component="h3" gutterBottom>
-        Images
-      </Typography>
-      <ImageList images={images} onImagesChange={handleImagesChange} />
+          <Typography variant="h6" component="h3" gutterBottom>
+            Images
+          </Typography>
+          <ImageList images={images} onImagesChange={handleImagesChange} />
 
-      <EditableTagList tagsList={tags} setTags={setTags} />
+          <EditableTagList tagsList={tags} setTags={setTags} />
 
-      <Button
-        onClick={saveRecipe}
-        variant="contained"
-        color="primary"
-        style={{ marginTop: "16px" }}
-      >
-        Save Recipe
-      </Button>
+          <Button
+            onClick={saveRecipe}
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "16px" }}
+          >
+            Save Recipe
+          </Button>
+        </>
+      )}
     </Container>
   );
 };
