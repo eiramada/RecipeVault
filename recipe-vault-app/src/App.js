@@ -9,6 +9,7 @@ import RecipeList from "./components/Recipes/RecipeList";
 import { RecipeProvider } from "./contexts/RecipeContext";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFoundPage";
+import ShoppingListPage from "./pages/ShoppingListPage";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/recipes" element={<RecipeList />} />
+            <Route path="/shopping-list" element={<ShoppingListPage />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             <Route
               path="/add/"
