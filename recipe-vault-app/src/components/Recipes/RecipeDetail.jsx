@@ -17,8 +17,10 @@ import { RecipeContext } from "../../contexts/RecipeContext";
 
 function RecipeDetail() {
   const { id } = useParams();
-  const { recipes, loading, error } = useContext(RecipeContext);
+  const { recipes, loading, error, markRecipe, isRecipeMarked } =
+    useContext(RecipeContext);
   const recipe = recipes.find((r) => Number(r.id) === Number(id));
+  const isMarked = isRecipeMarked(recipe?.id);
 
   if (loading) {
     return (
@@ -60,6 +62,13 @@ function RecipeDetail() {
             Edit Recipe
           </Button>
         </Link>
+        <Button
+          onClick={() => markRecipe(recipe.id)}
+          size="small"
+          color={isMarked ? "secondary" : "primary"}
+        >
+          {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
+        </Button>
       </Typography>
       <Typography variant="h6" component="h3" gutterBottom>
         Images

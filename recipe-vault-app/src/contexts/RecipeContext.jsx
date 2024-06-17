@@ -13,6 +13,9 @@ const RecipeProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [menuPlan, setMenuPlan] = useState(
+    () => JSON.parse(localStorage.getItem("menuPlan")) || []
+  );
 
   const includesSearchQuery = (field, query) => {
     return (field?.toLowerCase() || "").includes(query.toLowerCase());
@@ -78,6 +81,18 @@ const RecipeProvider = ({ children }) => {
     }
   };
 
+  const markRecipe = (id) => {
+    const updatedMenuPlan = menuPlan.includes(id)
+      ? menuPlan.filter((recipeId) => recipeId !== id)
+      : [...menuPlan, id];
+    setMenuPlan(updatedMenuPlan);
+    localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
+  };
+
+  const isRecipeMarked = (id) => {
+    return menuPlan.includes(id);
+  };
+
   return (
     <RecipeContext.Provider
       value={{
@@ -88,6 +103,8 @@ const RecipeProvider = ({ children }) => {
         updateExistingRecipe,
         loading,
         error,
+        markRecipe,
+        isRecipeMarked,
       }}
     >
       {children}

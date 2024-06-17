@@ -8,10 +8,14 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { RecipeContext } from "../../contexts/RecipeContext";
 
 const RecipeCard = ({ recipe }) => {
+  const { markRecipe, isRecipeMarked } = useContext(RecipeContext);
+  const isMarked = isRecipeMarked(recipe.id);
+
   return (
     <Card
       sx={{
@@ -42,6 +46,13 @@ const RecipeCard = ({ recipe }) => {
         </Stack>
       </CardContent>
       <Box sx={{ textAlign: "center", marginBottom: 2 }}>
+        <Button
+          onClick={() => markRecipe(recipe.id)}
+          size="small"
+          color={isMarked ? "secondary" : "primary"}
+        >
+          {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
+        </Button>
         <Link to={`/recipe/${recipe.id}`}>
           <Button size="small" color="primary">
             View Recipe
