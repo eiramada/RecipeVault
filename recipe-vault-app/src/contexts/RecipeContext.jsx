@@ -20,13 +20,11 @@ const RecipeProvider = ({ children }) => {
     () => JSON.parse(localStorage.getItem("markedRecipes")) || []
   );
 
-  const includesSearchQuery = (field, query) => {
-    return (field?.toLowerCase() || "").includes(query.toLowerCase());
-  };
+  const includesSearchQuery = (field, query) =>
+    (field?.toLowerCase() || "").includes(query.toLowerCase());
 
-  const getArrayString = (array) => {
-    return (array || []).map((item) => item.toLowerCase()).join(" ");
-  };
+  const getArrayString = (array) =>
+    (array || []).map((item) => item.toLowerCase()).join(" ");
 
   const filterRecipes = useCallback((recipes, query) => {
     return recipes.filter((recipe) => {
@@ -56,7 +54,6 @@ const RecipeProvider = ({ children }) => {
 
     debouncedFetchRecipes(searchQuery);
 
-    // Cleanup function to cancel debounce on unmount
     return () => {
       debouncedFetchRecipes.cancel();
     };
@@ -65,17 +62,27 @@ const RecipeProvider = ({ children }) => {
   const addNewRecipe = async (recipe) => {
     try {
       const newRecipe = await addRecipe(recipe);
-      setRecipes([...recipes, newRecipe]);
+      setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
     } catch (error) {
       console.error("Error adding recipe:", error);
       setError("Error adding recipe. Please try again later.");
     }
   };
 
-  const updateExistingRecipe = async (updatedRecipes) => {
+  const updateExistingRecipe = async (updatedRecipe) => {
     try {
-      const updated = await updateRecipes(updatedRecipes);
-      setRecipes(updated);
+      const index = recipes.findIndex(
+        (recipe) => recipe.id === updatedRecipe.id
+      );
+      if (index === -1)
+        throw new Error(`Recipe with ID ${updatedRecipe.id} not found`);
+
+      const updatedRecipes = recipes.map((recipe, i) =>
+        i === index ? { ...recipe, ...updatedRecipe } : recipe
+      );
+
+      const newRecipes = await updateRecipes(updatedRecipes);
+      setRecipes(newRecipes);
     } catch (error) {
       console.error("Error updating recipes:", error);
       setError("Error updating recipes. Please try again later.");
@@ -86,16 +93,15 @@ const RecipeProvider = ({ children }) => {
     const updatedMarkedRecipes = markedRecipeIds.includes(id)
       ? markedRecipeIds.filter((recipeId) => recipeId !== id)
       : [...markedRecipeIds, id];
+
     setMarkedRecipesIds(updatedMarkedRecipes);
     localStorage.setItem("markedRecipes", JSON.stringify(updatedMarkedRecipes));
   };
 
-  const isRecipeMarked = (id) => {
-    return markedRecipeIds.includes(id);
-  };
+  const isRecipeMarked = (id) => markedRecipeIds.includes(id);
 
-  const addToMenuPlan = (recipe, day, meal) => {
-    const updatedMenuPlan = [...menuPlan, { day, meal, recipe }];
+  const addToMenuPlan = (recipeId, day, meal) => {
+    const updatedMenuPlan = [...menuPlan, { day, meal, recipeId }];
     setMenuPlan(updatedMenuPlan);
     localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
   };
@@ -130,4 +136,3 @@ const RecipeProvider = ({ children }) => {
 };
 
 export { RecipeContext, RecipeProvider };
-

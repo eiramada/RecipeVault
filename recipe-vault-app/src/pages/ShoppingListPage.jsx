@@ -16,9 +16,9 @@ function ShoppingListPage() {
     const generateShoppingList = () => {
       const shoppingList = [];
 
-      menuPlan.forEach(({ recipe: mpRecipe }) => {
+      menuPlan.forEach(({ recipeId }) => {
         const recipe = recipes.find(
-          (r) => Number(r.id) === Number(mpRecipe.id)
+          (r) => Number(r.id) === Number(recipeId)
         );
         if (recipe) {
           recipe.ingredients.forEach(({ name, quantity, unit }) => {

@@ -14,8 +14,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
@@ -66,7 +66,7 @@ const MenuPlanPage = () => {
       const recipe = markedRecipeObjects.find(
         (recipe) => recipe.id === recipeId
       );
-      addToMenuPlan(recipe, day, meal);
+      addToMenuPlan(recipe.id, day, meal);
       setSelectedOptions((prev) => ({
         ...prev,
         [recipeId]: { day: "", meal: "" },
@@ -125,10 +125,7 @@ const MenuPlanPage = () => {
               <Typography variant="subtitle1" style={{ flex: "1" }}>
                 {recipe.title}
               </Typography>
-              <FormControl
-                fullWidth
-                style={{ flex: "1", marginRight: "10px" }}
-              >
+              <FormControl fullWidth style={{ flex: "1", marginRight: "10px" }}>
                 <InputLabel id={`day-selector-label-${recipe.id}`}>
                   Select Day
                 </InputLabel>
@@ -147,10 +144,7 @@ const MenuPlanPage = () => {
                   ))}
                 </Select>
               </FormControl>
-              <FormControl
-                fullWidth
-                style={{ flex: "1", marginRight: "10px" }}
-              >
+              <FormControl fullWidth style={{ flex: "1", marginRight: "10px" }}>
                 <InputLabel id={`meal-selector-label-${recipe.id}`}>
                   Select Meal
                 </InputLabel>
@@ -171,7 +165,8 @@ const MenuPlanPage = () => {
               </FormControl>
               <Tooltip
                 title={
-                  !selectedOptions[recipe.id]?.day || !selectedOptions[recipe.id]?.meal
+                  !selectedOptions[recipe.id]?.day ||
+                  !selectedOptions[recipe.id]?.meal
                     ? "Please select both day and meal"
                     : ""
                 }
@@ -224,11 +219,16 @@ const MenuPlanPage = () => {
                             .filter(
                               (item) => item.day === day && item.meal === meal
                             )
-                            .map((item, index) => (
-                              <Typography key={index}>
-                                {item.recipe.title}
-                              </Typography>
-                            ))}
+                            .map((item, index) => {
+                              const recipe = recipes.find(
+                                (r) => r.id === item.recipeId
+                              );
+                              return (
+                                <Typography key={index}>
+                                  {recipe ? recipe.title : "Recipe Not Found"}
+                                </Typography>
+                              );
+                            })}
                       </TableCell>
                     ))}
                   </TableRow>
