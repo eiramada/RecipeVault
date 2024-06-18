@@ -73,17 +73,26 @@ function RecipeDetail() {
       <Typography variant="h6" component="h3" gutterBottom>
         Images
       </Typography>
-      <Carousel>
-        {recipe.images.map((image, index) => (
-          <div key={index}>
-            <img
-              src={image}
-              alt={`Recipe ${index + 1}`}
-              style={{ width: "100%" }}
-            />
-          </div>
-        ))}
-      </Carousel>
+      {recipe.images && (
+        <Carousel>
+          {recipe.images.map((image, index) => (
+            <div key={index}>
+              <img
+                src={image}
+                alt={`Recipe ${index + 1}`}
+                style={{ width: "100%" }}
+              />
+            </div>
+          ))}
+        </Carousel>
+      )}
+      {!recipe.images && (
+        <img
+          src="/Placeholder.webp"
+          alt="Placeholder"
+          style={{ width: "100%" }}
+        />
+      )}
       <Typography variant="body1" gutterBottom>
         <strong>{recipe.description}</strong>
       </Typography>
@@ -138,17 +147,26 @@ function RecipeDetail() {
       <Typography variant="h6" component="h3" gutterBottom>
         Images
       </Typography>
-      <Grid container spacing={2}>
-        {recipe.images.map((image, index) => (
-          <Grid item xs={6} key={index}>
-            <img
-              src={image}
-              alt={`Recipe ${index + 1}`}
-              style={{ width: "100%" }}
-            />
-          </Grid>
-        ))}
-      </Grid>
+      {recipe.images && (
+        <Grid container spacing={2}>
+          {recipe.images.map((image, index) => (
+            <Grid item xs={6} key={index}>
+              <img
+                src={image}
+                alt={`Recipe ${index + 1}`}
+                style={{ width: "100%" }}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      )}
+      {!recipe.images && (
+        <img
+          src="/Placeholder.webp"
+          alt="Placeholder"
+          style={{ width: "100%" }}
+        />
+      )}
 
       <Stack direction="row" spacing={1}>
         {recipe.tags.map((tag, index) => (

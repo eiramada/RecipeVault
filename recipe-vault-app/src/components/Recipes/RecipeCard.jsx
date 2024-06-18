@@ -29,7 +29,7 @@ const RecipeCard = ({ recipe }) => {
       <CardMedia
         component="img"
         height="140"
-        image={recipe.images[0]}
+        image={(recipe.images && recipe.images[0]) || "Placeholder.webp"}
         alt={recipe.title}
       />
       <CardContent sx={{ flexGrow: 1 }}>

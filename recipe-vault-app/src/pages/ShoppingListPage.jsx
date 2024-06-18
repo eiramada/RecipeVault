@@ -1,9 +1,9 @@
 import {
-    Container,
-    List,
-    ListItem,
-    ListItemText,
-    Typography,
+  Container,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
 } from "@mui/material";
 import React, { useContext, useEffect, useMemo, useState } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
@@ -49,7 +49,7 @@ function ShoppingListPage() {
 
   return (
     <Container maxWidth="md">
-      <Typography variant="h2" gutterBottom>
+      <Typography variant="h4" component="h1" gutterBottom>
         Shopping List
       </Typography>
       <List>
