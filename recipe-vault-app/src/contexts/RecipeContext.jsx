@@ -3,7 +3,7 @@ import React, { createContext, useCallback, useEffect, useState } from "react";
 import {
   addRecipe,
   fetchRecipes,
-  updateRecipe,
+  updateRecipes,
 } from "../services/recipeService";
 
 const RecipeContext = createContext();
@@ -15,6 +15,9 @@ const RecipeProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [menuPlan, setMenuPlan] = useState(
     () => JSON.parse(localStorage.getItem("menuPlan")) || []
+  );
+  const [markedRecipeIds, setMarkedRecipesIds] = useState(
+    () => JSON.parse(localStorage.getItem("markedRecipes")) || []
   );
 
   const includesSearchQuery = (field, query) => {
@@ -69,28 +72,38 @@ const RecipeProvider = ({ children }) => {
     }
   };
 
-  const updateExistingRecipe = async (updatedRecipe) => {
+  const updateExistingRecipe = async (updatedRecipes) => {
     try {
-      const updated = await updateRecipe(updatedRecipe);
-      setRecipes(
-        recipes.map((recipe) => (recipe.id === updated.id ? updated : recipe))
-      );
+      const updated = await updateRecipes(updatedRecipes);
+      setRecipes(updated);
     } catch (error) {
-      console.error("Error updating recipe:", error);
-      setError("Error updating recipe. Please try again later.");
+      console.error("Error updating recipes:", error);
+      setError("Error updating recipes. Please try again later.");
     }
   };
 
   const markRecipe = (id) => {
-    const updatedMenuPlan = menuPlan.includes(id)
-      ? menuPlan.filter((recipeId) => recipeId !== id)
-      : [...menuPlan, id];
+    const updatedMarkedRecipes = markedRecipeIds.includes(id)
+      ? markedRecipeIds.filter((recipeId) => recipeId !== id)
+      : [...markedRecipeIds, id];
+    setMarkedRecipesIds(updatedMarkedRecipes);
+    localStorage.setItem("markedRecipes", JSON.stringify(updatedMarkedRecipes));
+  };
+
+  const isRecipeMarked = (id) => {
+    return markedRecipeIds.includes(id);
+  };
+
+  const addToMenuPlan = (recipe, day, meal) => {
+    const updatedMenuPlan = [...menuPlan, { day, meal, recipe }];
     setMenuPlan(updatedMenuPlan);
     localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
   };
 
-  const isRecipeMarked = (id) => {
-    return menuPlan.includes(id);
+  const removeFromMenuPlan = (day) => {
+    const updatedMenuPlan = menuPlan.filter((item) => item.day !== day);
+    setMenuPlan(updatedMenuPlan);
+    localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
   };
 
   return (
@@ -98,6 +111,7 @@ const RecipeProvider = ({ children }) => {
       value={{
         recipes,
         searchQuery,
+        menuPlan,
         setSearchQuery,
         addNewRecipe,
         updateExistingRecipe,
@@ -105,6 +119,9 @@ const RecipeProvider = ({ children }) => {
         error,
         markRecipe,
         isRecipeMarked,
+        addToMenuPlan,
+        removeFromMenuPlan,
+        markedRecipeIds,
       }}
     >
       {children}
