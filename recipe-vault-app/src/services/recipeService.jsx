@@ -14,12 +14,12 @@ export const fetchRecipes = async () => {
 export const addRecipe = async (recipe) => {
   try {
     const response = await fetch(recipesUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(recipe),
     });
     if (!response.ok) {
-      throw new Error('Failed to add recipe');
+      throw new Error("Failed to add recipe");
     }
     const data = await response.json();
     return data;
@@ -29,34 +29,20 @@ export const addRecipe = async (recipe) => {
   }
 };
 
-export const updateRecipe = async (recipe) => {
+export const updateRecipes = async (recipes) => {
   try {
-    const response = await fetch(`${recipesUrl}/${recipe.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(recipe),
+    const response = await fetch(recipesUrl, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(recipes),
     });
     if (!response.ok) {
-      throw new Error('Failed to update recipe');
+      throw new Error("Failed to update recipes");
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error updating recipe:", error);
+    console.error("Error updating recipes:", error);
     throw error;
   }
 };
-
-// export const deleteRecipe = async (id) => {
-//   try {
-//     const response = await fetch(`${recipesUrl}/${id}`, {
-//       method: 'DELETE',
-//     });
-//     if (!response.ok) {
-//       throw new Error('Failed to delete recipe');
-//     }
-//   } catch (error) {
-//     console.error("Error deleting recipe:", error);
-//     throw error;
-//   }
-// };

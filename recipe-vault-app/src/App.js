@@ -8,6 +8,7 @@ import RecipeDetail from "./components/Recipes/RecipeDetail";
 import RecipeList from "./components/Recipes/RecipeList";
 import { RecipeProvider } from "./contexts/RecipeContext";
 import HomePage from "./pages/HomePage";
+import MenuPlan from "./pages/MenuPlanPage";
 import NotFound from "./pages/NotFoundPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 
@@ -16,7 +17,6 @@ function App() {
     <RecipeProvider>
       <div>
         <Header />
-
         <Box
           sx={{ display: "flex", flexDirection: "column", flexGrow: 1, p: 3 }}
         >
@@ -24,7 +24,6 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/recipes" element={<RecipeList />} />
-            <Route path="/shopping-list" element={<ShoppingListPage />} />
             <Route path="/recipe/:id" element={<RecipeDetail />} />
             <Route
               path="/add/"
@@ -34,8 +33,11 @@ function App() {
               path="/edit/:id"
               element={<AddEditRecipe isEditMode={true} />}
             />
+            <Route path="/shopping-list" element={<ShoppingListPage />} />
+            <Route path="/menu-plan" element={<MenuPlan />} />
           </Routes>
         </Box>
+        <br /> <br /> <br />
         <Footer />
       </div>
     </RecipeProvider>
