@@ -5,50 +5,45 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 
 function ShoppingListPage() {
   const [items, setItems] = useState([]);
-  const { recipes } = useContext(RecipeContext);
-
-  const menuPlan = useMemo(() => {
-    const menuPlanJSON = localStorage.getItem("menuPlan");
-    return menuPlanJSON ? JSON.parse(menuPlanJSON) : [];
-  }, []);
+  const { recipes, menuPlan } = useContext(RecipeContext);
 
   useEffect(() => {
-    const shoppingList = [];
+    const generateShoppingList = () => {
+      const shoppingList = [];
 
-    menuPlan.forEach((recipeId) => {
-      const recipe = recipes.find((r) => Number(r.id) === Number(recipeId));
-      if (recipe) {
-        recipe.ingredients.forEach((ingredient) => {
-          const existingItem = shoppingList.find(
-            (item) =>
-              item.name === ingredient.name && item.unit === ingredient.unit
-          );
+      menuPlan.forEach(({ recipe: mpRecipe }) => {
+        const recipe = recipes.find(
+          (r) => Number(r.id) === Number(mpRecipe.id)
+        );
+        if (recipe) {
+          recipe.ingredients.forEach(({ name, quantity, unit }) => {
+            const existingItem = shoppingList.find(
+              (item) => item.name === name && item.unit === unit
+            );
 
-          if (existingItem) {
-            existingItem.quantity += ingredient.quantity;
-          } else {
-            shoppingList.push({
-              name: ingredient.name,
-              quantity: ingredient.quantity,
-              unit: ingredient.unit,
-            });
-          }
-        });
-      }
-    });
+            if (existingItem) {
+              existingItem.quantity += quantity;
+            } else {
+              shoppingList.push({ name, quantity, unit });
+            }
+          });
+        }
+      });
 
-    shoppingList.sort((a, b) => a.name.localeCompare(b.name));
+      shoppingList.sort((a, b) => a.name.localeCompare(b.name));
+      setItems(shoppingList);
+    };
 
-    setItems(shoppingList);
+    generateShoppingList();
   }, [menuPlan, recipes]);
 
   return (
-    <Container maxWidth="md">
+    <Container>
       <Typography variant="h4" component="h1" gutterBottom>
         Shopping List
       </Typography>
