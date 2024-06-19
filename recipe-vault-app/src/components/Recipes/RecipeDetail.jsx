@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   CircularProgress,
   Container,
@@ -55,10 +56,18 @@ const RecipeDetail = () => {
 
   return (
     <Container>
-      <Typography variant="h4" component="h2" gutterBottom>
-        {recipe.title}
+      <Box display="flex" alignItems="center" mb={2}>
+        <Typography variant="h4" component="h2" gutterBottom>
+          {recipe.title}
+        </Typography>
         <Link to={`/edit/${recipe.id}`}>
-          <Button size="small" color="primary">
+          <Button
+            variant="contained"
+            color="primary"
+            style={{
+              marginLeft: "16px",
+            }}
+          >
             Edit Recipe
           </Button>
         </Link>
@@ -66,10 +75,13 @@ const RecipeDetail = () => {
           onClick={() => markRecipe(recipe.id)}
           size="small"
           color={isMarked ? "secondary" : "primary"}
+          style={{
+            marginLeft: "16px",
+          }}
         >
           {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
         </Button>
-      </Typography>
+      </Box>
 
       <CarouselGallery images={recipe.images || ["/Placeholder.webp"]} />
 
@@ -117,15 +129,16 @@ const RecipeDetail = () => {
       </Typography>
       <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
         <List>
-          {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
-            <ListItem key={index}>
-              <ListItemText
-                primary={`${ingredient.name} - ${ingredient.quantity} ${
-                  ingredient.unit
-                } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
-              />
-            </ListItem>
-          ))}
+          {recipe.ingredients &&
+            recipe.ingredients.map((ingredient, index) => (
+              <ListItem key={index}>
+                <ListItemText
+                  primary={`${ingredient.name} - ${ingredient.quantity} ${
+                    ingredient.unit
+                  } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
+                />
+              </ListItem>
+            ))}
         </List>
       </Paper>
 
@@ -134,11 +147,12 @@ const RecipeDetail = () => {
       </Typography>
       <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
         <List>
-          {recipe.instructions && recipe.instructions.map((instruction, index) => (
-            <ListItem key={index}>
-              <ListItemText primary={instruction.description} />
-            </ListItem>
-          ))}
+          {recipe.instructions &&
+            recipe.instructions.map((instruction, index) => (
+              <ListItem key={index}>
+                <ListItemText primary={instruction.description} />
+              </ListItem>
+            ))}
         </List>
       </Paper>
 
@@ -162,8 +176,6 @@ const RecipeDetail = () => {
       ) : (
         <img src="/Placeholder.webp" alt="Placeholder" style={{ width: 400 }} />
       )}
-
-  
     </Container>
   );
 };

@@ -15,6 +15,7 @@ const Footer = () => {
             href="https://github.com/eiramada"
             target="_blank"
             rel="noopener noreferrer"
+            style={{ color: "black" }}
           >
             <GitHubIcon sx={{ ml: 1 }} />
           </Link>

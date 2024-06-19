@@ -38,6 +38,7 @@ const MenuPlanPage = () => {
     loading,
     error,
     removeMenuPlan,
+    useExampleData,
   } = useContext(RecipeContext);
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -206,6 +207,9 @@ const MenuPlanPage = () => {
             onClick={() => handleExport("csv")}
           >
             Export as CSV
+          </Button>
+          <Button size="small" color="primary" onClick={useExampleData}>
+            Use Example Data
           </Button>
         </Grid>
         <Grid item xs={12}>

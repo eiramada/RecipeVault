@@ -1,6 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import {
   Alert,
+  Box,
   Button,
   CircularProgress,
   Container,
@@ -15,7 +16,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import RecipeForm from "./RecipeForm";
 import RecipeIngredients from "./RecipeIngredients";
@@ -198,10 +199,28 @@ const AddEditRecipe = ({ isEditMode = false }) => {
               {message}
             </Alert>
           )}
-
-          <Typography variant="h4" component="h2" gutterBottom>
-            {isEditMode ? "Edit Recipe" : "Add New Recipe"}
-          </Typography>
+          <Box display="flex" alignItems="center" mb={2}>
+            <Typography variant="h4" component="h2" gutterBottom>
+              {isEditMode ? "Edit Recipe" : "Add New Recipe"}
+            </Typography>
+            <Button
+              onClick={saveRecipe}
+              variant="contained"
+              color="primary"
+              style={{
+                marginLeft: "16px",
+              }}
+            >
+              Save Recipe
+            </Button>
+            {existingRecipe && (
+              <Link to={`/recipe/${existingRecipe.id}`}>
+                <Button size="small" color="primary">
+                  Back
+                </Button>
+              </Link>
+            )}
+          </Box>
 
           <RecipeForm
             titleRef={titleRef}
@@ -231,15 +250,6 @@ const AddEditRecipe = ({ isEditMode = false }) => {
           <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
             <ImageList images={images} onImagesChange={handleImagesChange} />
           </Paper>
-
-          <Button
-            onClick={saveRecipe}
-            variant="contained"
-            color="primary"
-            style={{ marginTop: "16px" }}
-          >
-            Save Recipe
-          </Button>
         </>
       )}
     </Container>

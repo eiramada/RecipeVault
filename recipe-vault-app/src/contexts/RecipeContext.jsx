@@ -1,5 +1,8 @@
 import _ from "lodash";
 import React, { createContext, useCallback, useEffect, useState } from "react";
+import markedRecipesExample from "../data_examples/markedRecipes.json";
+import menuPlanExample from "../data_examples/menuPlan.json";
+import shoppingListExample from "../data_examples/shoppingList.json";
 import { fetchRecipes, updateRecipes } from "../services/recipeService";
 
 const RecipeContext = createContext();
@@ -116,7 +119,13 @@ const RecipeProvider = ({ children }) => {
 
   const removeMenuPlan = () => {
     localStorage.removeItem("menuPlan");
-  }
+  };
+
+  const useExampleData = () => {
+    localStorage.setItem("menuPlan", JSON.stringify(menuPlanExample));
+    localStorage.setItem("shoppingList", JSON.stringify(shoppingListExample));
+    localStorage.setItem("markedRecipes", JSON.stringify(markedRecipesExample));
+  };
 
   return (
     <RecipeContext.Provider
@@ -136,6 +145,7 @@ const RecipeProvider = ({ children }) => {
         markedRecipeIds,
         setMenuPlan,
         removeMenuPlan,
+        useExampleData,
       }}
     >
       {children}
@@ -144,3 +154,4 @@ const RecipeProvider = ({ children }) => {
 };
 
 export { RecipeContext, RecipeProvider };
+

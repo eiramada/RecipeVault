@@ -8,16 +8,20 @@ import {
   IconButton,
   TextField,
 } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../contexts/RecipeContext";
 
 function ShoppingListPage() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("shoppingList"))
+  );
   const { recipes, menuPlan } = useContext(RecipeContext);
 
   useEffect(() => {
+
+    //Doesn't consider if user has made changes into their shopping list
     const generateShoppingList = () => {
       const shoppingList = [];
 
@@ -61,7 +65,6 @@ function ShoppingListPage() {
   const handleDelete = (index) => {
     const newItems = items.filter((_, i) => i !== index);
     setItems(newItems);
-    // Save updated list to localStorage
     localStorage.setItem("shoppingList", JSON.stringify(newItems));
   };
 
@@ -78,7 +81,6 @@ function ShoppingListPage() {
   };
 
   useEffect(() => {
-    // Load shopping list from localStorage on component mount
     const storedItems = JSON.parse(localStorage.getItem("shoppingList"));
     if (storedItems) {
       setItems(storedItems);
@@ -86,7 +88,6 @@ function ShoppingListPage() {
   }, []);
 
   useEffect(() => {
-    // Save shopping list to localStorage whenever items change
     localStorage.setItem("shoppingList", JSON.stringify(items));
   }, [items]);
 
@@ -96,43 +97,44 @@ function ShoppingListPage() {
         Shopping List
       </Typography>
       <List>
-        {items.map((item, index) => (
-          <ListItem key={index} divider>
-            <Checkbox />
-            {item.isEditing ? (
-              <>
-                <TextField
-                  value={item.quantity}
-                  onChange={(e) => handleQuantityChange(index, e)}
-                  size="small"
-                  style={{ marginRight: "8px" }}
+        {items &&
+          items.map((item, index) => (
+            <ListItem key={index} divider>
+              <Checkbox />
+              {item.isEditing ? (
+                <>
+                  <TextField
+                    value={item.quantity}
+                    onChange={(e) => handleQuantityChange(index, e)}
+                    size="small"
+                    style={{ marginRight: "8px" }}
+                  />
+                  <TextField
+                    value={item.unit}
+                    onChange={(e) => handleUnitChange(index, e)}
+                    size="small"
+                    style={{ marginRight: "8px" }}
+                  />
+                  <TextField
+                    value={item.name}
+                    onChange={(e) => handleNameChange(index, e)}
+                    size="small"
+                    style={{ marginRight: "8px" }}
+                  />
+                </>
+              ) : (
+                <ListItemText
+                  primary={`${item.name} - ${item.quantity} ${item.unit}`}
                 />
-                <TextField
-                  value={item.unit}
-                  onChange={(e) => handleUnitChange(index, e)}
-                  size="small"
-                  style={{ marginRight: "8px" }}
-                />
-                <TextField
-                  value={item.name}
-                  onChange={(e) => handleNameChange(index, e)}
-                  size="small"
-                  style={{ marginRight: "8px" }}
-                />
-              </>
-            ) : (
-              <ListItemText
-                primary={`${item.name} - ${item.quantity} ${item.unit}`}
-              />
-            )}
-            <IconButton onClick={() => handleEdit(index)}>
-              <EditIcon />
-            </IconButton>
-            <IconButton onClick={() => handleDelete(index)}>
-              <DeleteIcon />
-            </IconButton>
-          </ListItem>
-        ))}
+              )}
+              <IconButton onClick={() => handleEdit(index)}>
+                <EditIcon />
+              </IconButton>
+              <IconButton onClick={() => handleDelete(index)}>
+                <DeleteIcon />
+              </IconButton>
+            </ListItem>
+          ))}
       </List>
     </Container>
   );

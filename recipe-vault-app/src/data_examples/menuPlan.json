@@ -1,0 +1,10 @@
+[
+  { "recipeId": 12349, "day": "Monday", "meal": "Dinner" },
+  { "recipeId": 12349, "day": "Tuesday", "meal": "Lunch" },
+  { "recipeId": 12351, "day": "Tuesday", "meal": "Dinner" },
+  { "recipeId": 12351, "day": "Wednesday", "meal": "Lunch" },
+  { "recipeId": 12347, "day": "Wednesday", "meal": "Dinner" },
+  { "recipeId": 12347, "day": "Thursday", "meal": "Lunch" },
+  { "recipeId": 12345, "day": "Thursday", "meal": "Dinner" },
+  { "recipeId": 12345, "day": "Friday", "meal": "Lunch" }
+]

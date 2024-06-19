@@ -13,7 +13,8 @@ import { RecipeContext } from "../../contexts/RecipeContext";
 import TagList from "../Common/TagList";
 
 const RecipeCard = ({ recipe }) => {
-  const { markRecipe, isRecipeMarked, setSearchQuery } = useContext(RecipeContext);
+  const { markRecipe, isRecipeMarked, setSearchQuery } =
+    useContext(RecipeContext);
   const isMarked = isRecipeMarked(recipe.id);
   const navigate = useNavigate();
 
@@ -28,6 +29,13 @@ const RecipeCard = ({ recipe }) => {
     navigate(`/recipes`);
   };
 
+  const truncateDescription = (description, maxLength) => {
+    if (description.length > maxLength) {
+      return description.slice(0, maxLength) + "...";
+    }
+    return description;
+  };
+
   return (
     <Card
       sx={{
@@ -36,6 +44,7 @@ const RecipeCard = ({ recipe }) => {
         flexDirection: "column",
         justifyContent: "space-between",
         margin: 2,
+        padding: 2,
       }}
     >
       <Link
@@ -47,30 +56,31 @@ const RecipeCard = ({ recipe }) => {
           height="140"
           image={(recipe.images && recipe.images[0]) || "Placeholder.webp"}
           alt={recipe.title}
+          sx={{ objectFit: "cover" }}
         />
         <Divider />
-        <CardContent>
+        <CardContent sx={{ paddingBottom: "16px !important" }}>
           <Typography gutterBottom variant="h5" component="div">
             {recipe.title}
           </Typography>
           <Typography
             variant="body2"
             color="text.secondary"
-            sx={{ minHeight: "48px" }}
+            sx={{
+              minHeight: 48,
+              maxHeight: 48,
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+            }}
           >
-            {recipe.description}
+            {truncateDescription(recipe.description, 80)}
           </Typography>
         </CardContent>
       </Link>
       <Box sx={{ padding: 2 }}>
         <TagList tags={recipe.tags} onTagClick={handleTagClick} />
         <Box sx={{ textAlign: "center", marginTop: 2 }}>
-          <Button
-            onClick={handleMarkRecipe}
-            size="small"
-            color={isMarked ? "secondary" : "primary"}
-            sx={{ width: "100%" }}
-          >
+          <Button onClick={handleMarkRecipe} size="small">
             {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
           </Button>
         </Box>
