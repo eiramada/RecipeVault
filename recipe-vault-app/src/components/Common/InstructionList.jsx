@@ -12,6 +12,7 @@ const InstructionList = ({ instructions = [], onInstructionsChange }) => {
       setNewInstruction({ description: "" });
     }
   };
+  
 
   const handleInstructionChange = (index, e) => {
     const { name, value } = e.target;

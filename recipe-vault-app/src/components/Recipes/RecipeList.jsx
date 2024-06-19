@@ -1,5 +1,12 @@
-import { CircularProgress, Container, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  CircularProgress,
+  Container,
+  Grid,
+  Typography,
+} from "@mui/material";
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import RecipeCard from "./RecipeCard";
 import SearchRecipe from "./SearchRecipe";
@@ -41,6 +48,17 @@ const RecipeList = () => {
           </Grid>
         </Container>
       )}
+      <Container>
+        <Link to="/add">
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ marginTop: "16px" }}
+          >
+            Add New Recipe
+          </Button>
+        </Link>
+      </Container>
     </>
   );
 };

@@ -40,7 +40,7 @@ const ImageList = ({ images, onImagesChange }) => {
           <ListItem key={index}>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={10}>
-                <img src={image} alt={`${index}`} style={{ width: "100%", height: "auto" }} />
+                <img src={image} alt={`${index}`} style={{ width: 400, height: "auto" }} />
                 <Typography variant="body2">{image}</Typography>
               </Grid>
               <Grid item xs={2}>

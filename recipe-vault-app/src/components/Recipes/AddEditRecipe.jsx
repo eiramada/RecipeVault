@@ -5,7 +5,7 @@ import {
   CircularProgress,
   Container,
   IconButton,
-  TextField,
+  Paper,
   Typography,
 } from "@mui/material";
 import React, {
@@ -15,12 +15,13 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
+import RecipeForm from "./RecipeForm";
+import RecipeIngredients from "./RecipeIngredients";
+import RecipeInstructions from "./RecipeInstructions";
 import EditableTagList from "../Common/EditableTagList";
 import ImageList from "../Common/ImageList";
-import IngredientList from "../Common/IngredientList";
-import InstructionList from "../Common/InstructionList";
 
 const AddEditRecipe = ({ isEditMode = false }) => {
   const { id } = useParams();
@@ -40,6 +41,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
+  const navigate = useNavigate();
   const { recipes, addNewRecipe, updateExistingRecipe } =
     useContext(RecipeContext);
 
@@ -130,6 +132,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
         await addNewRecipe(updatedRecipe);
       }
       setMessage("Recipe saved successfully!");
+      navigate(`/recipe/${newId}`);
     } catch (error) {
       console.error("Error saving recipe:", error);
       setMessage("Error saving recipe.");
@@ -150,7 +153,11 @@ const AddEditRecipe = ({ isEditMode = false }) => {
       servings: Number(servingsRef.current.value),
       prepTime: Number(prepTimeRef.current.value),
       cookTime: Number(cookTimeRef.current.value),
+      totalTime:
+        Number(prepTimeRef.current.value) + Number(cookTimeRef.current.value),
       author: authorRef.current.value,
+      createdAt: isEditMode ? existingRecipe.createdAt : new Date(),
+      updatedAt: new Date(),
       ingredients,
       instructions,
       images,
@@ -160,7 +167,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
 
   return (
     <Container>
-      {loading && (
+      {loading ? (
         <div
           style={{
             display: "flex",
@@ -171,8 +178,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
         >
           <CircularProgress />
         </div>
-      )}
-      {!loading && (
+      ) : (
         <>
           {message && (
             <Alert
@@ -197,82 +203,34 @@ const AddEditRecipe = ({ isEditMode = false }) => {
             {isEditMode ? "Edit Recipe" : "Add New Recipe"}
           </Typography>
 
-          <TextField
-            label="Title"
-            inputRef={titleRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.title}
-            helperText={errors.title}
-          />
-          <TextField
-            label="Description"
-            inputRef={descriptionRef}
-            fullWidth
-            margin="normal"
-            multiline
-            rows={4}
-            error={!!errors.description}
-            helperText={errors.description}
-          />
-          <TextField
-            label="Servings"
-            type="number"
-            inputRef={servingsRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.servings}
-            helperText={errors.servings}
-          />
-          <TextField
-            label="Prep Time (mins)"
-            type="number"
-            inputRef={prepTimeRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.prepTime}
-            helperText={errors.prepTime}
-          />
-          <TextField
-            label="Cook Time (mins)"
-            type="number"
-            inputRef={cookTimeRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.cookTime}
-            helperText={errors.cookTime}
-          />
-          <TextField
-            label="Author"
-            inputRef={authorRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.author}
-            helperText={errors.author}
+          <RecipeForm
+            titleRef={titleRef}
+            descriptionRef={descriptionRef}
+            authorRef={authorRef}
+            servingsRef={servingsRef}
+            prepTimeRef={prepTimeRef}
+            cookTimeRef={cookTimeRef}
+            errors={errors}
           />
 
-          <Typography variant="h6" component="h3" gutterBottom>
-            Ingredients
-          </Typography>
-          <IngredientList
+          <RecipeIngredients
             ingredients={ingredients}
             onIngredientsChange={handleIngredientsChange}
           />
 
-          <Typography variant="h6" component="h3" gutterBottom>
-            Instructions
-          </Typography>
-          <InstructionList
+          <RecipeInstructions
             instructions={instructions}
             onInstructionsChange={handleInstructionsChange}
           />
 
+          <EditableTagList tagsList={tags} setTags={setTags} />
+
           <Typography variant="h6" component="h3" gutterBottom>
             Images
           </Typography>
-          <ImageList images={images} onImagesChange={handleImagesChange} />
-
-          <EditableTagList tagsList={tags} setTags={setTags} />
+          <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
+            <ImageList images={images} onImagesChange={handleImagesChange} />
+          </Paper>
 
           <Button
             onClick={saveRecipe}

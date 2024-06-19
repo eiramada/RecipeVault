@@ -11,24 +11,6 @@ export const fetchRecipes = async () => {
   }
 };
 
-export const addRecipe = async (recipe) => {
-  try {
-    const response = await fetch(recipesUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(recipe),
-    });
-    if (!response.ok) {
-      throw new Error("Failed to add recipe");
-    }
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error adding recipe:", error);
-    throw error;
-  }
-};
-
 export const updateRecipes = async (recipes) => {
   try {
     const response = await fetch(recipesUrl, {

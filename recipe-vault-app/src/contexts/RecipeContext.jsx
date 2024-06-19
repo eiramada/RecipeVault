@@ -1,10 +1,6 @@
 import _ from "lodash";
 import React, { createContext, useCallback, useEffect, useState } from "react";
-import {
-  addRecipe,
-  fetchRecipes,
-  updateRecipes,
-} from "../services/recipeService";
+import { fetchRecipes, updateRecipes } from "../services/recipeService";
 
 const RecipeContext = createContext();
 
@@ -61,8 +57,11 @@ const RecipeProvider = ({ children }) => {
 
   const addNewRecipe = async (recipe) => {
     try {
-      const newRecipe = await addRecipe(recipe);
-      setRecipes((prevRecipes) => [...prevRecipes, newRecipe]);
+      const allRecipes = await fetchRecipes();
+      const updatedRecipes = [...allRecipes, recipe];
+      const newRecipes = await updateRecipes(updatedRecipes);
+      setRecipes(newRecipes);
+      setError(null);
     } catch (error) {
       console.error("Error adding recipe:", error);
       setError("Error adding recipe. Please try again later.");
@@ -106,11 +105,18 @@ const RecipeProvider = ({ children }) => {
     localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
   };
 
-  const removeFromMenuPlan = (day) => {
-    const updatedMenuPlan = menuPlan.filter((item) => item.day !== day);
+  const removeFromMenuPlan = (recipeId, day, meal) => {
+    const updatedMenuPlan = menuPlan.filter(
+      (item) =>
+        !(item.day === day && item.meal === meal && item.recipeId === recipeId)
+    );
     setMenuPlan(updatedMenuPlan);
     localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
   };
+
+  const removeMenuPlan = () => {
+    localStorage.removeItem("menuPlan");
+  }
 
   return (
     <RecipeContext.Provider
@@ -128,6 +134,8 @@ const RecipeProvider = ({ children }) => {
         addToMenuPlan,
         removeFromMenuPlan,
         markedRecipeIds,
+        setMenuPlan,
+        removeMenuPlan,
       }}
     >
       {children}

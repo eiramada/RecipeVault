@@ -1,21 +1,21 @@
 import {
   Button,
-  Chip,
   CircularProgress,
   Container,
   Grid,
   List,
   ListItem,
   ListItemText,
-  Stack,
+  Paper,
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
-import Carousel from "react-material-ui-carousel";
 import { Link, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
+import CarouselGallery from "../Common/CarouselGallery";
+import TagList from "../Common/TagList";
 
-function RecipeDetail() {
+const RecipeDetail = () => {
   const { id } = useParams();
   const { recipes, loading, error, markRecipe, isRecipeMarked } =
     useContext(RecipeContext);
@@ -70,111 +70,102 @@ function RecipeDetail() {
           {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
         </Button>
       </Typography>
-      <Typography variant="h6" component="h3" gutterBottom>
-        Images
-      </Typography>
-      {recipe.images && (
-        <Carousel>
-          {recipe.images.map((image, index) => (
-            <div key={index}>
-              <img
-                src={image}
-                alt={`Recipe ${index + 1}`}
-                style={{ width: "100%" }}
-              />
-            </div>
-          ))}
-        </Carousel>
-      )}
-      {!recipe.images && (
-        <img
-          src="/Placeholder.webp"
-          alt="Placeholder"
-          style={{ width: "100%" }}
-        />
-      )}
-      <Typography variant="body1" gutterBottom>
-        <strong>{recipe.description}</strong>
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Servings:</strong> {recipe.servings}
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Prep Time:</strong> {recipe.prepTime} mins
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Cook Time:</strong> {recipe.cookTime} mins
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Total Time:</strong> {recipe.totalTime} mins
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Author:</strong> {recipe.author}
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Created At:</strong> {new Date(recipe.createdAt).toDateString()}
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        <strong>Updated At:</strong> {new Date(recipe.updatedAt).toDateString()}
-      </Typography>
 
-      <Typography variant="h6" component="h3" gutterBottom>
+      <CarouselGallery images={recipe.images || ["/Placeholder.webp"]} />
+
+      <Grid container spacing={2} style={{ marginTop: "8px" }}>
+        <Grid item xs={6}>
+          <Typography variant="body1" gutterBottom>
+            <strong>{recipe.description}</strong>
+          </Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper elevation={3} style={{ padding: "8px" }}>
+            <Grid container spacing={1}>
+              <Grid item xs={6}>
+                <Typography variant="body2">
+                  <strong>Servings:</strong> {recipe.servings}
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="body2">
+                  <strong>Prep Time:</strong> {recipe.prepTime} mins
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="body2">
+                  <strong>Total Time:</strong> {recipe.totalTime} mins
+                </Typography>
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="body2">
+                  <strong>Cook Time:</strong> {recipe.cookTime} mins
+                </Typography>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+
+      <Typography
+        variant="h6"
+        component="h3"
+        gutterBottom
+        style={{ marginTop: "16px" }}
+      >
         Ingredients
       </Typography>
-      <List>
-        {recipe.ingredients.map((ingredient, index) => (
-          <ListItem key={index}>
-            <ListItemText
-              primary={`${ingredient.name} - ${ingredient.quantity} ${
-                ingredient.unit
-              } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
-            />
-          </ListItem>
-        ))}
-      </List>
+      <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
+        <List>
+          {recipe.ingredients && recipe.ingredients.map((ingredient, index) => (
+            <ListItem key={index}>
+              <ListItemText
+                primary={`${ingredient.name} - ${ingredient.quantity} ${
+                  ingredient.unit
+                } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
+              />
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
 
       <Typography variant="h6" component="h3" gutterBottom>
         Instructions
       </Typography>
-      <List>
-        {recipe.instructions.map((instruction, index) => (
-          <ListItem key={index}>
-            <ListItemText primary={instruction.description} />
-          </ListItem>
-        ))}
-      </List>
+      <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
+        <List>
+          {recipe.instructions && recipe.instructions.map((instruction, index) => (
+            <ListItem key={index}>
+              <ListItemText primary={instruction.description} />
+            </ListItem>
+          ))}
+        </List>
+      </Paper>
+
+      <TagList tags={recipe.tags} />
 
       <Typography variant="h6" component="h3" gutterBottom>
         Images
       </Typography>
-      {recipe.images && (
+      {recipe.images?.length > 0 ? (
         <Grid container spacing={2}>
           {recipe.images.map((image, index) => (
             <Grid item xs={6} key={index}>
               <img
                 src={image}
                 alt={`Recipe ${index + 1}`}
-                style={{ width: "100%" }}
+                style={{ width: 400 }}
               />
             </Grid>
           ))}
         </Grid>
-      )}
-      {!recipe.images && (
-        <img
-          src="/Placeholder.webp"
-          alt="Placeholder"
-          style={{ width: "100%" }}
-        />
+      ) : (
+        <img src="/Placeholder.webp" alt="Placeholder" style={{ width: 400 }} />
       )}
 
-      <Stack direction="row" spacing={1}>
-        {recipe.tags.map((tag, index) => (
-          <Chip label={tag} key={index} variant="outlined" />
-        ))}
-      </Stack>
+  
     </Container>
   );
-}
+};
 
 export default RecipeDetail;

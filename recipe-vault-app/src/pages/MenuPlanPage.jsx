@@ -2,23 +2,21 @@ import {
   Button,
   CircularProgress,
   Container,
-  FormControl,
   Grid,
-  InputLabel,
-  MenuItem,
   Paper,
-  Select,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useContext, useState } from "react";
+import RecipeSelectModal from "../components/Recipes/RecipeSelectModal";
 import { RecipeContext } from "../contexts/RecipeContext";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const daysOfWeek = [
   "Monday",
@@ -32,61 +30,139 @@ const daysOfWeek = [
 const mealTimes = ["Breakfast", "Lunch", "Dinner", "Snack"];
 
 const MenuPlanPage = () => {
-  const { recipes, menuPlan, markedRecipeIds, addToMenuPlan, loading, error } =
-    useContext(RecipeContext);
+  const {
+    recipes,
+    markedRecipeIds,
+    menuPlan,
+    setMenuPlan,
+    loading,
+    error,
+    removeMenuPlan,
+  } = useContext(RecipeContext);
 
-  const findMarkedRecipes = () => {
-    return markedRecipeIds
-      .map((id) => recipes.find((recipe) => recipe.id === id))
-      .filter((recipe) => recipe);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState("");
+  const [selectedDay, setSelectedDay] = useState("");
+  const [selectedMeal, setSelectedMeal] = useState("");
+
+  const markedRecipeObjects = markedRecipeIds
+    .map((id) => recipes.find((recipe) => recipe.id === id))
+    .filter((recipe) => recipe);
+
+  const handleOpenModal = (day, meal) => {
+    setSelectedDay(day);
+    setSelectedMeal(meal);
+    setModalOpen(true);
   };
 
-  const markedRecipeObjects = findMarkedRecipes();
-
-  const [selectedOptions, setSelectedOptions] = useState(
-    markedRecipeObjects.reduce((acc, recipe) => {
-      acc[recipe.id] = { day: "", meal: "" };
-      return acc;
-    }, {})
-  );
-
-  const handleSelectChange = (recipeId, type, value) => {
-    setSelectedOptions((prev) => ({
-      ...prev,
-      [recipeId]: {
-        ...prev[recipeId],
-        [type]: value,
-      },
-    }));
+  const handleCloseModal = () => {
+    setModalOpen(false);
+    setSelectedRecipe("");
   };
 
-  const handleAddToMenuPlan = (recipeId) => {
-    const { day, meal } = selectedOptions[recipeId];
-    if (day && meal) {
-      const recipe = markedRecipeObjects.find(
-        (recipe) => recipe.id === recipeId
-      );
-      addToMenuPlan(recipe.id, day, meal);
-      setSelectedOptions((prev) => ({
-        ...prev,
-        [recipeId]: { day: "", meal: "" },
-      }));
+  const handleSave = () => {
+    if (selectedRecipe && selectedDay && selectedMeal) {
+      const newMenuPlan = [
+        ...menuPlan,
+        {
+          recipeId: selectedRecipe,
+          day: selectedDay,
+          meal: selectedMeal,
+        },
+      ];
+      setMenuPlan(newMenuPlan);
+      localStorage.setItem("menuPlan", JSON.stringify(newMenuPlan));
+      handleCloseModal();
     }
+  };
+
+  const handleRemoveFromMenuPlan = (recipeId, day, meal) => {
+    const updatedMenuPlan = menuPlan.filter(
+      (item) =>
+        !(item.day === day && item.meal === meal && item.recipeId === recipeId)
+    );
+    setMenuPlan(updatedMenuPlan);
+    localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
+  };
+
+  const handleExport = (format) => {
+    if (format === "pdf") {
+      exportAsPDF();
+    } else if (format === "csv") {
+      exportAsCSV();
+    }
+  };
+
+  const exportAsPDF = () => {
+    const doc = new jsPDF();
+
+    doc.text("Weekly Menu Plan", 20, 10);
+    const tableColumn = ["", ...daysOfWeek];
+    const tableRows = [];
+
+    mealTimes.forEach((meal) => {
+      const row = [meal];
+      daysOfWeek.forEach((day) => {
+        const recipesForDayMeal = menuPlan
+          .filter((item) => item.day === day && item.meal === meal)
+          .map((item) => {
+            const recipe = recipes.find((r) => r.id === item.recipeId);
+            return recipe ? recipe.title : "Recipe Not Found";
+          })
+          .join(", ");
+        row.push(recipesForDayMeal);
+      });
+      tableRows.push(row);
+    });
+
+    doc.autoTable(tableColumn, tableRows, { startY: 20 });
+    doc.save("menu_plan.pdf");
+  };
+
+  const exportAsCSV = () => {
+    const rows = [];
+    rows.push(["", ...daysOfWeek]);
+
+    mealTimes.forEach((meal) => {
+      const row = [meal];
+      daysOfWeek.forEach((day) => {
+        const recipesForDayMeal = menuPlan
+          .filter((item) => item.day === day && item.meal === meal)
+          .map((item) => {
+            const recipe = recipes.find((r) => r.id === item.recipeId);
+            return recipe ? recipe.title : "Recipe Not Found";
+          })
+          .join(", ");
+        row.push(recipesForDayMeal);
+      });
+      rows.push(row);
+    });
+
+    let csvContent = "data:text/csv;charset=utf-8,";
+    rows.forEach((rowArray) => {
+      const row = rowArray.join(",");
+      csvContent += row + "\r\n";
+    });
+
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "menu_plan.csv");
+    document.body.appendChild(link);
+    link.click();
   };
 
   if (loading) {
     return (
       <Container>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "80vh",
-          }}
+        <Grid
+          container
+          alignItems="center"
+          justifyContent="center"
+          style={{ height: "80vh" }}
         >
           <CircularProgress />
-        </div>
+        </Grid>
       </Container>
     );
   }
@@ -104,97 +180,43 @@ const MenuPlanPage = () => {
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Menu Plan
+        Weekly Menu Plan
       </Typography>
       <Grid container spacing={2}>
-        {/* Left Side: Marked Recipes */}
-        <Grid item xs={6}>
-          <Typography variant="h6" gutterBottom>
-            Match Recipe with Meal Time
-          </Typography>
-          {markedRecipeObjects.map((recipe) => (
-            <div
-              key={recipe.id}
-              style={{
-                display: "flex",
-                flexWrap: "nowrap",
-                alignItems: "center",
-                marginBottom: "20px",
-              }}
-            >
-              <Typography variant="subtitle1" style={{ flex: "1" }}>
-                {recipe.title}
-              </Typography>
-              <FormControl fullWidth style={{ flex: "1", marginRight: "10px" }}>
-                <InputLabel id={`day-selector-label-${recipe.id}`}>
-                  Select Day
-                </InputLabel>
-                <Select
-                  labelId={`day-selector-label-${recipe.id}`}
-                  id={`day-selector-${recipe.id}`}
-                  value={selectedOptions[recipe.id]?.day || ""}
-                  onChange={(e) =>
-                    handleSelectChange(recipe.id, "day", e.target.value)
-                  }
-                >
-                  {daysOfWeek.map((day) => (
-                    <MenuItem key={day} value={day}>
-                      {day}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <FormControl fullWidth style={{ flex: "1", marginRight: "10px" }}>
-                <InputLabel id={`meal-selector-label-${recipe.id}`}>
-                  Select Meal
-                </InputLabel>
-                <Select
-                  labelId={`meal-selector-label-${recipe.id}`}
-                  id={`meal-selector-${recipe.id}`}
-                  value={selectedOptions[recipe.id]?.meal || ""}
-                  onChange={(e) =>
-                    handleSelectChange(recipe.id, "meal", e.target.value)
-                  }
-                >
-                  {mealTimes.map((meal) => (
-                    <MenuItem key={meal} value={meal}>
-                      {meal}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <Tooltip
-                title={
-                  !selectedOptions[recipe.id]?.day ||
-                  !selectedOptions[recipe.id]?.meal
-                    ? "Please select both day and meal"
-                    : ""
-                }
-              >
-                <span>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => handleAddToMenuPlan(recipe.id)}
-                    disabled={
-                      !selectedOptions[recipe.id]?.day ||
-                      !selectedOptions[recipe.id]?.meal
-                    }
-                    style={{ flex: "1", alignSelf: "center" }}
-                  >
-                    Add
-                  </Button>
-                </span>
-              </Tooltip>
-            </div>
-          ))}
+        <Grid
+          item
+          xs={12}
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            marginBottom: "20px",
+          }}
+        >
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => handleExport("pdf")}
+            style={{ marginRight: "10px" }}
+          >
+            Export as PDF
+          </Button>
+          <Button
+            variant="contained"
+            color="secondary"
+            onClick={() => handleExport("csv")}
+          >
+            Export as CSV
+          </Button>
         </Grid>
-        {/* Right Side: Calendar View */}
-        <Grid item xs={6}>
-          <Typography variant="h6" gutterBottom>
-            Weekly Menu Plan
-          </Typography>
+        <Grid item xs={12}>
           <TableContainer component={Paper}>
+            <Button
+              onClick={removeMenuPlan}
+              size="small"
+              style={{ padding: 0 }}
+            >
+              X
+            </Button>
             <Table>
               <TableHead>
                 <TableRow>
@@ -213,22 +235,48 @@ const MenuPlanPage = () => {
                       {meal}
                     </TableCell>
                     {daysOfWeek.map((day) => (
-                      <TableCell key={day} align="center">
-                        {menuPlan &&
-                          menuPlan
-                            .filter(
-                              (item) => item.day === day && item.meal === meal
-                            )
-                            .map((item, index) => {
-                              const recipe = recipes.find(
-                                (r) => r.id === item.recipeId
-                              );
-                              return (
-                                <Typography key={index}>
+                      <TableCell
+                        key={day}
+                        align="center"
+                        onClick={() => handleOpenModal(day, meal)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {menuPlan
+                          .filter(
+                            (item) => item.day === day && item.meal === meal
+                          )
+                          .map((item, index) => {
+                            const recipe = recipes.find(
+                              (r) => r.id === item.recipeId
+                            );
+                            return (
+                              <div
+                                key={index}
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "space-between",
+                                }}
+                              >
+                                <Typography>
                                   {recipe ? recipe.title : "Recipe Not Found"}
                                 </Typography>
-                              );
-                            })}
+                                <Button
+                                  size="small"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleRemoveFromMenuPlan(
+                                      item.recipeId,
+                                      day,
+                                      meal
+                                    );
+                                  }}
+                                >
+                                  X
+                                </Button>
+                              </div>
+                            );
+                          })}
                       </TableCell>
                     ))}
                   </TableRow>
@@ -238,6 +286,15 @@ const MenuPlanPage = () => {
           </TableContainer>
         </Grid>
       </Grid>
+
+      <RecipeSelectModal
+        open={modalOpen}
+        handleClose={handleCloseModal}
+        recipes={markedRecipeObjects}
+        selectedRecipe={selectedRecipe}
+        setSelectedRecipe={setSelectedRecipe}
+        handleSave={handleSave}
+      />
     </Container>
   );
 };

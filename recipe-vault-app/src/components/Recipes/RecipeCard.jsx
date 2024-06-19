@@ -4,60 +4,76 @@ import {
   Card,
   CardContent,
   CardMedia,
-  Chip,
-  Stack,
+  Divider,
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
+import TagList from "../Common/TagList";
 
 const RecipeCard = ({ recipe }) => {
-  const { markRecipe, isRecipeMarked } = useContext(RecipeContext);
+  const { markRecipe, isRecipeMarked, setSearchQuery } = useContext(RecipeContext);
   const isMarked = isRecipeMarked(recipe.id);
+  const navigate = useNavigate();
+
+  const handleMarkRecipe = (event) => {
+    event.stopPropagation();
+    markRecipe(recipe.id);
+  };
+
+  const handleTagClick = (event, tag) => {
+    event.stopPropagation();
+    setSearchQuery(tag);
+    navigate(`/recipes`);
+  };
 
   return (
     <Card
       sx={{
         width: 345,
-        height: 350,
-        margin: 2,
         display: "flex",
         flexDirection: "column",
+        justifyContent: "space-between",
+        margin: 2,
       }}
     >
-      <CardMedia
-        component="img"
-        height="140"
-        image={(recipe.images && recipe.images[0]) || "Placeholder.webp"}
-        alt={recipe.title}
-      />
-      <CardContent sx={{ flexGrow: 1 }}>
-        <Typography gutterBottom variant="h5" component="div">
-          {recipe.title}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {recipe.description}
-        </Typography>
-        <Stack direction="row" spacing={1}>
-          {recipe.tags.map((tag, index) => (
-            <Chip key={`${tag}-${index}`} label={tag} variant="outlined" />
-          ))}
-        </Stack>
-      </CardContent>
-      <Box sx={{ textAlign: "center", marginBottom: 2 }}>
-        <Button
-          onClick={() => markRecipe(recipe.id)}
-          size="small"
-          color={isMarked ? "secondary" : "primary"}
-        >
-          {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
-        </Button>
-        <Link to={`/recipe/${recipe.id}`}>
-          <Button size="small" color="primary">
-            View Recipe
+      <Link
+        to={`/recipe/${recipe.id}`}
+        style={{ textDecoration: "none", flexGrow: 1 }}
+      >
+        <CardMedia
+          component="img"
+          height="140"
+          image={(recipe.images && recipe.images[0]) || "Placeholder.webp"}
+          alt={recipe.title}
+        />
+        <Divider />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {recipe.title}
+          </Typography>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ minHeight: "48px" }}
+          >
+            {recipe.description}
+          </Typography>
+        </CardContent>
+      </Link>
+      <Box sx={{ padding: 2 }}>
+        <TagList tags={recipe.tags} onTagClick={handleTagClick} />
+        <Box sx={{ textAlign: "center", marginTop: 2 }}>
+          <Button
+            onClick={handleMarkRecipe}
+            size="small"
+            color={isMarked ? "secondary" : "primary"}
+            sx={{ width: "100%" }}
+          >
+            {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
           </Button>
-        </Link>
+        </Box>
       </Box>
     </Card>
   );

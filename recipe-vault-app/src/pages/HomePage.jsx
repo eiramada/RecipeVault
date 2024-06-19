@@ -1,44 +1,43 @@
-import { Box, Container, Grid, Paper, Typography } from "@mui/material";
-import React from "react";
+import { Box, Container, Typography } from "@mui/material";
+import React, { useContext } from "react";
+import CarouselGallery from "../components/Common/CarouselGallery";
+import TagList from "../components/Common/TagList";
+import { RecipeContext } from "../contexts/RecipeContext";
 
 const HomePage = () => {
+  const { recipes } = useContext(RecipeContext);
+
+  const allTags = recipes.reduce((acc, recipe) => {
+    recipe.tags && recipe.tags.forEach((tag) => {
+      if (!acc.includes(tag)) {
+        acc.push(tag);
+      }
+    });
+    return acc;
+  }, []);
+
   return (
     <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" gutterBottom>
           Featured Recipes
         </Typography>
-        <Paper
-          sx={{
-            height: 200,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          {/* Replace with a carousel component */}
-          <Typography variant="h6">Carousel Placeholder</Typography>
-        </Paper>
+        <Box>
+          <CarouselGallery
+            images={recipes.map((recipe) =>
+              recipe.images ? recipe.images[0] : "/Placeholder.webp"
+            )}
+            titles={recipes.map((recipe) => recipe.title)}
+            links={recipes.map((recipe) => `/recipe/${recipe.id}`)}
+          />
+        </Box>
       </Box>
 
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" gutterBottom>
-          Popular Categories
+          Popular Tags
         </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={6} sm={3}>
-            <Paper sx={{ padding: 2, textAlign: "center" }}>Breakfast</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper sx={{ padding: 2, textAlign: "center" }}>Lunch</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper sx={{ padding: 2, textAlign: "center" }}>Dinner</Paper>
-          </Grid>
-          <Grid item xs={6} sm={3}>
-            <Paper sx={{ padding: 2, textAlign: "center" }}>Desserts</Paper>
-          </Grid>
-        </Grid>
+        <TagList tags={allTags.sort()} />
       </Box>
     </Container>
   );

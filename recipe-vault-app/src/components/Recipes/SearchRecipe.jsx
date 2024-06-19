@@ -1,13 +1,31 @@
-import { Box, Container, TextField } from "@mui/material";
-import React, { useContext } from "react";
+import ClearIcon from "@mui/icons-material/Clear";
+import {
+  Box,
+  Container,
+  IconButton,
+  InputAdornment,
+  TextField,
+} from "@mui/material";
+import React, { useContext, useEffect, useState } from "react";
 import { RecipeContext } from "../../contexts/RecipeContext";
 
 function SearchRecipe() {
-  const { setSearchQuery } = useContext(RecipeContext);
+  const { searchQuery, setSearchQuery } = useContext(RecipeContext);
+  const [searchValue, setSearchValue] = useState(searchQuery);
+
+  useEffect(() => {
+    setSearchValue(searchQuery);
+  }, [searchQuery]);
 
   function handleSearchChange(event) {
-    const searchValue = event.target.value.toLowerCase();
-    setSearchQuery(searchValue);
+    const value = event.target.value.toLowerCase();
+    setSearchValue(value);
+    setSearchQuery(value);
+  }
+
+  function handleClearSearch() {
+    setSearchValue("");
+    setSearchQuery("");
   }
 
   return (
@@ -17,7 +35,22 @@ function SearchRecipe() {
           fullWidth
           label="Search Recipes"
           variant="outlined"
+          value={searchValue}
           onChange={handleSearchChange}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="clear search"
+                  onClick={handleClearSearch}
+                  edge="end"
+                  size="large"
+                >
+                  <ClearIcon />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
         />
       </Box>
     </Container>

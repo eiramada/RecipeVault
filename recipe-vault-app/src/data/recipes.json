@@ -351,9 +351,7 @@
       }
     ],
     "images": [
-      "https://picsum.photos/200",
-      "https://picsum.photos/200",
-      "https://picsum.photos/200"
+
     ],
     "tags": ["Salad", "Appetizer", "Italian"],
     "servings": 4,
@@ -557,9 +555,7 @@
       }
     ],
     "images": [
-      "https://picsum.photos/200",
-      "https://picsum.photos/200",
-      "https://picsum.photos/200"
+
     ],
     "tags": ["Vegetarian", "Asian", "Main Course"],
     "servings": 4,
@@ -569,5 +565,97 @@
     "author": "Chef Mei",
     "createdAt": "2024-06-10T12:00:00Z",
     "updatedAt": "2024-06-10T12:00:00Z"
+  },
+  {
+    "author": "Raivo",
+    "cookTime": 30,
+    "createdAt": "2024-06-19T12:05:57.764Z",
+    "description": "Lihtne ja hea",
+    "id": 12351,
+    "images": ["https://www.seriouseats.com/thmb/2nouHHsjM0bN1vwXMOZGUkLFsJ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__12__20171115-chicken-soup-vicky-wasik-11-80db1a04d84a43a089e0559efdddd517.jpg"],
+    "ingredients": [
+      {
+        "name": "kana kintsuliha",
+        "notes": "",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "kana rinnaliha",
+        "notes": "",
+        "quantity": "500",
+        "unit": "grams"
+      },
+      {
+        "name": "külmutatud supikogu",
+        "notes": "",
+        "quantity": "1",
+        "unit": "pakk"
+      },
+      {
+        "name": "chillipipar, kuivatatud",
+        "notes": "",
+        "quantity": "1",
+        "unit": "tl"
+      },
+      {
+        "name": "soola",
+        "notes": "",
+        "quantity": "2",
+        "unit": "tl"
+      },
+      {
+        "name": "kanapuljong",
+        "notes": "",
+        "quantity": "750",
+        "unit": "ml"
+      },
+      {
+        "name": "vesi",
+        "notes": "",
+        "quantity": "1,5",
+        "unit": "l"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "description": "Pane vesi potis keema"
+      },
+      {
+        "step": 2,
+        "description": "Lõika liha kuubikuteks"
+      },
+      {
+        "step": 3,
+        "description": "Kui vesi on keema hakanud, pane lihakuubikud vee sisse"
+      },
+      {
+        "step": 4,
+        "description": "Võta vahtu"
+      },
+      {
+        "step": 5,
+        "description": "Kui vahtu enam ei tule, lisa kanapuljong ja külmutatud supikogu"
+      },
+      {
+        "step": 6,
+        "description": "Maitsesta soola ja pipraga"
+      },
+      {
+        "step": 7,
+        "description": "Lase keeda, kuni juurviljad on pehmunud "
+      }
+    ],
+    "prepTime": 15,
+    "servings": 8,
+    "tags": [
+      "Supp",
+      "Kana",
+      "Kiire"
+    ],
+    "title": "Kanasupp",
+    "totalTime": 45,
+    "updatedAt": "2024-06-19T12:05:57.764Z"
   }
 ]
