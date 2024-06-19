@@ -13,6 +13,11 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { t, i18n } = useTranslation();
 
+  function changeLanguage(lang) {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  }
+
   return (
     <AppBar position="static">
       <Container>
@@ -45,10 +50,10 @@ const Header = () => {
           <Button color="inherit" component={Link} to="/profile" sx={{ mx: 1 }}>
             {t("profile")}
           </Button>
-          <IconButton color="inherit" onClick={() => i18n.changeLanguage("ee")}>
+          <IconButton color="inherit" onClick={() => changeLanguage("ee")}>
             <img src="/ee_flag.ico" alt="EE Flag" style={{ width: 20 }} />
           </IconButton>
-          <IconButton color="inherit" onClick={() => i18n.changeLanguage("en")}>
+          <IconButton color="inherit" onClick={() => changeLanguage("en")}>
             <img src="/en_flag.ico" alt="UK Flag" style={{ width: 20 }} />
           </IconButton>
         </Toolbar>
