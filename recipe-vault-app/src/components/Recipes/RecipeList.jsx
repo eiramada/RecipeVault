@@ -6,12 +6,14 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import RecipeCard from "./RecipeCard";
 import SearchRecipe from "./SearchRecipe";
 
 const RecipeList = () => {
+  const { t } = useTranslation();
   const { recipes, loading, error } = useContext(RecipeContext);
 
   return (
@@ -34,7 +36,7 @@ const RecipeList = () => {
       ) : error ? (
         <Container>
           <Typography variant="h6" color="error" align="center">
-            {error}
+          {t('error')}
           </Typography>
         </Container>
       ) : (
@@ -55,7 +57,7 @@ const RecipeList = () => {
             color="primary"
             style={{ marginTop: "16px" }}
           >
-            Add New Recipe
+        {t('addNewRecipe')}
           </Button>
         </Link>
       </Container>

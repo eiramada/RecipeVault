@@ -1,7 +1,9 @@
 import { Autocomplete, Chip, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const EditableTagList = ({ tagsList, setTags }) => {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState("");
 
   const handleKeyDown = (event) => {
@@ -39,8 +41,8 @@ const EditableTagList = ({ tagsList, setTags }) => {
         <TextField
           {...params}
           variant="outlined"
-          label="Tags"
-          placeholder="Add New Tag"
+          label={t("tagsInputLabel")}
+          placeholder={t("tags.inputPlaceholder")}
           margin="normal"
         />
       )}

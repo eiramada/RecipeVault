@@ -16,15 +16,17 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
+import EditableTagList from "../Common/EditableTagList";
+import ImageList from "../Common/ImageList";
 import RecipeForm from "./RecipeForm";
 import RecipeIngredients from "./RecipeIngredients";
 import RecipeInstructions from "./RecipeInstructions";
-import EditableTagList from "../Common/EditableTagList";
-import ImageList from "../Common/ImageList";
 
 const AddEditRecipe = ({ isEditMode = false }) => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const titleRef = useRef();
   const descriptionRef = useRef();
@@ -92,28 +94,28 @@ const AddEditRecipe = ({ isEditMode = false }) => {
 
   const validateFields = () => {
     const newErrors = {};
-    if (!titleRef.current.value) newErrors.title = "Title is required";
+    if (!titleRef.current.value)
+      newErrors.title = t("validationErrors.titleRequired");
     if (!descriptionRef.current.value)
-      newErrors.description = "Description is required";
+      newErrors.description = t("validationErrors.descriptionRequired");
     if (
       !servingsRef.current.value ||
       isNaN(servingsRef.current.value) ||
       servingsRef.current.value <= 0
     )
-      newErrors.servings = "Servings must be a positive number";
+      newErrors.servings = t("validationErrors.positiveNumber");
     if (
       !prepTimeRef.current.value ||
       isNaN(prepTimeRef.current.value) ||
       prepTimeRef.current.value <= 0
     )
-      newErrors.prepTime = "Prep Time must be a positive number";
+      newErrors.prepTime = t("validationErrors.positiveNumber");
     if (
       !cookTimeRef.current.value ||
       isNaN(cookTimeRef.current.value) ||
       cookTimeRef.current.value <= 0
     )
-      newErrors.cookTime = "Cook Time must be a positive number";
-    if (!authorRef.current.value) newErrors.author = "Author is required";
+      newErrors.cookTime = t("validationErrors.positiveNumber");
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -132,11 +134,11 @@ const AddEditRecipe = ({ isEditMode = false }) => {
       } else {
         await addNewRecipe(updatedRecipe);
       }
-      setMessage("Recipe saved successfully!");
+      setMessage(t("recipeSavedSuccess"));
       navigate(`/recipe/${newId}`);
     } catch (error) {
       console.error("Error saving recipe:", error);
-      setMessage("Error saving recipe.");
+      setMessage(t("recipeSaveError"));
     } finally {
       setLoading(false);
     }
@@ -201,7 +203,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
           )}
           <Box display="flex" alignItems="center" mb={2}>
             <Typography variant="h4" component="h2" gutterBottom>
-              {isEditMode ? "Edit Recipe" : "Add New Recipe"}
+              {isEditMode ? t("recipeTitle.edit") : t("recipeTitle.addNew")}
             </Typography>
             <Button
               onClick={saveRecipe}
@@ -211,12 +213,12 @@ const AddEditRecipe = ({ isEditMode = false }) => {
                 marginLeft: "16px",
               }}
             >
-              Save Recipe
+              {t("saveButtonLabel")}
             </Button>
             {existingRecipe && (
               <Link to={`/recipe/${existingRecipe.id}`}>
                 <Button size="small" color="primary">
-                  Back
+                  {t("backButton")}
                 </Button>
               </Link>
             )}
@@ -245,7 +247,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
           <EditableTagList tagsList={tags} setTags={setTags} />
 
           <Typography variant="h6" component="h3" gutterBottom>
-            Images
+            {t("images")}
           </Typography>
           <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
             <ImageList images={images} onImagesChange={handleImagesChange} />

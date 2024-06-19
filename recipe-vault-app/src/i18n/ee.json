@@ -1,0 +1,106 @@
+{
+    "home": "Avaleht",
+    "recipes": "Retseptid",
+    "menuPlanTitle": "Menüü",
+    "shoppingList": "Ostunimekiri",
+    "profile": "Profiil",
+    "appTitle": "Retseptisahtel",
+    "allRightsReserved": "Kõik õigused reserveeritud.",
+    "featuredRecipesTitle": "Esiletõstetud retseptid",
+    "popularTagsTitle": "Populaarsed sildid",
+    "error": "Tekkis viga. Palun proovi hiljem uuesti.",
+    "addNewRecipe": "Lisa uus retsept",
+    "addToMenuPlan": "Lisa menüüsse",
+    "removeFromMenuPlan": "Eemalda menüüst",
+    "searchRecipes": "Otsi retsepte",
+    "clearSearch": "Tühjenda otsing",
+    "editRecipe": "Muuda",
+    "servings": "Portsjonid",
+    "prepTime": "Valmistamise aeg",
+    "totalTime": "Kogu aeg",
+    "cookTime": "Küpsetamise aeg",
+    "ingredients": "Koostisosad",
+    "instructions": "Juhised",
+    "images": "Pildid",
+    "title": "Pealkiri",
+    "description": "Kirjeldus",
+    "author": "Autor",
+    "name": "Nimetus",
+    "quantity": "Kogus",
+    "unit": "Ühik",
+    "notes": "Märkused",
+    "add": "Lisa",
+    "remove": "Eemalda",
+    "instruction": {
+      "newTitle": "Uus juhis",
+      "enterDetailsHere": "Sisesta üksikasjad siia:",
+      "stepTitle": "Samm",
+      "addInstruction": "Lisa",
+      "deleteInstruction": "Kustuta"
+    },
+    "image": {
+      "newUrlTitle": "Uus pildi URL",
+      "removeTitle": "Eemalda pilt"
+    },
+    "tags": {
+      "title": "Sildid",
+      "inputPlaceholder": "Lisa uus silt"
+    },
+    "recipeTitle": {
+      "edit": "Muuda retsepti",
+      "addNew": "Lisa uus retsept"
+    },
+    "backButton": "Tagasi",
+    "recipeSavedSuccess": "Retsept salvestatud edukalt!",
+    "recipeSaveError": "Viga retsepti salvestamisel.",
+    "validationErrors": {
+      "titleRequired": "Pealkiri on kohustuslik",
+      "descriptionRequired": "Kirjeldus on kohustuslik",
+      "positiveNumber": "Sisesta positiivne number"
+    },
+    "recipeMessage": {
+      "edit": "Muuda retsepti",
+      "addNew": "Lisa uus retsept"
+    },
+    "selectRecipe": {
+      "title": "Vali retsept:",
+      "inputLabel": "Vali retsept:"
+    },
+    "saveButtonLabel": "Salvesta",
+    "weeklyMenuPlan": "Nädala menüü",
+    "exportPDF": "Ekspordi PDF",
+    "exportCSV": "Ekspordi CSV",
+    "useExampleData": "Kasuta näidisandmeid",
+    "recipeNotFound": "Retsepti ei leitud",
+    "tableHeaders": {
+      "daysOfWeek": {
+        "Monday": "Esmaspäev",
+        "Tuesday": "Teisipäev",
+        "Wednesday": "Kolmapäev",
+        "Thursday": "Neljapäev",
+        "Friday": "Reede",
+        "Saturday": "Laupäev",
+        "Sunday": "Pühapäev"
+      },
+      "mealTimes": {
+        "Breakfast": "Hommikusöök",
+        "Lunch": "Lõunasöök",
+        "Dinner": "Õhtusöök",
+        "Snack1": "1. vahepala",
+        "Snack2": "2. vahepala"
+      }
+    },
+    "pageNotFound": {
+      "title": "Lehte ei leitud",
+      "description": "Otsitud lehte pole olemas. See võib olla teisaldatud või kustutatud.",
+      "goToHome": "Mine avalehele"
+    },
+    "errors": {
+      "loadingRecipes": "Tõrge retseptide laadimisel. Palun proovige hiljem uuesti.",
+      "addingRecipe": "Tõrge retsepti lisamisel. Palun proovige hiljem uuesti.",
+      "updatingRecipes": "Tõrge retseptide uuendamisel. Palun proovige hiljem uuesti.",
+      "fetchingRecipes": "Tõrge retseptide toomisel.",
+      "failedToUpdate": "Retseptide uuendamine ebaõnnestus."
+    }
+  }
+  

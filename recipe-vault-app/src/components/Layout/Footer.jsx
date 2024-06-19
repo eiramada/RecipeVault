@@ -1,9 +1,11 @@
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Box, Container, Link, Typography } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <Box sx={{ bgcolor: "background.paper", py: 3 }} component="footer">
@@ -22,7 +24,7 @@ const Footer = () => {
         </Typography>
 
         <Typography variant="body2" color="text.secondary">
-          &copy; {currentYear} Recipe Vault. All rights reserved.
+          &copy; {currentYear} {t("appTitle")}. {t("allRightsReserved")}
         </Typography>
       </Container>
     </Box>

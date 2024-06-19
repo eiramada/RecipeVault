@@ -1,0 +1,105 @@
+{
+  "home": "Home",
+  "recipes": "Recipes",
+  "menuPlanTitle": "Menu Plan",
+  "shoppingList": "Shopping List",
+  "profile": "Profile",
+  "appTitle": "Recipe Vault",
+  "allRightsReserved": "All rights reserved.",
+  "featuredRecipesTitle": "Featured Recipes",
+  "popularTagsTitle": "Popular Tags",
+  "error": "An error occurred. Please try again later.",
+  "addNewRecipe": "Add New Recipe",
+  "addToMenuPlan": "Add to Menu Plan",
+  "removeFromMenuPlan": "Remove from Menu Plan",
+  "searchRecipes": "Search Recipes",
+  "clearSearch": "Clear Search",
+  "editRecipe": "Edit Recipe",
+  "servings": "Servings",
+  "prepTime": "Prep Time",
+  "totalTime": "Total Time",
+  "cookTime": "Cook Time",
+  "ingredients": "Ingredients",
+  "instructions": "Instructions",
+  "images": "Images",
+  "title": "Title",
+  "description": "Description",
+  "author": "Author",
+  "name": "Name",
+  "quantity": "Quantity",
+  "unit": "Unit",
+  "notes": "Notes",
+  "add": "Add",
+  "remove": "Remove",
+  "instruction": {
+    "newTitle": "New Instruction",
+    "enterDetailsHere": "Enter details here:",
+    "stepTitle": "Step",
+    "addInstruction": "Add Instruction",
+    "deleteInstruction": "Delete Instruction"
+  },
+  "image": {
+    "newUrlTitle": "New Image URL",
+    "removeTitle": "Remove Image"
+  },
+  "tags": {
+    "title": "Tags",
+    "inputPlaceholder": "Add new tag"
+  },
+  "recipeTitle": {
+    "edit": "Edit Recipe",
+    "addNew": "Add New Recipe"
+  },
+  "backButton": "Back",
+  "recipeSavedSuccess": "Recipe saved successfully!",
+  "recipeSaveError": "Error saving recipe.",
+  "validationErrors": {
+    "titleRequired": "Title is required",
+    "descriptionRequired": "Description is required",
+    "positiveNumber": "Enter a positive number"
+  },
+  "recipeMessage": {
+    "edit": "Edit Recipe",
+    "addNew": "Add New Recipe"
+  },
+  "selectRecipe": {
+    "title": "Select Recipe",
+    "inputLabel": "Select Recipe"
+  },
+  "saveButtonLabel": "Save",
+  "weeklyMenuPlan": "Weekly Menu Plan",
+  "exportPDF": "Export as PDF",
+  "exportCSV": "Export as CSV",
+  "useExampleData": "Use Example Data",
+  "recipeNotFound": "Recipe Not Found",
+  "tableHeaders": {
+    "daysOfWeek": {
+      "Monday": "Monday",
+      "Tuesday": "Tuesday",
+      "Wednesday": "Wednesday",
+      "Thursday": "Thursday",
+      "Friday": "Friday",
+      "Saturday": "Saturday",
+      "Sunday": "Sunday"
+    },
+    "mealTimes": {
+      "Breakfast": "Breakfast",
+      "Lunch": "Lunch",
+      "Dinner": "Dinner",
+      "Snack1": "Snack #1",
+      "Snack2": "Snack #2"
+    }
+  },
+  "pageNotFound": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist. It might have been moved or deleted.",
+    "goToHome": "Go to Home"
+  },
+  "errors": {
+    "loadingRecipes": "Error loading recipes. Please try again later.",
+    "addingRecipe": "Error adding recipe. Please try again later.",
+    "updatingRecipes": "Error updating recipes. Please try again later.",
+    "fetchingRecipes": "Error fetching recipes. Please try again later.",
+    "failedToUpdate": "Failed to update recipes."
+  }
+}

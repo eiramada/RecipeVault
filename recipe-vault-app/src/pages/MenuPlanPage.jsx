@@ -12,11 +12,12 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React, { useContext, useState } from "react";
-import RecipeSelectModal from "../components/Recipes/RecipeSelectModal";
-import { RecipeContext } from "../contexts/RecipeContext";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import React, { useContext, useState } from "react";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import RecipeSelectModal from "../components/Recipes/RecipeSelectModal";
+import { RecipeContext } from "../contexts/RecipeContext";
 
 const daysOfWeek = [
   "Monday",
@@ -27,7 +28,7 @@ const daysOfWeek = [
   "Saturday",
   "Sunday",
 ];
-const mealTimes = ["Breakfast", "Lunch", "Dinner", "Snack"];
+const mealTimes = ["Breakfast", "Lunch", "Dinner", "Snack1", "Snack2"];
 
 const MenuPlanPage = () => {
   const {
@@ -40,6 +41,8 @@ const MenuPlanPage = () => {
     removeMenuPlan,
     useExampleData,
   } = useContext(RecipeContext);
+
+  const { t } = useTranslation(); // Initialize useTranslation hook
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState("");
@@ -97,18 +100,21 @@ const MenuPlanPage = () => {
   const exportAsPDF = () => {
     const doc = new jsPDF();
 
-    doc.text("Weekly Menu Plan", 20, 10);
-    const tableColumn = ["", ...daysOfWeek];
+    doc.text(t("weeklyMenuPlan"), 20, 10);
+    const tableColumn = [
+      "",
+      ...daysOfWeek.map((day) => t(`tableHeaders.daysOfWeek.${day}`)),
+    ];
     const tableRows = [];
 
     mealTimes.forEach((meal) => {
-      const row = [meal];
+      const row = [t(`tableHeaders.mealTimes.${meal}`)];
       daysOfWeek.forEach((day) => {
         const recipesForDayMeal = menuPlan
           .filter((item) => item.day === day && item.meal === meal)
           .map((item) => {
             const recipe = recipes.find((r) => r.id === item.recipeId);
-            return recipe ? recipe.title : "Recipe Not Found";
+            return recipe ? recipe.title : t("recipeNotFound");
           })
           .join(", ");
         row.push(recipesForDayMeal);
@@ -122,16 +128,19 @@ const MenuPlanPage = () => {
 
   const exportAsCSV = () => {
     const rows = [];
-    rows.push(["", ...daysOfWeek]);
+    rows.push([
+      "",
+      ...daysOfWeek.map((day) => t(`tableHeaders.daysOfWeek.${day}`)),
+    ]);
 
     mealTimes.forEach((meal) => {
-      const row = [meal];
+      const row = [t(`tableHeaders.mealTimes.${meal}`)];
       daysOfWeek.forEach((day) => {
         const recipesForDayMeal = menuPlan
           .filter((item) => item.day === day && item.meal === meal)
           .map((item) => {
             const recipe = recipes.find((r) => r.id === item.recipeId);
-            return recipe ? recipe.title : "Recipe Not Found";
+            return recipe ? recipe.title : t("recipeNotFound");
           })
           .join(", ");
         row.push(recipesForDayMeal);
@@ -181,7 +190,7 @@ const MenuPlanPage = () => {
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Weekly Menu Plan
+        {t("weeklyMenuPlan")}
       </Typography>
       <Grid container spacing={2}>
         <Grid
@@ -199,35 +208,28 @@ const MenuPlanPage = () => {
             onClick={() => handleExport("pdf")}
             style={{ marginRight: "10px" }}
           >
-            Export as PDF
+            {t("exportPDF")}
           </Button>
           <Button
             variant="contained"
             color="secondary"
             onClick={() => handleExport("csv")}
           >
-            Export as CSV
+            {t("exportCSV")}
           </Button>
           <Button size="small" color="primary" onClick={useExampleData}>
-            Use Example Data
+            {t("useExampleData")}
           </Button>
         </Grid>
         <Grid item xs={12}>
           <TableContainer component={Paper}>
-            <Button
-              onClick={removeMenuPlan}
-              size="small"
-              style={{ padding: 0 }}
-            >
-              X
-            </Button>
             <Table>
               <TableHead>
                 <TableRow>
                   <TableCell></TableCell>
                   {daysOfWeek.map((day) => (
                     <TableCell key={day} align="center">
-                      {day}
+                      {t(`tableHeaders.daysOfWeek.${day}`)}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -236,7 +238,7 @@ const MenuPlanPage = () => {
                 {mealTimes.map((meal) => (
                   <TableRow key={meal}>
                     <TableCell component="th" scope="row">
-                      {meal}
+                      {t(`tableHeaders.mealTimes.${meal}`)}
                     </TableCell>
                     {daysOfWeek.map((day) => (
                       <TableCell
@@ -263,7 +265,7 @@ const MenuPlanPage = () => {
                                 }}
                               >
                                 <Typography>
-                                  {recipe ? recipe.title : "Recipe Not Found"}
+                                  {recipe ? recipe.title : t("recipeNotFound")}
                                 </Typography>
                                 <Button
                                   size="small"

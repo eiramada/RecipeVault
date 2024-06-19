@@ -1,24 +1,24 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import {
-  Grid,
-  IconButton,
-  List,
-  ListItem,
-  TextField
-} from "@mui/material";
+import { Grid, IconButton, List, ListItem, TextField } from "@mui/material";
 import React, { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { useTranslation } from "react-i18next";
 
 const Instructions = ({ instructions, onInstructionsChange }) => {
+  const { t } = useTranslation();
+
   const [newInstruction, setNewInstruction] = useState({ description: "" });
 
   const handleAddInstruction = () => {
     if (newInstruction.description.trim()) {
       onInstructionsChange([
         ...instructions,
-        { description: newInstruction.description, step: instructions.length + 1 }
+        {
+          description: newInstruction.description,
+          step: instructions.length + 1,
+        },
       ]);
       setNewInstruction({ description: "" });
     }
@@ -35,7 +35,10 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
   const handleRemoveInstruction = (index) => {
     const updatedInstructions = instructions.filter((_, i) => i !== index);
     onInstructionsChange(
-      updatedInstructions.map((instruction, i) => ({ ...instruction, step: i + 1 }))
+      updatedInstructions.map((instruction, i) => ({
+        ...instruction,
+        step: i + 1,
+      }))
     );
   };
 
@@ -47,7 +50,10 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
     updatedInstructions.splice(result.destination.index, 0, movedItem);
 
     onInstructionsChange(
-      updatedInstructions.map((instruction, i) => ({ ...instruction, step: i + 1 }))
+      updatedInstructions.map((instruction, i) => ({
+        ...instruction,
+        step: i + 1,
+      }))
     );
   };
 
@@ -56,7 +62,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={10}>
           <TextField
-            label="New Instruction"
+            label={t("newInstructionLabel")}
             name="description"
             value={newInstruction.description}
             onChange={(e) =>
@@ -69,7 +75,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
             margin="normal"
             multiline
             rows={2}
-            helperText="Enter the details of the step here."
+            helperText={t("enterDetailsHere")}
           />
         </Grid>
         <Grid item xs={2}>
@@ -77,60 +83,64 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
             variant="contained"
             color="primary"
             onClick={handleAddInstruction}
-            aria-label="add instruction"
+            aria-label={t("addInstruction")}
           >
             <AddIcon />
           </IconButton>
         </Grid>
       </Grid>
       <DragDropContext onDragEnd={onDragEnd}>
-        <Droppable droppableId="instructions">
-          {(provided) => (
+        {/* <Droppable droppableId="instructions">
+          {(provided) => ( */}
             <List
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
+            //  {...provided.droppableProps} ref={provided.innerRef}
+             >
               {instructions.map((instruction, index) => (
-                // <Draggable key={instruction.step} draggableId={instruction.step.toString()} index={index}>
+                // <Draggable
+                //   key={instruction.step}
+                //   draggableId={instruction.step.toString()}
+                //   index={index}
+                // >
                 //   {(provided) => (
-                    <ListItem
-                      ref={provided.innerRef}
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                    >
-                      <Grid container spacing={2} alignItems="center">
-                        {/* <Grid item xs={1}>
-                          <DragIndicatorIcon />
-                        </Grid> */}
-                        <Grid item xs={9}>
-                          <TextField
-                            label={`Step ${instruction.step}`}
-                            name="description"
-                            value={instruction.description}
-                            onChange={(e) => handleInstructionChange(index, e)}
-                            fullWidth
-                            margin="normal"
-                            multiline
-                            rows={2}
-                          />
-                        </Grid>
-                        <Grid item xs={2}>
-                          <IconButton
-                            onClick={() => handleRemoveInstruction(index)}
-                            edge="end"
-                          >
-                            <DeleteIcon />
-                          </IconButton>
-                        </Grid>
-                      </Grid>
-                    </ListItem>
-                //   )}
-                // </Draggable>
+                <ListItem
+                  // ref={provided.innerRef}
+                  // {...provided.draggableProps}
+                  // {...provided.dragHandleProps}
+                >
+                  <Grid container spacing={2} alignItems="center">
+                    {/* <Grid item xs={1}>
+                      <DragIndicatorIcon />
+                    </Grid> */}
+                    <Grid item xs={9}>
+                      <TextField
+                        label={`${t("stepLabel")} ${instruction.step}`}
+                        name="description"
+                        value={instruction.description}
+                        onChange={(e) => handleInstructionChange(index, e)}
+                        fullWidth
+                        margin="normal"
+                        multiline
+                        rows={2}
+                      />
+                    </Grid>
+                    <Grid item xs={2}>
+                      <IconButton
+                        onClick={() => handleRemoveInstruction(index)}
+                        edge="end"
+                        aria-label={t("deleteInstruction")}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Grid>
+                  </Grid>
+                </ListItem>
+                //     )}
+                //   </Draggable>
               ))}
-              {provided.placeholder}
+              {/* {provided.placeholder} */}
             </List>
-          )}
-        </Droppable>
+          {/* )}
+        </Droppable> */}
       </DragDropContext>
     </>
   );

@@ -11,12 +11,14 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import CarouselGallery from "../Common/CarouselGallery";
 import TagList from "../Common/TagList";
 
 const RecipeDetail = () => {
+  const { t } = useTranslation();
   const { id } = useParams();
   const { recipes, loading, error, markRecipe, isRecipeMarked } =
     useContext(RecipeContext);
@@ -51,7 +53,7 @@ const RecipeDetail = () => {
   }
 
   if (!recipe) {
-    return <div>Recipe not found</div>;
+    return <div>{t("recipeNotFound")}</div>;
   }
 
   return (
@@ -68,7 +70,7 @@ const RecipeDetail = () => {
               marginLeft: "16px",
             }}
           >
-            Edit Recipe
+            {t("editRecipe")}
           </Button>
         </Link>
         <Button
@@ -79,7 +81,7 @@ const RecipeDetail = () => {
             marginLeft: "16px",
           }}
         >
-          {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
+          {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
         </Button>
       </Box>
 
@@ -96,22 +98,22 @@ const RecipeDetail = () => {
             <Grid container spacing={1}>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>Servings:</strong> {recipe.servings}
+                  <strong>{t("servings")}:</strong> {recipe.servings}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>Prep Time:</strong> {recipe.prepTime} mins
+                  <strong>{t("prepTime")}:</strong> {recipe.prepTime} mins
                 </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>Total Time:</strong> {recipe.totalTime} mins
+                  <strong>{t("totalTime")}:</strong> {recipe.totalTime} mins
                 </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>Cook Time:</strong> {recipe.cookTime} mins
+                  <strong>{t("cookTime")}:</strong> {recipe.cookTime} mins
                 </Typography>
               </Grid>
             </Grid>
@@ -125,7 +127,7 @@ const RecipeDetail = () => {
         gutterBottom
         style={{ marginTop: "16px" }}
       >
-        Ingredients
+        {t("ingredients")}
       </Typography>
       <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
         <List>
@@ -143,7 +145,7 @@ const RecipeDetail = () => {
       </Paper>
 
       <Typography variant="h6" component="h3" gutterBottom>
-        Instructions
+        {t("instructions")}
       </Typography>
       <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
         <List>
@@ -159,7 +161,7 @@ const RecipeDetail = () => {
       <TagList tags={recipe.tags} />
 
       <Typography variant="h6" component="h3" gutterBottom>
-        Images
+        {t("images")}
       </Typography>
       {recipe.images?.length > 0 ? (
         <Grid container spacing={2}>

@@ -8,11 +8,13 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import TagList from "../Common/TagList";
 
 const RecipeCard = ({ recipe }) => {
+  const { t } = useTranslation();
   const { markRecipe, isRecipeMarked, setSearchQuery } =
     useContext(RecipeContext);
   const isMarked = isRecipeMarked(recipe.id);
@@ -81,7 +83,7 @@ const RecipeCard = ({ recipe }) => {
         <TagList tags={recipe.tags} onTagClick={handleTagClick} />
         <Box sx={{ textAlign: "center", marginTop: 2 }}>
           <Button onClick={handleMarkRecipe} size="small">
-            {isMarked ? "Remove from Menu Plan" : "Add to Menu Plan"}
+            {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
           </Button>
         </Box>
       </Box>

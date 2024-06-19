@@ -1,26 +1,27 @@
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import {
+  Checkbox,
   Container,
+  IconButton,
   List,
   ListItem,
   ListItemText,
-  Typography,
-  Checkbox,
-  IconButton,
   TextField,
+  Typography,
 } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
 import React, { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { RecipeContext } from "../contexts/RecipeContext";
 
 function ShoppingListPage() {
+  const { t } = useTranslation();
   const [items, setItems] = useState(
     JSON.parse(localStorage.getItem("shoppingList"))
   );
   const { recipes, menuPlan } = useContext(RecipeContext);
 
   useEffect(() => {
-
     //Doesn't consider if user has made changes into their shopping list
     const generateShoppingList = () => {
       const shoppingList = [];
@@ -94,7 +95,7 @@ function ShoppingListPage() {
   return (
     <Container>
       <Typography variant="h4" component="h1" gutterBottom>
-        Shopping List
+        {t("shoppingList")}
       </Typography>
       <List>
         {items &&

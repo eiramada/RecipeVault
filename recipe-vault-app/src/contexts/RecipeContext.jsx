@@ -1,5 +1,6 @@
 import _ from "lodash";
 import React, { createContext, useCallback, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import markedRecipesExample from "../data_examples/markedRecipes.json";
 import menuPlanExample from "../data_examples/menuPlan.json";
 import shoppingListExample from "../data_examples/shoppingList.json";
@@ -8,6 +9,7 @@ import { fetchRecipes, updateRecipes } from "../services/recipeService";
 const RecipeContext = createContext();
 
 const RecipeProvider = ({ children }) => {
+  const { t } = useTranslation();
   const [recipes, setRecipes] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
@@ -44,8 +46,8 @@ const RecipeProvider = ({ children }) => {
         setRecipes(filteredRecipes);
         setError(null);
       } catch (error) {
-        console.error("Error loading recipes:", error);
-        setError("Error loading recipes. Please try again later.");
+        console.error(t("errors.loadingRecipes"), error);
+        setError(t("errors.loadingRecipes"));
       } finally {
         setLoading(false);
       }
@@ -56,7 +58,7 @@ const RecipeProvider = ({ children }) => {
     return () => {
       debouncedFetchRecipes.cancel();
     };
-  }, [searchQuery, filterRecipes]);
+  }, [searchQuery, filterRecipes, t]);
 
   const addNewRecipe = async (recipe) => {
     try {
@@ -66,8 +68,8 @@ const RecipeProvider = ({ children }) => {
       setRecipes(newRecipes);
       setError(null);
     } catch (error) {
-      console.error("Error adding recipe:", error);
-      setError("Error adding recipe. Please try again later.");
+      console.error(t("errors.addingRecipe"), error);
+      setError(t("errors.addingRecipe"));
     }
   };
 
@@ -77,7 +79,7 @@ const RecipeProvider = ({ children }) => {
         (recipe) => recipe.id === updatedRecipe.id
       );
       if (index === -1)
-        throw new Error(`Recipe with ID ${updatedRecipe.id} not found`);
+        throw new Error(t("recipeNotFound"));
 
       const updatedRecipes = recipes.map((recipe, i) =>
         i === index ? { ...recipe, ...updatedRecipe } : recipe
@@ -86,8 +88,8 @@ const RecipeProvider = ({ children }) => {
       const newRecipes = await updateRecipes(updatedRecipes);
       setRecipes(newRecipes);
     } catch (error) {
-      console.error("Error updating recipes:", error);
-      setError("Error updating recipes. Please try again later.");
+      console.error(t("errors.updatingRecipes"), error);
+      setError(t("errors.updatingRecipes"));
     }
   };
 

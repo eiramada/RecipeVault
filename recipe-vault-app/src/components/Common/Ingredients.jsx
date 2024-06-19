@@ -1,15 +1,12 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-    Grid,
-    IconButton,
-    List,
-    ListItem,
-    TextField
-} from "@mui/material";
+import { Grid, IconButton, List, ListItem, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const Ingredients = ({ ingredients, onIngredientsChange }) => {
+  const { t } = useTranslation();
+
   const [newIngredient, setNewIngredient] = useState({
     name: "",
     quantity: "",
@@ -21,8 +18,8 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
 
   const validateField = (name, value) => {
     let error = "";
-    if ((name === "quantity" || name === "unit") && value && isNaN(value)) {
-      error = "Must be a number";
+    if (name === "quantity" && value && isNaN(value)) {
+      error = t("mustBeANumber");
     }
     setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
     return error;
@@ -60,7 +57,7 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={3}>
           <TextField
-            label="Name"
+            label={t("name")}
             name="name"
             value={newIngredient.name}
             onChange={(e) => handleChange(e, true)}
@@ -69,7 +66,7 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
         </Grid>
         <Grid item xs={2}>
           <TextField
-            label="Quantity"
+            label={t("quantity")}
             name="quantity"
             value={newIngredient.quantity}
             onChange={(e) => handleChange(e, true)}
@@ -80,7 +77,7 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
         </Grid>
         <Grid item xs={2}>
           <TextField
-            label="Unit"
+            label={t("unit")}
             name="unit"
             value={newIngredient.unit}
             onChange={(e) => handleChange(e, true)}
@@ -91,7 +88,7 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
         </Grid>
         <Grid item xs={3}>
           <TextField
-            label="Notes"
+            label={t("notes")}
             name="notes"
             value={newIngredient.notes}
             onChange={(e) => handleChange(e, true)}
@@ -106,57 +103,58 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
       </Grid>
 
       <List>
-        {ingredients && ingredients.map((ingredient, index) => (
-          <ListItem key={index}>
-            <Grid container spacing={2} alignItems="center">
-              <Grid item xs={3}>
-                <TextField
-                  label="Name"
-                  name="name"
-                  value={ingredient.name}
-                  onChange={(e) => handleChange(e, false, index)}
-                  fullWidth
-                />
+        {ingredients &&
+          ingredients.map((ingredient, index) => (
+            <ListItem key={index}>
+              <Grid container spacing={2} alignItems="center">
+                <Grid item xs={3}>
+                  <TextField
+                    label={t("name")}
+                    name="name"
+                    value={ingredient.name}
+                    onChange={(e) => handleChange(e, false, index)}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <TextField
+                    label={t("quantity")}
+                    name="quantity"
+                    value={ingredient.quantity}
+                    onChange={(e) => handleChange(e, false, index)}
+                    fullWidth
+                    error={!!errors.quantity}
+                    helperText={errors.quantity}
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <TextField
+                    label={t("unit")}
+                    name="unit"
+                    value={ingredient.unit}
+                    onChange={(e) => handleChange(e, false, index)}
+                    fullWidth
+                    error={!!errors.unit}
+                    helperText={errors.unit}
+                  />
+                </Grid>
+                <Grid item xs={3}>
+                  <TextField
+                    label={t("notes")}
+                    name="notes"
+                    value={ingredient.notes}
+                    onChange={(e) => handleChange(e, false, index)}
+                    fullWidth
+                  />
+                </Grid>
+                <Grid item xs={2}>
+                  <IconButton onClick={() => handleRemove(index)} edge="end">
+                    <DeleteIcon />
+                  </IconButton>
+                </Grid>
               </Grid>
-              <Grid item xs={2}>
-                <TextField
-                  label="Quantity"
-                  name="quantity"
-                  value={ingredient.quantity}
-                  onChange={(e) => handleChange(e, false, index)}
-                  fullWidth
-                  error={!!errors.quantity}
-                  helperText={errors.quantity}
-                />
-              </Grid>
-              <Grid item xs={2}>
-                <TextField
-                  label="Unit"
-                  name="unit"
-                  value={ingredient.unit}
-                  onChange={(e) => handleChange(e, false, index)}
-                  fullWidth
-                  error={!!errors.unit}
-                  helperText={errors.unit}
-                />
-              </Grid>
-              <Grid item xs={3}>
-                <TextField
-                  label="Notes"
-                  name="notes"
-                  value={ingredient.notes}
-                  onChange={(e) => handleChange(e, false, index)}
-                  fullWidth
-                />
-              </Grid>
-              <Grid item xs={2}>
-                <IconButton onClick={() => handleRemove(index)} edge="end">
-                  <DeleteIcon />
-                </IconButton>
-              </Grid>
-            </Grid>
-          </ListItem>
-        ))}
+            </ListItem>
+          ))}
       </List>
     </>
   );

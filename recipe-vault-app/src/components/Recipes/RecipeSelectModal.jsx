@@ -1,14 +1,15 @@
 import {
-    Backdrop,
-    Button,
-    Fade,
-    FormControl,
-    InputLabel,
-    MenuItem,
-    Modal,
-    Select,
+  Backdrop,
+  Button,
+  Fade,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Modal,
+  Select,
 } from "@mui/material";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const RecipeSelectModal = ({
   open,
@@ -18,6 +19,8 @@ const RecipeSelectModal = ({
   setSelectedRecipe,
   handleSave,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Modal
       open={open}
@@ -37,9 +40,11 @@ const RecipeSelectModal = ({
             borderRadius: "8px",
           }}
         >
-          <h2>Select Recipe</h2>
+          <h2>{t("selectRecipeTitle")}</h2>
           <FormControl fullWidth style={{ marginBottom: "20px" }}>
-            <InputLabel id="recipe-select-label">Select Recipe</InputLabel>
+            <InputLabel id="recipe-select-label">
+              {t("selectRecipeInputLabel")}
+            </InputLabel>
             <Select
               labelId="recipe-select-label"
               value={selectedRecipe}
@@ -53,7 +58,7 @@ const RecipeSelectModal = ({
             </Select>
           </FormControl>
           <Button variant="contained" color="primary" onClick={handleSave}>
-            Save
+            {t("saveButtonLabel")}
           </Button>
         </div>
       </Fade>

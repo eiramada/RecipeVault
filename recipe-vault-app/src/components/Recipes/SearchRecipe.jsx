@@ -7,9 +7,11 @@ import {
   TextField,
 } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { RecipeContext } from "../../contexts/RecipeContext";
 
 function SearchRecipe() {
+  const { t } = useTranslation();
   const { searchQuery, setSearchQuery } = useContext(RecipeContext);
   const [searchValue, setSearchValue] = useState(searchQuery);
 
@@ -33,7 +35,7 @@ function SearchRecipe() {
       <Box sx={{ my: 4, display: "flex", alignItems: "center" }}>
         <TextField
           fullWidth
-          label="Search Recipes"
+          label={t("searchRecipes")}
           variant="outlined"
           value={searchValue}
           onChange={handleSearchChange}
@@ -41,7 +43,7 @@ function SearchRecipe() {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton
-                  aria-label="clear search"
+                  aria-label={t("clearSearch")}
                   onClick={handleClearSearch}
                   edge="end"
                   size="large"

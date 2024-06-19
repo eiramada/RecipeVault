@@ -3,16 +3,19 @@ import React, { useContext } from "react";
 import CarouselGallery from "../components/Common/CarouselGallery";
 import TagList from "../components/Common/TagList";
 import { RecipeContext } from "../contexts/RecipeContext";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const { recipes } = useContext(RecipeContext);
 
   const allTags = recipes.reduce((acc, recipe) => {
-    recipe.tags && recipe.tags.forEach((tag) => {
-      if (!acc.includes(tag)) {
-        acc.push(tag);
-      }
-    });
+    recipe.tags &&
+      recipe.tags.forEach((tag) => {
+        if (!acc.includes(tag)) {
+          acc.push(tag);
+        }
+      });
     return acc;
   }, []);
 
@@ -20,7 +23,7 @@ const HomePage = () => {
     <Container>
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" gutterBottom>
-          Featured Recipes
+          {t("featuredRecipesTitle")}
         </Typography>
         <Box>
           <CarouselGallery
@@ -35,7 +38,7 @@ const HomePage = () => {
 
       <Box sx={{ my: 4 }}>
         <Typography variant="h4" gutterBottom>
-          Popular Tags
+          {t("popularTagsTitle")}
         </Typography>
         <TagList tags={allTags.sort()} />
       </Box>

@@ -1,3 +1,5 @@
+import { t } from "i18next";
+
 const recipesUrl = process.env.REACT_APP_RECIPES_DB_URL;
 
 export const fetchRecipes = async () => {
@@ -6,8 +8,8 @@ export const fetchRecipes = async () => {
     const data = await response.json();
     return data || [];
   } catch (error) {
-    console.error("Error fetching recipes:", error);
-    throw error;
+    console.error(t("errors.fetchingRecipes"), error);
+    throw new Error(t("errors.fetchingRecipes"));
   }
 };
 
@@ -19,12 +21,12 @@ export const updateRecipes = async (recipes) => {
       body: JSON.stringify(recipes),
     });
     if (!response.ok) {
-      throw new Error("Failed to update recipes");
+      throw new Error(t("errors.failedToUpdate"));
     }
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error("Error updating recipes:", error);
-    throw error;
+    console.error(t("errors.updatingRecipes"), error);
+    throw new Error(t("errors.updatingRecipes"));
   }
 };
