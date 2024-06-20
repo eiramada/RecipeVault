@@ -15,7 +15,7 @@ import {
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import React, { useContext, useState } from "react";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import { useTranslation } from "react-i18next";
 import RecipeSelectModal from "../components/Recipes/RecipeSelectModal";
 import { RecipeContext } from "../contexts/RecipeContext";
 
@@ -42,7 +42,7 @@ const MenuPlanPage = () => {
     useExampleData,
   } = useContext(RecipeContext);
 
-  const { t } = useTranslation(); // Initialize useTranslation hook
+  const { t } = useTranslation();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState("");
@@ -223,6 +223,13 @@ const MenuPlanPage = () => {
         </Grid>
         <Grid item xs={12}>
           <TableContainer component={Paper}>
+            <Button
+              onClick={removeMenuPlan}
+              size="small"
+              style={{ padding: 0 }}
+            >
+              X
+            </Button>
             <Table>
               <TableHead>
                 <TableRow>
