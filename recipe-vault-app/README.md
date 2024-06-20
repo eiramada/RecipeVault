@@ -4,8 +4,7 @@ https://recipevaultpro.web.app/
 ## Table of Contents
 1. [Project Proposal](#project-proposal)
 2. [File List](#file-list)
-3. [10 Day Plan](#10-day-plan)
-4. [Detailed Project Plan](#detailed-project-plan)
+3. [Detailed Project Plan](#detailed-project-plan)
 
 ## Project Proposal
 
@@ -91,8 +90,7 @@ RecipeVault is a mobile and web application that allows users to browse, select,
     - **Recipe**:
       - `RecipeList.js`
       - `RecipeDetail.js`
-      - `AddRecipe.js`
-      - `EditRecipe.js`
+      - `AddEditRecipe.js`
       - `RecipeCard.js`
     - **MenuPlan**:
       - `MenuPlan.js`
@@ -104,21 +102,17 @@ RecipeVault is a mobile and web application that allows users to browse, select,
     - **User**:
       - `UserProfile.js`
       - `UserPreferences.js`
-    - **Common**:
-      - `Button.js`
-      - `Input.js`
-      - `Modal.js`
-      - `Loader.js`
   - **contexts**:
     - `AuthContext.js`
     - `RecipeContext.js`
+  -  **services**:
+    - `recipeService.js`
   - **hooks**:
     - `useAuth.js`
     - `useRecipes.js`
     - `useMenuPlan.js`
   - **pages**:
     - `HomePage.js`
-    - `RecipesPage.js`
     - `MenuPlanPage.js`
     - `ShoppingListPage.js`
     - `ProfilePage.js`
@@ -171,90 +165,6 @@ RecipeVault is a mobile and web application that allows users to browse, select,
   - `eslint-config-prettier`
   - `eslint-plugin-prettier`
 
-## 10 Day Plan
-
-**Core Features to Focus On**
-- Recipe Management: Allow users to add, view, and edit recipes.
-- Saving & Firebase hosting
-- Basic Search: Implement basic search functionality for recipes.
-- Menu Planning: Provide a simple interface for users to plan their meals.
-- Shopping List: Enable users to generate and manage shopping lists from recipes.
-- User Authentication: Ensure users can register, login, and reset passwords.
-
-
-### Development Plan
-- **Day 1**
-  - **Initial Setup** (1 hour)
-    - Create project repository, initialize with README.md, set up basic project structure.
-    - Configure Git and set up the .gitignore file.
-    - Initialize package management with yarn or npm.
-  - **Install Dependencies** (1 hour)
-    - Install core, styling, utilities, Firebase specific, and additional dependencies.
-  - **Project Configuration** (2 hours)
-    - Set up ESLint and Prettier.
-    - Configure project for SCSS.
-    - Create basic `index.html`, `manifest.json`, and `robots.txt`.
-
-- **Day 2**
-  - **Firebase Setup** (1 hour)
-    - Configure Firebase project, set up Firestore, Authentication.
-    - Implement Firebase configuration in `services/firebase.js`.
-  - **Authentication Components** (3 hours)
-    - Create `Login.js`, `Register.js`, `PasswordReset.js` components.
-    - Implement Firebase Authentication for email/password and social logins.
-
-- **Day 3**
-  - **Recipe Data Handling** (2 hours)
-    - Create `RecipeContext.js` and `useRecipes.js`.
-    - Implement `recipeService.js` for CRUD operations with Firestore.
-  - **Basic Recipe Components** (2 hours)
-    - Develop `RecipeList.js` and `RecipeDetail.js`.
-
-- **Day 4**
-  - **Additional Recipe Components** (2 hours)
-    - Develop `AddRecipe.js`, `EditRecipe.js`, and `RecipeCard.js`.
-  - **Search Functionality** (2 hours)
-    - Implement basic search functionality using Firebase's built-in search capabilities.
-
-- **Day 5**
-  - **Shopping List Components** (2 hours)
-    - Implement `ShoppingList.js` and `ShoppingListItem.js`.
-  - **Shopping List Integration** (2 hours)
-    - Create service functions to handle shopping list generation and updates.
-
-- **Day 6**
-  - **Menu Plan Components** (3 hours)
-    - Develop `MenuPlan.js` and `MenuPlanCalendar.js`.
-    - Implement a basic drag-and-drop interface using `react-dnd`.
-  - **Integration with Shopping List** (1 hour)
-    - Ensure menu plans automatically update the shopping list.
-
-- **Day 7**
-  - **User Profile and Preferences** (2 hours)
-    - Develop `UserProfile.js` and `UserPreferences.js`.
-  - **User Service Functions** (2 hours)
-    - Implement functions in `userService.js` for managing user data in Firebase.
-
-- **Day 8**
-  - **Reusable Components** (2 hours)
-    - Create common components like `Button.js`, `Input.js`, `Modal.js`, and `Loader.js`.
-  - **Utility Functions** (2 hours)
-    - Implement utility functions in `utils/constants.js`, `utils/helpers.js`, and `utils/validation.js`.
-
-- **Day 9**
-  - **Integration Testing** (2 hours)
-    - Perform end-to-end testing of the entire application flow.
-  - **Bug Fixes and Refinements** (2 hours)
-    - Address any issues found during integration testing.
-
-- **Day 10**
-  - **Deployment Preparation** (2 hours)
-    - Deploy the application to Firebase Hosting.
-    - Set up CI/CD pipelines if time permits.
-  - **Final Adjustments and Review** (2 hours)
-    - Final review and adjustments based on feedback.
-    - Ensure all critical features are functional and the app is ready for demo.
-
 ## Detailed Project Plan
 
 ### Project Overview
@@ -262,27 +172,12 @@ RecipeVault is a mobile and web application that allows users to browse, select,
 - **Description**: A mobile and web application to browse, select, and manage recipes with features for adjusting ingredient quantities, generating shopping lists, creating weekly menu plans, and storing user preferences. Users can also add their own recipes to the database.
 - **Technology Stack**:
   - **Frontend**: React
-  - **Backend**: Firebase (Firestore, Firebase Authentication)
-  - **Languages**: JavaScript, C#
+  - **Backend**: Firebase
+  - **Languages**: JavaScript
 
 ### Phases
 
-#### Phase 1: Project Setup and Initial Configuration
-- **Duration**: 3 days
-- **Tasks**:
-  - **Initial Setup**
-    - Create project repository, initialize with README.md, set up basic project structure.
-    - Configure Git and set up the .gitignore file.
-    - Initialize package management with yarn or npm.
-  - **Install Dependencies**
-    - Install core, styling, utilities, Firebase specific, and additional dependencies.
-  - **Project Configuration**
-    - Set up ESLint and Prettier for code quality and formatting.
-    - Configure project for SCSS (install node-sass, create base and variables SCSS files).
-    - Create basic `index.html`, `manifest.json`, and `robots.txt`.
-
-#### Phase 2: Authentication and User Management
-- **Duration**: 4 days
+#### Phase: Authentication and User Management
 - **Tasks**:
   - **Firebase Setup**
     - Configure Firebase project, set up Firestore, Authentication.
@@ -293,55 +188,14 @@ RecipeVault is a mobile and web application that allows users to browse, select,
   - **User Context and Hooks**
     - Create `AuthContext.js` and `useAuth.js` to manage authentication state and provide user data across the app.
 
-#### Phase 3: Recipe Management
-- **Duration**: 6 days
-- **Tasks**:
-  - **Recipe Data Handling**
-    - Create `RecipeContext.js` and `useRecipes.js` for managing recipe data.
-    - Implement `recipeService.js` for CRUD operations with Firestore.
-  - **Recipe Components**
-    - Develop `RecipeList.js`, `RecipeDetail.js`, `AddRecipe.js`, `EditRecipe.js`, and `RecipeCard.js` under `src/components/Recipe`.
-    - Implement search functionality using Algolia or Firebase's built-in search capabilities.
-  - **Adjust Ingredient Quantities**
-    - Implement real-time adjustment of ingredient quantities in `RecipeDetail.js`.
-
-#### Phase 4: Shopping List Feature
-- **Duration**: 5 days
-- **Tasks**:
-  - **Shopping List Components**
-    - Implement `ShoppingList.js` and `ShoppingListItem.js` components.
-    - Create service functions to handle shopping list generation and updates.
-  - **Offline Access**
-    - Implement service workers in `serviceWorker.js` for offline access to the shopping list.
-
-#### Phase 5: Menu Planning
-- **Duration**: 5 days
-- **Tasks**:
-  - **Menu Plan Components**
-    - Develop `MenuPlan.js`, `MenuPlanCalendar.js`, and `MenuPlanTemplate.js` components.
-    - Create a drag-and-drop interface using `react-dnd` and `react-dnd-html5-backend`.
-  - **Integration with Shopping List**
-    - Ensure menu plans automatically update the shopping list.
-    - Implement synchronization between menu plans and shopping lists in `useMenuPlan.js`.
-
-#### Phase 6: User Preferences and Profile
-- **Duration**: 3 days
+#### Phase: User Preferences and Profile
 - **Tasks**:
   - **User Profile and Preferences**
     - Develop `UserProfile.js` and `UserPreferences.js` components.
   - **User Service Functions**
     - Implement functions in `userService.js` for managing user data in Firebase.
 
-#### Phase 7: Common Components and Utilities
-- **Duration**: 3 days
-- **Tasks**:
-  - **Reusable Components**
-    - Create common components like `Button.js`, `Input.js`, `Modal.js`, and `Loader.js`.
-  - **Utility Functions**
-    - Implement utility functions in `utils/constants.js`, `utils/helpers.js`, and `utils/validation.js`.
-
-#### Phase 8: Advanced Features
-- **Duration**: 5 days
+#### Phase: Advanced Features
 - **Tasks**:
   - **Advanced Search and Filtering**
     - Implement detailed search capabilities using Algolia.
@@ -351,8 +205,7 @@ RecipeVault is a mobile and web application that allows users to browse, select,
   - **Detailed UI/UX Enhancements**
     - Refine and enhance the UI/UX for a more polished user experience.
 
-#### Phase 9: Final Integration and Testing
-- **Duration**: 4 days
+#### Phase: Final Integration and Testing
 - **Tasks**:
   - **Integration Testing**
     - Perform end-to-end testing of the entire application flow.
@@ -360,8 +213,7 @@ RecipeVault is a mobile and web application that allows users to browse, select,
     - Gather feedback from stakeholders and end-users.
     - Make necessary adjustments based on feedback.
 
-#### Phase 10: Deployment and Maintenance
-- **Duration**: 3 days
+#### Phase: Deployment and Maintenance
 - **Tasks**:
   - **Deployment Preparation**
     - Deploy the application to Firebase Hosting.
