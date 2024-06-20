@@ -31,7 +31,7 @@ const ImageList = ({ images, onImagesChange }) => {
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={10}>
           <TextField
-            label={t("newImageUrlLabel")}
+            label={t("image.new")}
             value={newImage}
             onChange={(e) => setNewImage(e.target.value)}
             fullWidth
@@ -64,7 +64,7 @@ const ImageList = ({ images, onImagesChange }) => {
                 <IconButton
                   onClick={() => handleRemoveImage(index)}
                   edge="end"
-                  aria-label={t("removeImageLabel")}
+                  aria-label={t("image.remove")}
                 >
                   <DeleteIcon />
                 </IconButton>

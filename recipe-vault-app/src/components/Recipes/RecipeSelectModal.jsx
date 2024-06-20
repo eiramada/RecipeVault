@@ -1,5 +1,6 @@
 import {
   Backdrop,
+  Box,
   Button,
   Fade,
   FormControl,
@@ -7,6 +8,7 @@ import {
   MenuItem,
   Modal,
   Select,
+  Typography,
 } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -21,6 +23,17 @@ const RecipeSelectModal = ({
 }) => {
   const { t } = useTranslation();
 
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+
   return (
     <Modal
       open={open}
@@ -32,16 +45,11 @@ const RecipeSelectModal = ({
       }}
     >
       <Fade in={open}>
-        <div
-          style={{
-            backgroundColor: "white",
-            padding: "20px",
-            outline: "none",
-            borderRadius: "8px",
-          }}
-        >
-          <h2>{t("selectRecipeTitle")}</h2>
-          <FormControl fullWidth style={{ marginBottom: "20px" }}>
+        <Box sx={style}>
+          <Typography variant="h6" component="h2" gutterBottom>
+            {t("selectRecipeTitle")}
+          </Typography>
+          <FormControl fullWidth sx={{ mb: 2 }}>
             <InputLabel id="recipe-select-label">
               {t("selectRecipeInputLabel")}
             </InputLabel>
@@ -57,10 +65,15 @@ const RecipeSelectModal = ({
               ))}
             </Select>
           </FormControl>
-          <Button variant="contained" color="primary" onClick={handleSave}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleSave}
+            fullWidth
+          >
             {t("saveButtonLabel")}
           </Button>
-        </div>
+        </Box>
       </Fade>
     </Modal>
   );

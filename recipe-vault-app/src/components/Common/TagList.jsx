@@ -8,25 +8,27 @@ const TagList = ({ tags, onTagClick }) => {
   const { setSearchQuery } = useContext(RecipeContext);
 
   const handleTagClick = (event, tag) => {
+    event.preventDefault();
     if (onTagClick) {
       onTagClick(event, tag);
     } else {
-      setSearchQuery(tag)
+      setSearchQuery(tag);
       navigate(`/recipes`);
     }
   };
 
   return (
     <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap" }}>
-      {tags && tags.map((tag, index) => (
-        <Chip
-          label={tag}
-          key={index}
-          variant="outlined"
-          onClick={(event) => handleTagClick(event, tag)}
-          sx={{ marginBottom: "4px" }}
-        />
-      ))}
+      {tags &&
+        tags.map((tag, index) => (
+          <Chip
+            label={tag}
+            key={index}
+            variant="outlined"
+            onClick={(event) => handleTagClick(event, tag)}
+            sx={{ marginBottom: "4px" }}
+          />
+        ))}
     </Stack>
   );
 };

@@ -62,7 +62,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
       <Grid container spacing={2} alignItems="center">
         <Grid item xs={10}>
           <TextField
-            label={t("newInstructionLabel")}
+            label={t("instruction.newTitle")}
             name="description"
             value={newInstruction.description}
             onChange={(e) =>
@@ -75,7 +75,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
             margin="normal"
             multiline
             rows={2}
-            helperText={t("enterDetailsHere")}
+            helperText={t("instruction.enterDetailsHere")}
           />
         </Grid>
         <Grid item xs={2}>
@@ -83,7 +83,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
             variant="contained"
             color="primary"
             onClick={handleAddInstruction}
-            aria-label={t("addInstruction")}
+            aria-label={t("instruction.add")}
           >
             <AddIcon />
           </IconButton>
@@ -113,7 +113,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
                     </Grid> */}
                     <Grid item xs={9}>
                       <TextField
-                        label={`${t("stepLabel")} ${instruction.step}`}
+                        label={`${t("instruction.stepLabel")} ${instruction.step}`}
                         name="description"
                         value={instruction.description}
                         onChange={(e) => handleInstructionChange(index, e)}
@@ -127,7 +127,7 @@ const Instructions = ({ instructions, onInstructionsChange }) => {
                       <IconButton
                         onClick={() => handleRemoveInstruction(index)}
                         edge="end"
-                        aria-label={t("deleteInstruction")}
+                        aria-label={t("instruction.delete")}
                       >
                         <DeleteIcon />
                       </IconButton>

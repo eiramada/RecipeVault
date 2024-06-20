@@ -15,10 +15,10 @@ const RecipeProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [menuPlan, setMenuPlan] = useState(
-    () => JSON.parse(localStorage.getItem("menuPlan")) || []
+    JSON.parse(localStorage.getItem("menuPlan")) || []
   );
   const [markedRecipeIds, setMarkedRecipesIds] = useState(
-    () => JSON.parse(localStorage.getItem("markedRecipes")) || []
+    JSON.parse(localStorage.getItem("markedRecipes")) || []
   );
 
   const includesSearchQuery = (field, query) =>
@@ -78,8 +78,7 @@ const RecipeProvider = ({ children }) => {
       const index = recipes.findIndex(
         (recipe) => recipe.id === updatedRecipe.id
       );
-      if (index === -1)
-        throw new Error(t("recipeNotFound"));
+      if (index === -1) throw new Error(t("recipeNotFound"));
 
       const updatedRecipes = recipes.map((recipe, i) =>
         i === index ? { ...recipe, ...updatedRecipe } : recipe
@@ -104,21 +103,6 @@ const RecipeProvider = ({ children }) => {
 
   const isRecipeMarked = (id) => markedRecipeIds.includes(id);
 
-  const addToMenuPlan = (recipeId, day, meal) => {
-    const updatedMenuPlan = [...menuPlan, { day, meal, recipeId }];
-    setMenuPlan(updatedMenuPlan);
-    localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
-  };
-
-  const removeFromMenuPlan = (recipeId, day, meal) => {
-    const updatedMenuPlan = menuPlan.filter(
-      (item) =>
-        !(item.day === day && item.meal === meal && item.recipeId === recipeId)
-    );
-    setMenuPlan(updatedMenuPlan);
-    localStorage.setItem("menuPlan", JSON.stringify(updatedMenuPlan));
-  };
-
   const removeMenuPlan = () => {
     localStorage.removeItem("menuPlan");
   };
@@ -127,6 +111,9 @@ const RecipeProvider = ({ children }) => {
     localStorage.setItem("menuPlan", JSON.stringify(menuPlanExample));
     localStorage.setItem("shoppingList", JSON.stringify(shoppingListExample));
     localStorage.setItem("markedRecipes", JSON.stringify(markedRecipesExample));
+
+    setMenuPlan(menuPlanExample);
+    setMarkedRecipesIds(markedRecipesExample);
   };
 
   return (
@@ -142,8 +129,6 @@ const RecipeProvider = ({ children }) => {
         error,
         markRecipe,
         isRecipeMarked,
-        addToMenuPlan,
-        removeFromMenuPlan,
         markedRecipeIds,
         setMenuPlan,
         removeMenuPlan,
@@ -156,4 +141,3 @@ const RecipeProvider = ({ children }) => {
 };
 
 export { RecipeContext, RecipeProvider };
-

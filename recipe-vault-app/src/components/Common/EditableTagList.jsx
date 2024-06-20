@@ -41,7 +41,7 @@ const EditableTagList = ({ tagsList, setTags }) => {
         <TextField
           {...params}
           variant="outlined"
-          label={t("tagsInputLabel")}
+          label={t("tags.title")}
           placeholder={t("tags.inputPlaceholder")}
           margin="normal"
         />

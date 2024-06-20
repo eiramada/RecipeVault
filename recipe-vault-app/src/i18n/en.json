@@ -34,13 +34,13 @@
   "instruction": {
     "newTitle": "New Instruction",
     "enterDetailsHere": "Enter details here:",
-    "stepTitle": "Step",
-    "addInstruction": "Add Instruction",
-    "deleteInstruction": "Delete Instruction"
+    "stepLabel": "Step",
+    "add": "Add Instruction",
+    "delete": "Delete Instruction"
   },
   "image": {
-    "newUrlTitle": "New Image URL",
-    "removeTitle": "Remove Image"
+    "new": "New Image URL",
+    "remove": "Remove Image"
   },
   "tags": {
     "title": "Tags",
@@ -101,5 +101,7 @@
     "updatingRecipes": "Error updating recipes. Please try again later.",
     "fetchingRecipes": "Error fetching recipes. Please try again later.",
     "failedToUpdate": "Failed to update recipes."
-  }
+  },
+  "selectRecipeTitle": "Select a Recipe",
+  "selectRecipeInputLabel": "Recipe"
 }
