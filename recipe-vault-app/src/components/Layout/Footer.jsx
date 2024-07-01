@@ -10,8 +10,6 @@ const Footer = () => {
   return (
     <Box sx={{ bgcolor: "background.paper", py: 3 }} component="footer">
       <Container>
-        {/* <Typography variant="body1">Contact Information</Typography> */}
-
         <Typography variant="body2" component="span" gutterBottom>
           <Link
             href="https://github.com/eiramada"

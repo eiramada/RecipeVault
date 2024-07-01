@@ -1,4 +1,4 @@
-import { Chip, Stack } from "@mui/material";
+import { Chip, Stack, useTheme } from "@mui/material";
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
@@ -6,6 +6,7 @@ import { RecipeContext } from "../../contexts/RecipeContext";
 const TagList = ({ tags, onTagClick }) => {
   const navigate = useNavigate();
   const { setSearchQuery } = useContext(RecipeContext);
+  const theme = useTheme();
 
   const handleTagClick = (event, tag) => {
     event.preventDefault();
@@ -18,7 +19,20 @@ const TagList = ({ tags, onTagClick }) => {
   };
 
   return (
-    <Stack direction="row" spacing={1} sx={{ flexWrap: "wrap" }}>
+    <Stack
+      direction="row"
+      textAlign='center' 
+      spacing={1}
+      sx={{
+        flexWrap: "wrap",
+        [theme.breakpoints.down("sm")]: {
+          justifyContent: "center",
+        },
+        [theme.breakpoints.up("md")]: {
+          justifyContent: "flex-start",
+        },
+      }}
+    >
       {tags &&
         tags.map((tag, index) => (
           <Chip
@@ -26,7 +40,7 @@ const TagList = ({ tags, onTagClick }) => {
             key={index}
             variant="outlined"
             onClick={(event) => handleTagClick(event, tag)}
-            sx={{ marginBottom: "4px" }}
+            className={index === 0 ? "chip-no-left-margin" : "chip-margin"}
           />
         ))}
     </Stack>

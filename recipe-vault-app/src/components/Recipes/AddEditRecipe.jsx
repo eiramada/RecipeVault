@@ -9,13 +9,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
@@ -45,8 +39,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const { recipes, addNewRecipe, updateExistingRecipe } =
-    useContext(RecipeContext);
+  const { recipes, addNewRecipe, updateExistingRecipe } = useContext(RecipeContext);
 
   const findExistingRecipe = useCallback(() => {
     const recipe = recipes.find((r) => Number(r.id) === Number(id));
@@ -94,27 +87,13 @@ const AddEditRecipe = ({ isEditMode = false }) => {
 
   const validateFields = () => {
     const newErrors = {};
-    if (!titleRef.current.value)
-      newErrors.title = t("validationErrors.titleRequired");
-    if (!descriptionRef.current.value)
-      newErrors.description = t("validationErrors.descriptionRequired");
-    if (
-      !servingsRef.current.value ||
-      isNaN(servingsRef.current.value) ||
-      servingsRef.current.value <= 0
-    )
+    if (!titleRef.current.value) newErrors.title = t("validationErrors.titleRequired");
+    if (!descriptionRef.current.value) newErrors.description = t("validationErrors.descriptionRequired");
+    if (!servingsRef.current.value || isNaN(servingsRef.current.value) || servingsRef.current.value <= 0)
       newErrors.servings = t("validationErrors.positiveNumber");
-    if (
-      !prepTimeRef.current.value ||
-      isNaN(prepTimeRef.current.value) ||
-      prepTimeRef.current.value <= 0
-    )
+    if (!prepTimeRef.current.value || isNaN(prepTimeRef.current.value) || prepTimeRef.current.value <= 0)
       newErrors.prepTime = t("validationErrors.positiveNumber");
-    if (
-      !cookTimeRef.current.value ||
-      isNaN(cookTimeRef.current.value) ||
-      cookTimeRef.current.value <= 0
-    )
+    if (!cookTimeRef.current.value || isNaN(cookTimeRef.current.value) || cookTimeRef.current.value <= 0)
       newErrors.cookTime = t("validationErrors.positiveNumber");
 
     setErrors(newErrors);
@@ -156,8 +135,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
       servings: Number(servingsRef.current.value),
       prepTime: Number(prepTimeRef.current.value),
       cookTime: Number(cookTimeRef.current.value),
-      totalTime:
-        Number(prepTimeRef.current.value) + Number(cookTimeRef.current.value),
+      totalTime: Number(prepTimeRef.current.value) + Number(cookTimeRef.current.value),
       author: authorRef.current.value,
       createdAt: isEditMode ? existingRecipe.createdAt : new Date(),
       updatedAt: new Date(),
@@ -209,9 +187,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
               onClick={saveRecipe}
               variant="contained"
               color="primary"
-              style={{
-                marginLeft: "16px",
-              }}
+              style={{ marginLeft: "16px" }}
             >
               {t("saveButtonLabel")}
             </Button>

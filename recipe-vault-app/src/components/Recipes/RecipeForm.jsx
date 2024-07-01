@@ -16,7 +16,7 @@ const RecipeForm = ({
   return (
     <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
       <Grid container spacing={2}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label={t("title")}
             inputRef={titleRef}
@@ -44,7 +44,7 @@ const RecipeForm = ({
             helperText={errors.author}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <TextField
             label={t("servings")}
             type="number"

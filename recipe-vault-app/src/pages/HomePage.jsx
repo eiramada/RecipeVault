@@ -1,9 +1,9 @@
 import { Box, Container, Typography } from "@mui/material";
 import React, { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import CarouselGallery from "../components/Common/CarouselGallery";
 import TagList from "../components/Common/TagList";
 import { RecipeContext } from "../contexts/RecipeContext";
-import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const { t } = useTranslation();
