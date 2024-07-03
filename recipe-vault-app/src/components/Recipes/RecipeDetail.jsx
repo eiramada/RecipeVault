@@ -103,17 +103,17 @@ const RecipeDetail = () => {
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>{t("prepTime")}:</strong> {recipe.prepTime} mins
+                  <strong>{t("prepTime")}:</strong> {recipe.prepTime}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>{t("totalTime")}:</strong> {recipe.totalTime} mins
+                  <strong>{t("totalTime")}:</strong> {recipe.totalTime}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>{t("cookTime")}:</strong> {recipe.cookTime} mins
+                  <strong>{t("cookTime")}:</strong> {recipe.cookTime}
                 </Typography>
               </Grid>
             </Grid>
