@@ -4,11 +4,11 @@ import "./App.css";
 import Footer from "./components/Layout/Footer";
 import Header from "./components/Layout/Header";
 import AddEditRecipe from "./components/Recipes/AddEditRecipe";
-import RecipeDetail from "./components/Recipes/RecipeDetail";
 import { RecipeProvider } from "./contexts/RecipeContext";
 import HomePage from "./pages/HomePage";
 import MenuPlan from "./pages/MenuPlanPage";
 import NotFound from "./pages/NotFoundPage";
+import RecipeDetail from "./pages/RecipePage";
 import RecipesPage from "./pages/RecipesPage";
 import ShoppingListPage from "./pages/ShoppingListPage";
 

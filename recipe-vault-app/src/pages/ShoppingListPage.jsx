@@ -13,6 +13,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { RecipeContext } from "../contexts/RecipeContext";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function ShoppingListPage() {
   const { t } = useTranslation();
@@ -20,6 +21,7 @@ function ShoppingListPage() {
     JSON.parse(localStorage.getItem("shoppingList"))
   );
   const { recipes, menuPlan } = useContext(RecipeContext);
+  useDocumentTitle("shoppingList");
 
   useEffect(() => {
     //Doesn't consider if user has made changes into their shopping list

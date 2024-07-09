@@ -14,7 +14,7 @@ const RecipeForm = ({
   const { t } = useTranslation();
 
   return (
-    <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
+    <Paper elevation={3} sx={{ p: 3, my: 2 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <TextField

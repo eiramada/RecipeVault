@@ -1,20 +1,20 @@
-import React, { useState } from "react";
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Button,
   Container,
+  Divider,
+  Drawer,
   Grid,
   IconButton,
-  Toolbar,
-  Typography,
-  Drawer,
   List,
   ListItem,
-  ListItemText,
   ListItemIcon,
-  Divider,
+  ListItemText,
+  Toolbar,
+  Typography,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -47,12 +47,28 @@ const Header = () => {
     <AppBar position="static">
       <Container>
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1, whiteSpace: 'nowrap'}}>
+          <Typography
+            variant="h6"
+            sx={{ flexGrow: 1, whiteSpace: "nowrap" }}
+            component={Link}
+            to="/"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             {t("appTitle")}
           </Typography>
-          <Grid container justifyContent="flex-end" sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Grid
+            container
+            justifyContent="flex-end"
+            sx={{ display: { xs: "none", md: "flex" } }}
+          >
             {menuItems.map((item, index) => (
-              <Button key={index} color="inherit" component={Link} to={item.path} sx={{ mx: 1 }}>
+              <Button
+                key={index}
+                color="inherit"
+                component={Link}
+                to={item.path}
+                sx={{ mx: 1 }}
+              >
                 {item.text}
               </Button>
             ))}
@@ -67,25 +83,43 @@ const Header = () => {
             color="inherit"
             edge="end"
             onClick={handleDrawerOpen}
-            sx={{ display: { xs: 'flex', md: 'none' } }}
+            sx={{ display: { xs: "flex", md: "none" } }}
           >
             <MenuIcon />
           </IconButton>
           <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
             <List>
               {menuItems.map((item, index) => (
-                <ListItem button key={index} component={Link} to={item.path} onClick={handleDrawerClose}>
+                <ListItem
+                  button
+                  key={index}
+                  component={Link}
+                  to={item.path}
+                  onClick={handleDrawerClose}
+                >
                   <ListItemText primary={item.text} />
                 </ListItem>
               ))}
               <Divider />
-              <ListItem button onClick={() => { changeLanguage("ee"); handleDrawerClose(); }}>
+              <ListItem
+                button
+                onClick={() => {
+                  changeLanguage("ee");
+                  handleDrawerClose();
+                }}
+              >
                 <ListItemIcon>
                   <img src="/ee_flag.ico" alt="EE Flag" style={{ width: 20 }} />
                 </ListItemIcon>
                 <ListItemText primary="Eesti" />
               </ListItem>
-              <ListItem button onClick={() => { changeLanguage("en"); handleDrawerClose(); }}>
+              <ListItem
+                button
+                onClick={() => {
+                  changeLanguage("en");
+                  handleDrawerClose();
+                }}
+              >
                 <ListItemIcon>
                   <img src="/en_flag.ico" alt="UK Flag" style={{ width: 20 }} />
                 </ListItemIcon>

@@ -5,6 +5,7 @@ import {
   Button,
   CircularProgress,
   Container,
+  Grid,
   IconButton,
   Paper,
   Typography,
@@ -149,16 +150,14 @@ const AddEditRecipe = ({ isEditMode = false }) => {
   return (
     <Container>
       {loading ? (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "80vh",
-          }}
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="80vh"
         >
           <CircularProgress />
-        </div>
+        </Box>
       ) : (
         <>
           {message && (
@@ -179,25 +178,26 @@ const AddEditRecipe = ({ isEditMode = false }) => {
               {message}
             </Alert>
           )}
-          <Box display="flex" alignItems="center" mb={2}>
+          <Box display="flex" alignItems="center" mb={2} flexWrap="nowrap">
             <Typography variant="h4" component="h2" gutterBottom>
               {isEditMode ? t("recipeTitle.edit") : t("recipeTitle.addNew")}
             </Typography>
-            <Button
-              onClick={saveRecipe}
-              variant="contained"
-              color="primary"
-              style={{ marginLeft: "16px" }}
-            >
-              {t("saveButtonLabel")}
-            </Button>
-            {existingRecipe && (
-              <Link to={`/recipe/${existingRecipe.id}`}>
-                <Button size="small" color="primary">
-                  {t("backButton")}
-                </Button>
-              </Link>
-            )}
+            <Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
+              <Button
+                onClick={saveRecipe}
+                variant="contained"
+                color="primary"
+              >
+                {t("saveButtonLabel")}
+              </Button>
+              {existingRecipe && (
+                <Link to={`/recipe/${existingRecipe.id}`} style={{ textDecoration: "none" }}>
+                  <Button size="small" color="primary">
+                    {t("backButton")}
+                  </Button>
+                </Link>
+              )}
+            </Box>
           </Box>
 
           <RecipeForm
@@ -225,7 +225,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
           <Typography variant="h6" component="h3" gutterBottom>
             {t("images")}
           </Typography>
-          <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
+          <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
             <ImageList images={images} onImagesChange={handleImagesChange} />
           </Paper>
         </>
