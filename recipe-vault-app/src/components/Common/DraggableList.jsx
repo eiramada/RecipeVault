@@ -1,5 +1,12 @@
 import AddIcon from "@mui/icons-material/Add";
-import { Grid, IconButton, List, TextField } from "@mui/material";
+import {
+  Box,
+  Grid,
+  IconButton,
+  List,
+  TextField,
+  useMediaQuery,
+} from "@mui/material";
 import React, { useState } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -9,6 +16,7 @@ import DraggableItem from "./DraggableItem";
 const DraggableList = ({ items, onItemsChange }) => {
   const { t } = useTranslation();
   const [newItem, setNewItem] = useState({ description: "" });
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const handleAddItem = () => {
     if (newItem.description.trim()) {
@@ -57,7 +65,7 @@ const DraggableList = ({ items, onItemsChange }) => {
   return (
     <>
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={10}>
+        <Grid item xs={isMobile ? 12 : 11.5}>
           <TextField
             label={t("instruction.newTitle")}
             name="description"
@@ -69,25 +77,30 @@ const DraggableList = ({ items, onItemsChange }) => {
               })
             }
             fullWidth
-            margin="normal"
             multiline
             rows={2}
             helperText={t("instruction.enterDetailsHere")}
           />
         </Grid>
-        <Grid item xs={2}>
-          <IconButton
-            variant="contained"
-            color="primary"
-            onClick={handleAddItem}
-            aria-label={t("Add")}
+        <Grid item xs={isMobile ? 12 : 0.5}>
+          <Box
+            display="flex"
+            justifyContent={isMobile ? "center" : "flex-start"}
           >
-            <AddIcon />
-          </IconButton>
+            <IconButton
+              variant="contained"
+              color="primary"
+              onClick={handleAddItem}
+              aria-label={t("Add")}
+              sx={{ p: 0, m: 0 }}
+            >
+              <AddIcon />
+            </IconButton>
+          </Box>
         </Grid>
       </Grid>
       <DndProvider backend={HTML5Backend}>
-        <List>
+        <List sx={{ p: 0, m: 0 }}>
           {items.map((item, index) => (
             <DraggableItem
               key={item.step}

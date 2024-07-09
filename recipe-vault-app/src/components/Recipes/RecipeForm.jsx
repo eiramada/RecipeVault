@@ -14,7 +14,7 @@ const RecipeForm = ({
   const { t } = useTranslation();
 
   return (
-    <Paper elevation={3} sx={{ p: 3, my: 2 }}>
+    <Paper elevation={3} sx={{ p: 2, my: 2 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={6}>
           <TextField
@@ -35,43 +35,55 @@ const RecipeForm = ({
             error={!!errors.description}
             helperText={errors.description}
           />
-          <TextField
-            label={t("author")}
-            inputRef={authorRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.author}
-            helperText={errors.author}
-          />
         </Grid>
         <Grid item xs={12} md={6}>
-          <TextField
-            label={t("servings")}
-            type="number"
-            inputRef={servingsRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.servings}
-            helperText={errors.servings}
-          />
-          <TextField
-            label={t("prepTime")}
-            type="number"
-            inputRef={prepTimeRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.prepTime}
-            helperText={errors.prepTime}
-          />
-          <TextField
-            label={t("cookTime")}
-            type="number"
-            inputRef={cookTimeRef}
-            fullWidth
-            margin="normal"
-            error={!!errors.cookTime}
-            helperText={errors.cookTime}
-          />
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
+              <TextField
+                label={t("author")}
+                inputRef={authorRef}
+                fullWidth
+                margin="normal"
+                error={!!errors.author}
+                helperText={errors.author}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label={t("servings")}
+                type="number"
+                inputRef={servingsRef}
+                fullWidth
+                margin="normal"
+                error={!!errors.servings}
+                helperText={errors.servings}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label={t("prepTime")}
+                type="number"
+                inputRef={prepTimeRef}
+                fullWidth
+                margin="normal"
+                error={!!errors.prepTime}
+                helperText={errors.prepTime}
+                sx={{ mt: 0 }}
+              />
+            </Grid>
+            <Grid item xs={6}>
+              <TextField
+                label={t("cookTime")}
+                type="number"
+                inputRef={cookTimeRef}
+                fullWidth
+                margin="normal"
+                error={!!errors.cookTime}
+                helperText={errors.cookTime}
+                sx={{ mt: 0 }}
+              />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Paper>

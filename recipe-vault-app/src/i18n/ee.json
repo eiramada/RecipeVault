@@ -1,5 +1,5 @@
 {
-  "appTitle": "Retseptisahtel",
+  "appTitle": "Retseptikogu",
   "home": "Avaleht",
   "recipes": "Retseptid",
   "menuPlanTitle": "Menüü",
@@ -90,6 +90,7 @@
       "Snack2": "2. vahepala"
     }
   },
+  "mealplanDescription": "Klõpsa soovitud päeva ja söögikorra ristumiskohas, et lisada eine",
   "pageNotFound": {
     "title": "Lehte ei leitud",
     "description": "Otsitud lehte pole olemas. See võib olla teisaldatud või kustutatud.",

@@ -64,16 +64,20 @@ const RecipePage = () => {
 
   return (
     <Container>
-      <Box display="flex" alignItems="center" mb={2} flexWrap="wrap">
+      <Box display="flex" alignItems="center" mb={2} flexWrap="wrap" justifyContent="space-between" >
         <Typography variant="h4" component="h2" gutterBottom>
           {recipe.title}
         </Typography>
-        <Link to={`/edit/${recipe.id}`} style={{ textDecoration: "none" }}>
+        <Box>
+        <Link
+          to={`/recipe/edit/${recipe.id}`}
+          style={{ textDecoration: "none" }}
+          >
           <Button
             variant="contained"
             color="primary"
             sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
-          >
+            >
             {t("editRecipe")}
           </Button>
         </Link>
@@ -82,9 +86,10 @@ const RecipePage = () => {
           size="small"
           color={isMarked ? "secondary" : "primary"}
           sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
-        >
+          >
           {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
         </Button>
+          </Box>
       </Box>
 
       <CarouselGallery images={recipe.images || ["/Placeholder.webp"]} />
@@ -173,7 +178,11 @@ const RecipePage = () => {
           ))}
         </Grid>
       ) : (
-        <img src="/Placeholder.webp" alt="Placeholder" style={{ width: "100%" }} />
+        <img
+          src="/Placeholder.webp"
+          alt="Placeholder"
+          style={{ width: "100%" }}
+        />
       )}
     </Container>
   );

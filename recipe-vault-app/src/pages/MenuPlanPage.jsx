@@ -222,6 +222,7 @@ const MenuPlanPage = () => {
             {t("useExampleData")}
           </Button>
         </Grid>
+        {t("mealplanDescription")}
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Button

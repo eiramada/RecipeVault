@@ -130,12 +130,12 @@ function ShoppingListPage() {
                   primary={`${item.name} - ${item.quantity} ${item.unit}`}
                 />
               )}
-              <IconButton onClick={() => handleEdit(index)}>
+              {/* <IconButton onClick={() => handleEdit(index)}>
                 <EditIcon />
-              </IconButton>
-              <IconButton onClick={() => handleDelete(index)}>
+              </IconButton> */}
+              {/* <IconButton onClick={() => handleDelete(index)}>
                 <DeleteIcon />
-              </IconButton>
+              </IconButton> */}
             </ListItem>
           ))}
       </List>

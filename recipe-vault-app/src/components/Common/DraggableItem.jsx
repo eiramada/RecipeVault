@@ -1,6 +1,6 @@
 import DeleteIcon from "@mui/icons-material/Delete";
 import DragIndicatorIcon from "@mui/icons-material/DragIndicator";
-import { Grid, IconButton, ListItem, TextField } from "@mui/material";
+import { Box, Grid, IconButton, ListItem, TextField, useMediaQuery } from "@mui/material";
 import React, { useRef } from "react";
 import { useDrag, useDrop } from "react-dnd";
 import { useTranslation } from "react-i18next";
@@ -16,6 +16,7 @@ const DraggableItem = ({
 }) => {
   const { t } = useTranslation();
   const ref = useRef(null);
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down("sm"));
 
   const [, drop] = useDrop({
     accept: ItemType,
@@ -65,12 +66,16 @@ const DraggableItem = ({
   drag(drop(ref));
 
   return (
-    <ListItem ref={ref} style={{ opacity: isDragging ? 0.5 : 1 }}>
+    <ListItem
+      ref={ref}
+      style={{ opacity: isDragging ? 0.5 : 1 }}
+      sx={{ p: 0, m: 0 }}
+    >
       <Grid container spacing={2} alignItems="center">
-        <Grid item xs={1}>
+        <Grid item xs={isMobile ? 1 : 0.25}>
           <DragIndicatorIcon />
         </Grid>
-        <Grid item xs={9}>
+        <Grid item xs={isMobile ? 11 : 11.25}>
           <TextField
             label={`${t("instruction.stepLabel")} ${index + 1}`}
             name="description"
@@ -82,11 +87,25 @@ const DraggableItem = ({
             rows={2}
           />
         </Grid>
-        <Grid item xs={2}>
-          <IconButton onClick={() => handleRemoveItem(index)} edge="end">
-            <DeleteIcon />
-          </IconButton>
-        </Grid>
+        {isMobile ? (
+          <Grid item xs={12}>
+            <Box display="flex" justifyContent="center">
+              <IconButton
+                onClick={() => handleRemoveItem(index)}
+                edge="end"
+                sx={{ p: 0, m: 0 }}
+              >
+                <DeleteIcon />
+              </IconButton>
+            </Box>
+          </Grid>
+        ) : (
+          <Grid item xs={0.5}>
+            <IconButton onClick={() => handleRemoveItem(index)} edge="end">
+              <DeleteIcon />
+            </IconButton>
+          </Grid>
+        )}
       </Grid>
     </ListItem>
   );

@@ -39,8 +39,8 @@
     "delete": "Delete"
   },
   "image": {
-    "new": "New Image URL",
-    "remove": "Remove Image"
+    "newUrlTitle": "New Image URL",
+    "removeTitle": "Remove Image"
   },
   "tags": {
     "title": "Tags",
@@ -90,6 +90,7 @@
       "Snack2": "Snack #2"
     }
   },
+  "mealplanDescription": "Click at the intersection of the desired day and mealtime to add a meal.",
   "pageNotFound": {
     "title": "Page Not Found",
     "description": "The page you are looking for does not exist. It might have been moved or deleted.",

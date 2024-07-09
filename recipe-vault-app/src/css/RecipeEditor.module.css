@@ -1,0 +1,57 @@
+/* RecipeEditor.module.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.noPaddingMobile {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+@media (min-width: 601px) {
+  .noPaddingMobile {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
+/* Ingredients.module.css */
+.ingredientsContainer {
+  padding: 0px;
+}
+
+.newIngredient,
+.ingredientItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inlineFields {
+  display: flex;
+  gap: 16px;
+}
+
+.fullWidthInput {
+  width: 100%;
+}
+
+.halfWidthInput {
+  flex: 1;
+}
+
+.addButton,
+.deleteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  .inlineFields {
+    flex-direction: row;
+  }
+}
