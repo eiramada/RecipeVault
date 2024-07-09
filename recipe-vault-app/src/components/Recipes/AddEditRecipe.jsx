@@ -14,6 +14,7 @@ import React, { useCallback, useContext, useEffect, useRef, useState } from "rea
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
+import { createUpdatedRecipe } from "../../utils/recipeUtils";
 import EditableTagList from "../Common/EditableTagList";
 import ImageList from "../Common/ImageList";
 import RecipeForm from "./RecipeForm";
@@ -105,8 +106,24 @@ const AddEditRecipe = ({ isEditMode = false }) => {
     if (!validateFields()) return;
 
     setLoading(true);
-    const newId = isEditMode ? existingRecipe.id : generateNewId();
-    const updatedRecipe = createUpdatedRecipe(newId);
+    const formValues = {
+      title: titleRef.current.value,
+      description: descriptionRef.current.value,
+      servings: servingsRef.current.value,
+      prepTime: prepTimeRef.current.value,
+      cookTime: cookTimeRef.current.value,
+      author: authorRef.current.value,
+    };
+
+    const updatedRecipe = createUpdatedRecipe(
+      formValues,
+      isEditMode,
+      existingRecipe,
+      ingredients,
+      instructions,
+      images,
+      tags
+    );
 
     try {
       if (isEditMode) {
@@ -115,36 +132,13 @@ const AddEditRecipe = ({ isEditMode = false }) => {
         await addNewRecipe(updatedRecipe);
       }
       setMessage(t("recipeSavedSuccess"));
-      navigate(`/recipe/${newId}`);
+      navigate(`/recipe/${updatedRecipe.id}`);
     } catch (error) {
       console.error("Error saving recipe:", error);
       setMessage(t("recipeSaveError"));
     } finally {
       setLoading(false);
     }
-  };
-
-  const generateNewId = () => {
-    return recipes.length ? Number(recipes[recipes.length - 1].id) + 1 : 1;
-  };
-
-  const createUpdatedRecipe = (newId) => {
-    return {
-      id: newId,
-      title: titleRef.current.value,
-      description: descriptionRef.current.value,
-      servings: Number(servingsRef.current.value),
-      prepTime: Number(prepTimeRef.current.value),
-      cookTime: Number(cookTimeRef.current.value),
-      totalTime: Number(prepTimeRef.current.value) + Number(cookTimeRef.current.value),
-      author: authorRef.current.value,
-      createdAt: isEditMode ? existingRecipe.createdAt : new Date(),
-      updatedAt: new Date(),
-      ingredients,
-      instructions,
-      images,
-      tags,
-    };
   };
 
   return (
@@ -182,22 +176,21 @@ const AddEditRecipe = ({ isEditMode = false }) => {
             <Typography variant="h4" component="h2" gutterBottom>
               {isEditMode ? t("recipeTitle.edit") : t("recipeTitle.addNew")}
             </Typography>
-            <Box sx={{ display: 'flex', gap: 2, ml: 'auto' }}>
-              <Button
-                onClick={saveRecipe}
-                variant="contained"
-                color="primary"
-              >
-                {t("saveButtonLabel")}
-              </Button>
-              {existingRecipe && (
-                <Link to={`/recipe/${existingRecipe.id}`} style={{ textDecoration: "none" }}>
-                  <Button size="small" color="primary">
-                    {t("backButton")}
-                  </Button>
-                </Link>
-              )}
-            </Box>
+            <Button
+              onClick={saveRecipe}
+              variant="contained"
+              color="primary"
+              sx={{ ml: 2 }}
+            >
+              {t("saveButtonLabel")}
+            </Button>
+            {existingRecipe && (
+              <Link to={`/recipe/${existingRecipe.id}`}>
+                <Button size="small" color="primary">
+                  {t("backButton")}
+                </Button>
+              </Link>
+            )}
           </Box>
 
           <RecipeForm
@@ -225,7 +218,7 @@ const AddEditRecipe = ({ isEditMode = false }) => {
           <Typography variant="h6" component="h3" gutterBottom>
             {t("images")}
           </Typography>
-          <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
+          <Paper elevation={3} sx={{ p: 2, my: 2 }}>
             <ImageList images={images} onImagesChange={handleImagesChange} />
           </Paper>
         </>

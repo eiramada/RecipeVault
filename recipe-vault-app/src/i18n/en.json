@@ -16,9 +16,9 @@
   "clearSearch": "Clear Search",
   "editRecipe": "Edit Recipe",
   "servings": "Servings",
-  "prepTime": "Prep Time",
-  "totalTime": "Total Time",
-  "cookTime": "Cook Time",
+  "prepTime": "Prep Time (min)",
+  "totalTime": "Total Time (min)",
+  "cookTime": "Cook Time (min)",
   "ingredients": "Ingredients",
   "instructions": "Instructions",
   "images": "Images",
@@ -32,11 +32,11 @@
   "add": "Add",
   "remove": "Remove",
   "instruction": {
-    "newTitle": "New Instruction",
-    "enterDetailsHere": "Enter details here:",
+    "newTitle": "New",
+    "enterDetailsHere": "Enter details",
     "stepLabel": "Step",
-    "add": "Add Instruction",
-    "delete": "Delete Instruction"
+    "add": "Add",
+    "delete": "Delete"
   },
   "image": {
     "new": "New Image URL",
