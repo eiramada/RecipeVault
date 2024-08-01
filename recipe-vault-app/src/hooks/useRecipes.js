@@ -1,14 +1,11 @@
 import _ from "lodash";
-import React, { createContext, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { fetchRecipes, updateRecipes } from "../services/recipeService";
 
-const RecipeContext = createContext();
-
-const RecipeProvider = ({ children }) => {
+const useRecipes = (searchQuery) => {
   const { t } = useTranslation();
   const [recipes, setRecipes] = useState([]);
-  const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -83,22 +80,7 @@ const RecipeProvider = ({ children }) => {
     }
   };
 
-  return (
-    <RecipeContext.Provider
-      value={{
-        recipes,
-        searchQuery,
-        setSearchQuery,
-        addNewRecipe,
-        updateExistingRecipe,
-        loading,
-        error,
-      }}
-    >
-      {children}
-    </RecipeContext.Provider>
-  );
+  return { recipes, loading, error, addNewRecipe, updateExistingRecipe };
 };
 
-export { RecipeContext, RecipeProvider };
-
+export default useRecipes;

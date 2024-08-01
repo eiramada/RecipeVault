@@ -101,8 +101,13 @@
     "addingRecipe": "Error adding recipe. Please try again later.",
     "updatingRecipes": "Error updating recipes. Please try again later.",
     "fetchingRecipes": "Error fetching recipes. Please try again later.",
-    "failedToUpdate": "Failed to update recipes."
+    "failedToUpdate": "Failed to update recipes.",
+    "fetchingShoppingList": "Error fetching shopping list",
+    "updatingShoppingList": "Error updating shopping list"
   },
-  "selectRecipeTitle": "Select a Recipe",
-  "selectRecipeInputLabel": "Recipe"
+  "saveList": "Save List",
+  "markedRecipes": "Marked Recipes",
+  "allRecipes": "All Recipes",
+  "selectRecipeTitle": "Select Recipe",
+  "selectRecipeInputLabel": "Select Recipe"
 }

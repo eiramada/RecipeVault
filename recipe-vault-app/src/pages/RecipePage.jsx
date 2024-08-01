@@ -15,16 +15,17 @@ import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
 import CarouselGallery from "../components/Common/CarouselGallery";
 import TagList from "../components/Common/TagList";
+import { MarkedRecipeContext } from "../contexts/MarkedRecipesContext";
 import { RecipeContext } from "../contexts/RecipeContext";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const RecipePage = () => {
   const { t } = useTranslation();
   const { id } = useParams();
-  const { recipes, loading, error, markRecipe, isRecipeMarked } =
-    useContext(RecipeContext);
+  const { recipes, loading, error } = useContext(RecipeContext);
+  const { markRecipe, markedRecipeIds } = useContext(MarkedRecipeContext);
   const recipe = recipes.find((r) => Number(r.id) === Number(id));
-  const isMarked = isRecipeMarked(recipe?.id);
+  const isMarked = markedRecipeIds.includes(recipe?.id);
   useDocumentTitle(recipe?.title || "");
 
   useEffect(() => {
@@ -64,32 +65,38 @@ const RecipePage = () => {
 
   return (
     <Container>
-      <Box display="flex" alignItems="center" mb={2} flexWrap="wrap" justifyContent="space-between" >
+      <Box
+        display="flex"
+        alignItems="center"
+        mb={2}
+        flexWrap="wrap"
+        justifyContent="space-between"
+      >
         <Typography variant="h4" component="h2" gutterBottom>
           {recipe.title}
         </Typography>
         <Box>
-        <Link
-          to={`/recipe/edit/${recipe.id}`}
-          style={{ textDecoration: "none" }}
+          <Link
+            to={`/recipe/edit/${recipe.id}`}
+            style={{ textDecoration: "none" }}
           >
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
             >
-            {t("editRecipe")}
-          </Button>
-        </Link>
-        <Button
-          onClick={() => markRecipe(recipe.id)}
-          size="small"
-          color={isMarked ? "secondary" : "primary"}
-          sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
+              {t("editRecipe")}
+            </Button>
+          </Link>
+          <Button
+            onClick={() => markRecipe(recipe.id)}
+            size="small"
+            color={isMarked ? "secondary" : "primary"}
+            sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
           >
-          {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
-        </Button>
-          </Box>
+            {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
+          </Button>
+        </Box>
       </Box>
 
       <CarouselGallery images={recipe.images || ["/Placeholder.webp"]} />

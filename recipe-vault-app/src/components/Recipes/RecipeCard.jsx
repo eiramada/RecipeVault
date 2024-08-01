@@ -12,18 +12,20 @@ import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import TagList from "../Common/TagList";
+import { MarkedRecipeContext } from "../../contexts/MarkedRecipesContext";
 
 const RecipeCard = ({ recipe }) => {
   const { t } = useTranslation();
-  const { markRecipe, isRecipeMarked, setSearchQuery } =
-    useContext(RecipeContext);
-  const isMarked = isRecipeMarked(recipe.id);
+  const { setSearchQuery } = useContext(RecipeContext);
+  const { markRecipe, markedRecipeIds } = useContext(MarkedRecipeContext);
+  const isMarked = markedRecipeIds.includes(recipe.id);
   const navigate = useNavigate();
 
   const handleMarkRecipe = (event) => {
     event.stopPropagation();
     markRecipe(recipe.id);
   };
+
 
   const handleTagClick = (event, tag) => {
     event.stopPropagation();
@@ -42,7 +44,7 @@ const RecipeCard = ({ recipe }) => {
     <Card
       sx={{
         width: 345,
-        height: 400, 
+        height: 400,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",

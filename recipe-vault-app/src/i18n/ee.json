@@ -100,9 +100,14 @@
     "loadingRecipes": "Tõrge retseptide laadimisel. Palun proovige hiljem uuesti.",
     "addingRecipe": "Tõrge retsepti lisamisel. Palun proovige hiljem uuesti.",
     "updatingRecipes": "Tõrge retseptide uuendamisel. Palun proovige hiljem uuesti.",
-    "fetchingRecipes": "Tõrge retseptide toomisel.",
-    "failedToUpdate": "Retseptide uuendamine ebaõnnestus."
+    "fetchingRecipes": "Tõrge retseptide saamisel.",
+    "failedToUpdate": "Retseptide uuendamine ebaõnnestus.",
+    "fetchingShoppingList": "Tõrge ostunimekirja saamisel.",
+    "updatingShoppingList": "Tõrge ostunimekirja uuendamisel."
   },
+  "saveList": "Salvesta nimekiri",
+  "markedRecipes": "Märgitud retseptid",
+  "allRecipes": "Kõik retseptid",
   "selectRecipeTitle": "Vali retsept",
-  "selectRecipeInputLabel": "Retsept"
+  "selectRecipeInputLabel": "Vali retsept"
 }

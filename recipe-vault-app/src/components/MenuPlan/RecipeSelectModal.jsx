@@ -17,6 +17,7 @@ const RecipeSelectModal = ({
   open,
   handleClose,
   recipes,
+  markedRecipes,
   selectedRecipe,
   setSelectedRecipe,
   handleSave,
@@ -39,10 +40,8 @@ const RecipeSelectModal = ({
       open={open}
       onClose={handleClose}
       closeAfterTransition
-      BackdropComponent={Backdrop}
-      BackdropProps={{
-        timeout: 500,
-      }}
+      slots={{ backdrop: Backdrop }}
+      slotProps={{ backdrop: { timeout: 500 } }}
     >
       <Fade in={open}>
         <Box sx={style}>
@@ -58,6 +57,17 @@ const RecipeSelectModal = ({
               value={selectedRecipe}
               onChange={(e) => setSelectedRecipe(e.target.value)}
             >
+              {markedRecipes.length > 0 && (
+                <MenuItem disabled>{t("markedRecipes")}</MenuItem>
+              )}
+              {markedRecipes.map((recipe) => (
+                <MenuItem key={recipe.id} value={recipe.id}>
+                  {recipe.title}
+                </MenuItem>
+              ))}
+              {markedRecipes.length > 0 && recipes.length > 0 && (
+                <MenuItem disabled>{t("allRecipes")}</MenuItem>
+              )}
               {recipes.map((recipe) => (
                 <MenuItem key={recipe.id} value={recipe.id}>
                   {recipe.title}
