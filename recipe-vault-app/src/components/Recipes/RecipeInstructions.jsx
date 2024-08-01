@@ -11,7 +11,7 @@ const RecipeInstructions = ({ instructions, onInstructionsChange }) => {
       <Typography variant="h6" component="h3" gutterBottom>
         {t("instructions")}
       </Typography>
-      <Paper elevation={3} style={{ padding: "16px", margin: "16px 0" }}>
+      <Paper elevation={3} sx={{ p: 2, my: 2 }}>
         <DraggableList
           items={instructions}
           onItemsChange={onInstructionsChange}

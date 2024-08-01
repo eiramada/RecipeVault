@@ -18,6 +18,7 @@ import React, { useContext, useState } from "react";
 import { useTranslation } from "react-i18next";
 import RecipeSelectModal from "../components/Recipes/RecipeSelectModal";
 import { RecipeContext } from "../contexts/RecipeContext";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 const daysOfWeek = [
   "Monday",
@@ -48,7 +49,7 @@ const MenuPlanPage = () => {
   const [selectedRecipe, setSelectedRecipe] = useState("");
   const [selectedDay, setSelectedDay] = useState("");
   const [selectedMeal, setSelectedMeal] = useState("");
-
+  useDocumentTitle("menuPlanTitle");
   const markedRecipeObjects = markedRecipeIds
     .map((id) => recipes.find((recipe) => recipe.id === id))
     .filter((recipe) => recipe);
@@ -221,6 +222,7 @@ const MenuPlanPage = () => {
             {t("useExampleData")}
           </Button>
         </Grid>
+        {t("mealplanDescription")}
         <Grid item xs={12}>
           <TableContainer component={Paper}>
             <Button

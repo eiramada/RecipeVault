@@ -1,3 +1,5 @@
+
+//utils/recipeUtils.jsx
 export const generateNewId = (recipes) => {
   return recipes.length ? Number(recipes[recipes.length - 1].id) + 1 : 1;
 };
@@ -9,12 +11,13 @@ export const createUpdatedRecipe = (
   ingredients,
   instructions,
   images,
-  tags
+  tags, 
+  recipes
 ) => {
   const { title, description, servings, prepTime, cookTime, author } =
     formValues;
   return {
-    id: isEditMode ? existingRecipe.id : generateNewId(),
+    id: isEditMode ? existingRecipe.id : generateNewId(recipes),
     title,
     description,
     servings: Number(servings),

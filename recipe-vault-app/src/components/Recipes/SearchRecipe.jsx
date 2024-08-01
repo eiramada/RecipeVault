@@ -1,7 +1,6 @@
 import ClearIcon from "@mui/icons-material/Clear";
 import {
   Box,
-  Container,
   IconButton,
   InputAdornment,
   TextField,
@@ -31,31 +30,29 @@ function SearchRecipe() {
   }
 
   return (
-    <Container>
-      <Box sx={{ my: 4, display: "flex", alignItems: "center" }}>
-        <TextField
-          fullWidth
-          label={t("searchRecipes")}
-          variant="outlined"
-          value={searchValue}
-          onChange={handleSearchChange}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label={t("clearSearch")}
-                  onClick={handleClearSearch}
-                  edge="end"
-                  size="large"
-                >
-                  <ClearIcon />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Box>
-    </Container>
+    <Box sx={{ my: 3, px: 2, width: '100%' }}>
+      <TextField
+        fullWidth
+        label={t("searchRecipes")}
+        variant="outlined"
+        value={searchValue}
+        onChange={handleSearchChange}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label={t("clearSearch")}
+                onClick={handleClearSearch}
+                edge="end"
+                size="large"
+              >
+                <ClearIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+      />
+    </Box>
   );
 }
 

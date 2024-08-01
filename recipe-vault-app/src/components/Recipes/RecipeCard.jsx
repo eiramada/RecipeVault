@@ -42,11 +42,17 @@ const RecipeCard = ({ recipe }) => {
     <Card
       sx={{
         width: 345,
+        height: 400, 
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
         margin: 2,
         padding: 2,
+        boxShadow: 3,
+        transition: "transform 0.3s",
+        "&:hover": {
+          transform: "scale(1.05)",
+        },
       }}
     >
       <Link

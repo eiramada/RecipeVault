@@ -2,9 +2,11 @@ import { Box, Button, Container, Typography } from "@mui/material";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function NotFoundPage() {
   const { t } = useTranslation();
+  useDocumentTitle("pageNotFound.title");
 
   return (
     <div>

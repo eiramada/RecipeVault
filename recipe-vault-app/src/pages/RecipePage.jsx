@@ -10,34 +10,40 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useParams } from "react-router-dom";
-import { RecipeContext } from "../../contexts/RecipeContext";
-import CarouselGallery from "../Common/CarouselGallery";
-import TagList from "../Common/TagList";
+import CarouselGallery from "../components/Common/CarouselGallery";
+import TagList from "../components/Common/TagList";
+import { RecipeContext } from "../contexts/RecipeContext";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
-const RecipeDetail = () => {
+const RecipePage = () => {
   const { t } = useTranslation();
   const { id } = useParams();
   const { recipes, loading, error, markRecipe, isRecipeMarked } =
     useContext(RecipeContext);
   const recipe = recipes.find((r) => Number(r.id) === Number(id));
   const isMarked = isRecipeMarked(recipe?.id);
+  useDocumentTitle(recipe?.title || "");
+
+  useEffect(() => {
+    if (recipe) {
+      document.title = `${recipe.title} - ${t("appTitle")}`;
+    }
+  }, [recipe, t]);
 
   if (loading) {
     return (
       <Container>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "80vh",
-          }}
+        <Box
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          height="80vh"
         >
           <CircularProgress />
-        </div>
+        </Box>
       </Container>
     );
   }
@@ -53,23 +59,25 @@ const RecipeDetail = () => {
   }
 
   if (!recipe) {
-    return <div>{t("recipeNotFound")}</div>;
+    return <Typography>{t("recipeNotFound")}</Typography>;
   }
 
   return (
     <Container>
-      <Box display="flex" alignItems="center" mb={2}>
+      <Box display="flex" alignItems="center" mb={2} flexWrap="wrap" justifyContent="space-between" >
         <Typography variant="h4" component="h2" gutterBottom>
           {recipe.title}
         </Typography>
-        <Link to={`/edit/${recipe.id}`}>
+        <Box>
+        <Link
+          to={`/recipe/edit/${recipe.id}`}
+          style={{ textDecoration: "none" }}
+          >
           <Button
             variant="contained"
             color="primary"
-            style={{
-              marginLeft: "16px",
-            }}
-          >
+            sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
+            >
             {t("editRecipe")}
           </Button>
         </Link>
@@ -77,24 +85,23 @@ const RecipeDetail = () => {
           onClick={() => markRecipe(recipe.id)}
           size="small"
           color={isMarked ? "secondary" : "primary"}
-          style={{
-            marginLeft: "16px",
-          }}
-        >
+          sx={{ ml: { xs: 0, sm: 2 }, mt: { xs: 1, sm: 0 } }}
+          >
           {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
         </Button>
+          </Box>
       </Box>
 
       <CarouselGallery images={recipe.images || ["/Placeholder.webp"]} />
 
-      <Grid container spacing={2} style={{ marginTop: "8px" }}>
-        <Grid item xs={6}>
+      <Grid container spacing={2} mt={1}>
+        <Grid item xs={12} md={6}>
           <Typography variant="body1" gutterBottom>
             <strong>{recipe.description}</strong>
           </Typography>
         </Grid>
-        <Grid item xs={6}>
-          <Paper elevation={3} style={{ padding: "8px" }}>
+        <Grid item xs={12} md={6}>
+          <Paper elevation={3} sx={{ p: 2 }}>
             <Grid container spacing={1}>
               <Grid item xs={6}>
                 <Typography variant="body2">
@@ -121,15 +128,10 @@ const RecipeDetail = () => {
         </Grid>
       </Grid>
 
-      <Typography
-        variant="h6"
-        component="h3"
-        gutterBottom
-        style={{ marginTop: "16px" }}
-      >
+      <Typography variant="h6" component="h3" gutterBottom mt={2}>
         {t("ingredients")}
       </Typography>
-      <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
+      <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
         <List>
           {recipe.ingredients &&
             recipe.ingredients.map((ingredient, index) => (
@@ -147,7 +149,7 @@ const RecipeDetail = () => {
       <Typography variant="h6" component="h3" gutterBottom>
         {t("instructions")}
       </Typography>
-      <Paper elevation={3} style={{ padding: "8px", margin: "8px 0" }}>
+      <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
         <List>
           {recipe.instructions &&
             recipe.instructions.map((instruction, index) => (
@@ -166,20 +168,24 @@ const RecipeDetail = () => {
       {recipe.images?.length > 0 ? (
         <Grid container spacing={2}>
           {recipe.images.map((image, index) => (
-            <Grid item xs={6} key={index}>
+            <Grid item xs={12} sm={6} key={index}>
               <img
                 src={image}
                 alt={`Recipe ${index + 1}`}
-                style={{ width: 400 }}
+                style={{ width: "100%" }}
               />
             </Grid>
           ))}
         </Grid>
       ) : (
-        <img src="/Placeholder.webp" alt="Placeholder" style={{ width: 400 }} />
+        <img
+          src="/Placeholder.webp"
+          alt="Placeholder"
+          style={{ width: "100%" }}
+        />
       )}
     </Container>
   );
 };
 
-export default RecipeDetail;
+export default RecipePage;

@@ -1,61 +1,132 @@
+import MenuIcon from "@mui/icons-material/Menu";
 import {
   AppBar,
   Button,
   Container,
+  Divider,
+  Drawer,
+  Grid,
   IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setDrawerOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setDrawerOpen(false);
+  };
 
   function changeLanguage(lang) {
     i18n.changeLanguage(lang);
     localStorage.setItem("lang", lang);
   }
 
+  const menuItems = [
+    { text: t("home"), path: "/" },
+    { text: t("recipes"), path: "/recipes" },
+    { text: t("menuPlanTitle"), path: "/menu-plan" },
+    { text: t("shoppingList"), path: "/shopping-list" },
+    { text: t("profile"), path: "/profile" },
+  ];
+
   return (
     <AppBar position="static">
       <Container>
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            sx={{ flexGrow: 1, whiteSpace: "nowrap" }}
+            component={Link}
+            to="/"
+            style={{ textDecoration: "none", color: "inherit" }}
+          >
             {t("appTitle")}
           </Typography>
-          <Button color="inherit" component={Link} to="/" sx={{ mx: 1 }}>
-            {t("home")}
-          </Button>
-          <Button color="inherit" component={Link} to="/recipes" sx={{ mx: 1 }}>
-            {t("recipes")}
-          </Button>
-          <Button
-            color="inherit"
-            component={Link}
-            to="/menu-plan"
-            sx={{ mx: 1 }}
+          <Grid
+            container
+            justifyContent="flex-end"
+            sx={{ display: { xs: "none", md: "flex" } }}
           >
-            {t("menuPlanTitle")}
-          </Button>
-          <Button
+            {menuItems.map((item, index) => (
+              <Button
+                key={index}
+                color="inherit"
+                component={Link}
+                to={item.path}
+                sx={{ mx: 1 }}
+              >
+                {item.text}
+              </Button>
+            ))}
+            <IconButton color="inherit" onClick={() => changeLanguage("ee")}>
+              <img src="/ee_flag.ico" alt="EE Flag" style={{ width: 20 }} />
+            </IconButton>
+            <IconButton color="inherit" onClick={() => changeLanguage("en")}>
+              <img src="/en_flag.ico" alt="UK Flag" style={{ width: 20 }} />
+            </IconButton>
+          </Grid>
+          <IconButton
             color="inherit"
-            component={Link}
-            to="/shopping-list"
-            sx={{ mx: 1 }}
+            edge="end"
+            onClick={handleDrawerOpen}
+            sx={{ display: { xs: "flex", md: "none" } }}
           >
-            {t("shoppingList")}
-          </Button>
-          <Button color="inherit" component={Link} to="/profile" sx={{ mx: 1 }}>
-            {t("profile")}
-          </Button>
-          <IconButton color="inherit" onClick={() => changeLanguage("ee")}>
-            <img src="/ee_flag.ico" alt="EE Flag" style={{ width: 20 }} />
+            <MenuIcon />
           </IconButton>
-          <IconButton color="inherit" onClick={() => changeLanguage("en")}>
-            <img src="/en_flag.ico" alt="UK Flag" style={{ width: 20 }} />
-          </IconButton>
+          <Drawer anchor="right" open={drawerOpen} onClose={handleDrawerClose}>
+            <List>
+              {menuItems.map((item, index) => (
+                <ListItem
+                  button
+                  key={index}
+                  component={Link}
+                  to={item.path}
+                  onClick={handleDrawerClose}
+                >
+                  <ListItemText primary={item.text} />
+                </ListItem>
+              ))}
+              <Divider />
+              <ListItem
+                button
+                onClick={() => {
+                  changeLanguage("ee");
+                  handleDrawerClose();
+                }}
+              >
+                <ListItemIcon>
+                  <img src="/ee_flag.ico" alt="EE Flag" style={{ width: 20 }} />
+                </ListItemIcon>
+                <ListItemText primary="Eesti" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={() => {
+                  changeLanguage("en");
+                  handleDrawerClose();
+                }}
+              >
+                <ListItemIcon>
+                  <img src="/en_flag.ico" alt="UK Flag" style={{ width: 20 }} />
+                </ListItemIcon>
+                <ListItemText primary="English" />
+              </ListItem>
+            </List>
+          </Drawer>
         </Toolbar>
       </Container>
     </AppBar>

@@ -1,16 +1,13 @@
 import {
-  Button,
   CircularProgress,
   Container,
   Grid,
-  Typography,
+  Typography
 } from "@mui/material";
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import RecipeCard from "./RecipeCard";
-import SearchRecipe from "./SearchRecipe";
 
 const RecipeList = () => {
   const { t } = useTranslation();
@@ -18,8 +15,6 @@ const RecipeList = () => {
 
   return (
     <>
-      <SearchRecipe />
-
       {loading ? (
         <Container>
           <div
@@ -36,7 +31,7 @@ const RecipeList = () => {
       ) : error ? (
         <Container>
           <Typography variant="h6" color="error" align="center">
-          {t('error')}
+            {t("error")}
           </Typography>
         </Container>
       ) : (
@@ -50,17 +45,6 @@ const RecipeList = () => {
           </Grid>
         </Container>
       )}
-      <Container>
-        <Link to="/add">
-          <Button
-            variant="contained"
-            color="primary"
-            style={{ marginTop: "16px" }}
-          >
-        {t('addNewRecipe')}
-          </Button>
-        </Link>
-      </Container>
     </>
   );
 };
