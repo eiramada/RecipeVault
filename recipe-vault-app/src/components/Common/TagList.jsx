@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 
-const TagList = ({ tags, onTagClick, maxTags }) => {
+const TagList = ({ tags = [], onTagClick, maxTags }) => {
   const navigate = useNavigate();
   const { setSearchQuery } = useContext(RecipeContext);
   const theme = useTheme();
@@ -39,22 +39,21 @@ const TagList = ({ tags, onTagClick, maxTags }) => {
         },
       }}
     >
-      {displayedTags &&
-        displayedTags.map((tag, index) => (
-          <Chip
-            label={tag}
-            key={index}
-            variant="outlined"
-            onClick={(event) => handleTagClick(event, tag)}
-            sx={{
-              height: 24,
-              fontSize: 12,
-              padding: "0 6px",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
-          />
-        ))}
+      {displayedTags.map((tag, index) => (
+        <Chip
+          label={tag}
+          key={index}
+          variant="outlined"
+          onClick={(event) => handleTagClick(event, tag)}
+          sx={{
+            height: 24,
+            fontSize: 12,
+            padding: "0 6px",
+            whiteSpace: "nowrap",
+            flexShrink: 0,
+          }}
+        />
+      ))}
     </Stack>
   );
 };

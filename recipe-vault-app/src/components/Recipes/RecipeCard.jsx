@@ -32,11 +32,11 @@ const RecipeCard = ({ recipe }) => {
     navigate(`/recipes`);
   };
 
-  const truncateDescription = (description, maxLength) => {
-    if (description.length > maxLength) {
-      return description.slice(0, maxLength) + "...";
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.slice(0, maxLength) + "...";
     }
-    return description;
+    return text;
   };
 
   return (
@@ -69,8 +69,20 @@ const RecipeCard = ({ recipe }) => {
         />
         <Divider />
         <CardContent sx={{ paddingBottom: "8px !important" }}>
-          <Typography gutterBottom variant="h6" component="div">
-            {recipe.title}
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            sx={{
+              display: "-webkit-box",
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              WebkitLineClamp: 2,
+              height: "3em",
+            }}
+          >
+            {truncateText(recipe.title, 40)}{" "}
           </Typography>
           <Typography
             variant="body2"
@@ -82,7 +94,7 @@ const RecipeCard = ({ recipe }) => {
               textOverflow: "ellipsis",
             }}
           >
-            {truncateDescription(recipe.description, 80)}
+            {truncateText(recipe.description, 80)}
           </Typography>
         </CardContent>
       </Link>

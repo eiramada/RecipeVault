@@ -1,10 +1,29 @@
-[
-  { "recipeId": 12349, "day": "Monday", "meal": "Dinner" },
-  { "recipeId": 12349, "day": "Tuesday", "meal": "Lunch" },
-  { "recipeId": 12351, "day": "Tuesday", "meal": "Dinner" },
-  { "recipeId": 12351, "day": "Wednesday", "meal": "Lunch" },
-  { "recipeId": 12347, "day": "Wednesday", "meal": "Dinner" },
-  { "recipeId": 12347, "day": "Thursday", "meal": "Lunch" },
-  { "recipeId": 12345, "day": "Thursday", "meal": "Dinner" },
-  { "recipeId": 12345, "day": "Friday", "meal": "Lunch" }
-]
+{
+  "user123": [
+    {
+      "day": "Monday",
+      "meal": "Dinner",
+      "recipeId": 1
+    },
+    {
+      "day": "Tuesday",
+      "meal": "Lunch",
+      "recipeId": 5
+    },
+    {
+      "day": "Wednesday",
+      "meal": "Dinner",
+      "recipeId": 3
+    },
+    {
+      "day": "Thursday",
+      "meal": "Dinner",
+      "recipeId": 4
+    },
+    {
+      "day": "Friday",
+      "meal": "Dinner",
+      "recipeId": 2
+    }
+  ]
+}
