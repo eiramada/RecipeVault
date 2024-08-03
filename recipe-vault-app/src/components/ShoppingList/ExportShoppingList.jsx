@@ -25,6 +25,7 @@ const ExportShoppingList = ({ items }) => {
 
   const exportAsPDF = () => {
     const doc = new jsPDF();
+    doc.setFont("helvetica");
 
     doc.text(t("shoppingList"), 20, 10);
     const tableColumn = [t("name"), t("quantity"), t("unit"), t("notes"), t("recipes")];
@@ -57,13 +58,13 @@ const ExportShoppingList = ({ items }) => {
       ]),
     ];
 
-    let csvContent = "data:text/csv;charset=utf-8,";
+    let csvContent = "\uFEFF";
     rows.forEach((rowArray) => {
       const row = rowArray.join(",");
       csvContent += row + "\r\n";
     });
 
-    const encodedUri = encodeURI(csvContent);
+    const encodedUri = encodeURI(`data:text/csv;charset=utf-8,${csvContent}`);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
     link.setAttribute("download", "shopping_list.csv");

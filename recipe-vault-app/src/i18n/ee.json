@@ -10,8 +10,8 @@
   "popularTagsTitle": "Populaarsed sildid",
   "error": "Tekkis viga. Palun proovi hiljem uuesti.",
   "addNewRecipe": "Lisa uus retsept",
-  "addToMenuPlan": "Lisa menüüsse",
-  "removeFromMenuPlan": "Eemalda menüüst",
+  "addToMenuPlan": "Lisa menüü valikusse",
+  "removeFromMenuPlan": "Eemalda menüü valikust",
   "searchRecipes": "Otsi retsepte",
   "clearSearch": "Tühjenda otsing",
   "editRecipe": "Muuda",
@@ -106,7 +106,7 @@
     "updatingShoppingList": "Tõrge ostunimekirja uuendamisel."
   },
   "saveList": "Salvesta nimekiri",
-  "markedRecipes": "Märgitud retseptid",
+  "markedRecipes": "Menüüsse valitud retseptid",
   "allRecipes": "Kõik retseptid",
   "selectRecipeTitle": "Vali retsept",
   "selectRecipeInputLabel": "Vali retsept"

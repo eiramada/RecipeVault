@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { RecipeContext } from "../../contexts/RecipeContext";
 
-const TagList = ({ tags, onTagClick }) => {
+const TagList = ({ tags, onTagClick, maxTags }) => {
   const navigate = useNavigate();
   const { setSearchQuery } = useContext(RecipeContext);
   const theme = useTheme();
@@ -18,13 +18,19 @@ const TagList = ({ tags, onTagClick }) => {
     }
   };
 
+  const displayedTags = maxTags ? tags.slice(0, maxTags) : tags;
+
   return (
     <Stack
       direction="row"
-      textAlign='center' 
+      textAlign="center"
       spacing={1}
       sx={{
-        flexWrap: "wrap",
+        flexWrap: "nowrap",
+        overflowX: "auto",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
         [theme.breakpoints.down("sm")]: {
           justifyContent: "center",
         },
@@ -33,14 +39,20 @@ const TagList = ({ tags, onTagClick }) => {
         },
       }}
     >
-      {tags &&
-        tags.map((tag, index) => (
+      {displayedTags &&
+        displayedTags.map((tag, index) => (
           <Chip
             label={tag}
             key={index}
             variant="outlined"
             onClick={(event) => handleTagClick(event, tag)}
-            className={index === 0 ? "chip-no-left-margin" : "chip-margin"}
+            sx={{
+              height: 24,
+              fontSize: 12,
+              padding: "0 6px",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
           />
         ))}
     </Stack>

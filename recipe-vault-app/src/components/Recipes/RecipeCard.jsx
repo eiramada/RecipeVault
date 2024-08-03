@@ -10,9 +10,9 @@ import {
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
+import { MarkedRecipeContext } from "../../contexts/MarkedRecipesContext";
 import { RecipeContext } from "../../contexts/RecipeContext";
 import TagList from "../Common/TagList";
-import { MarkedRecipeContext } from "../../contexts/MarkedRecipesContext";
 
 const RecipeCard = ({ recipe }) => {
   const { t } = useTranslation();
@@ -25,7 +25,6 @@ const RecipeCard = ({ recipe }) => {
     event.stopPropagation();
     markRecipe(recipe.id);
   };
-
 
   const handleTagClick = (event, tag) => {
     event.stopPropagation();
@@ -44,12 +43,12 @@ const RecipeCard = ({ recipe }) => {
     <Card
       sx={{
         width: 345,
-        height: 400,
+        height: 380,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        margin: 2,
-        padding: 2,
+        margin: 1,
+        padding: 1,
         boxShadow: 3,
         transition: "transform 0.3s",
         "&:hover": {
@@ -69,8 +68,8 @@ const RecipeCard = ({ recipe }) => {
           sx={{ objectFit: "cover" }}
         />
         <Divider />
-        <CardContent sx={{ paddingBottom: "16px !important" }}>
-          <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{ paddingBottom: "8px !important" }}>
+          <Typography gutterBottom variant="h6" component="div">
             {recipe.title}
           </Typography>
           <Typography
@@ -87,13 +86,20 @@ const RecipeCard = ({ recipe }) => {
           </Typography>
         </CardContent>
       </Link>
-      <Box sx={{ padding: 2 }}>
-        <TagList tags={recipe.tags} onTagClick={handleTagClick} />
-        <Box sx={{ textAlign: "center", marginTop: 2 }}>
-          <Button onClick={handleMarkRecipe} size="small">
-            {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
-          </Button>
-        </Box>
+      <Box
+        sx={{
+          padding: 1,
+          maxHeight: 60,
+          overflowX: "auto",
+          overflowY: "hidden",
+        }}
+      >
+        <TagList tags={recipe.tags} onTagClick={handleTagClick} maxTags={3} />
+      </Box>
+      <Box sx={{ textAlign: "center", marginTop: 1 }}>
+        <Button onClick={handleMarkRecipe} size="small">
+          {isMarked ? t("removeFromMenuPlan") : t("addToMenuPlan")}
+        </Button>
       </Box>
     </Card>
   );

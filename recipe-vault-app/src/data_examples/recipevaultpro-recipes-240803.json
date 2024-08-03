@@ -1,0 +1,858 @@
+[
+  {
+    "author": "Raivo",
+    "cookTime": 240,
+    "createdAt": "2024-07-01T18:53:37.760Z",
+    "description": "Valmistada kas haudepotis või slow cookeris. Valida suurem pott.",
+    "id": 1,
+    "ingredients": [
+      {
+        "group": "Kanasegu",
+        "name": "kana kintsuliha",
+        "notes": "",
+        "quantity": "1.5",
+        "unit": "kg"
+      },
+      {
+        "group": "Kanasegu",
+        "name": "taco maitseainesegu",
+        "notes": "",
+        "quantity": "2",
+        "unit": "pakk"
+      },
+      {
+        "group": "Kanasegu",
+        "name": "laimi mahl",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Kanasegu",
+        "name": "kanapuljong",
+        "notes": "FoodStudio kanapuljong, võib asendada köögiviljapuljongiga",
+        "quantity": "750",
+        "unit": "ml"
+      },
+      {
+        "group": "Kanasegu",
+        "name": "sool",
+        "notes": "Maitse järgi tegelikult",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Kanasegu",
+        "name": "küüslauk",
+        "notes": "Keskmise suurusega küüned",
+        "quantity": "3",
+        "unit": "küünt"
+      },
+      {
+        "group": "Pakkimine",
+        "name": "tortilla",
+        "notes": "Ligikaudne suurus 25cm",
+        "quantity": "20",
+        "unit": "tk"
+      },
+      {
+        "group": "Pakkimine",
+        "name": "hõbepaber või küpsetuspaber",
+        "notes": "Pakendamiseks, et panna sügavkülma. Küpsetuspaberi puhul saab soojendada mikros",
+        "quantity": "1",
+        "unit": "rull"
+      },
+      {
+        "group": "Riis",
+        "name": "riis",
+        "notes": "Kogus vastavalt sellele, kas tahta jahusemat või mitte. Arvestada, et rohkem riisi vajab suuremat kogust vedelikku. Riisi kuivkaal.",
+        "quantity": "400",
+        "unit": "g"
+      },
+      {
+        "group": "Kanasegu",
+        "name": "must pipar",
+        "notes": "Maitse järgi",
+        "quantity": "0.5",
+        "unit": "spl"
+      },
+      {
+        "group": "Riis",
+        "name": "vesi",
+        "notes": "",
+        "quantity": "2",
+        "unit": "klaasi"
+      },
+      {
+        "group": "Täide",
+        "name": "tomat",
+        "notes": "Keskmise suurusega",
+        "quantity": "5",
+        "unit": "tk"
+      },
+      {
+        "group": "Täide",
+        "name": "jalopeno",
+        "notes": "Mitte väga teravad",
+        "quantity": "3",
+        "unit": "tk"
+      },
+      {
+        "group": "Täide",
+        "name": "sibul",
+        "notes": "Keskmise suurusega",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "group": "Täide",
+        "name": "kreeka jogurt",
+        "notes": "Võib olla ka nt hapukoor",
+        "quantity": "500",
+        "unit": "g"
+      },
+      {
+        "group": "Täide",
+        "name": "cheddar juust",
+        "notes": "",
+        "quantity": "150",
+        "unit": "g"
+      },
+      {
+        "group": "Täide",
+        "name": "mozzarella",
+        "notes": "",
+        "quantity": "120",
+        "unit": "g"
+      }
+    ],
+    "instructions": [
+      {
+        "description": "Pese kana külma vee all ja kontrolli, et poleks luu tükke liha küljes. Lase näppude vahelt läbi.",
+        "step": 1
+      },
+      {
+        "description": "Lisa potti kana (võid eelnevalt tükeldada, et küpseks kiiremini), peenestatud küüslauk, sool, puljong, pipar, laimi mahl, taco maitseainesegu.",
+        "step": 2
+      },
+      {
+        "description": "Sega läbi ja seejärel kuumuta keemiseni.",
+        "step": 3
+      },
+      {
+        "description": "Hauta 3-4 tundi kuni kõik on pehme ja segades saab ühtlane mass (ei ole enam kana tükke pärast läbi segamist).",
+        "step": 4
+      },
+      {
+        "description": "Lisa riis ja vajadusel vesi. Riisi-vedeliku vahekord peaks olema ca 1,5 ühikut vedelikku 1 ühiku riisi kohta. Arvesta ka vedelikuga kastmes.",
+        "step": 5
+      },
+      {
+        "description": "Hauta veel ca 20-30 minutit, kuni riis on pehme.",
+        "step": 6
+      },
+      {
+        "description": "Samal ajal kui lisatud riis haudub, tükelda kuubikuteks tomat, sibul, jalopeno ja kui soovid veel mingeid lemmikköögivilju lisada.",
+        "step": 7
+      },
+      {
+        "description": "Kui riis on pehme, lisa tükeldatud köögiviljad, kreeka jogurt, riivitud chedder ja mozarella juust ning sega kõik hoolega läbi.",
+        "step": 8
+      },
+      {
+        "description": "Nüüd jaga kogus tortillade vahel ja keera need kokku. Näiteks kõigepalt keera külgedelt tortilla veidi segu peale, siis tagant ning seejärel rulli kokku.",
+        "step": 9
+      },
+      {
+        "description": "Külmutamiseks paki hõbe- või küpsetuspaberisse ja pane sügavkülma. Lase kindlasti enne toatemperatuurile jahtuda kui sügavkülma paned! Võid ka jahutada tavakülmikus, et vältida jää tekkimist sügavkülma.",
+        "step": 10
+      }
+    ],
+    "prepTime": 40,
+    "servings": 20,
+    "tags": ["sügavkülma", "kana", "riis", "burrito"],
+    "title": "Juustune kana-riisi wrap",
+    "updatedAt": "2024-08-02T18:01:45.927Z"
+  },
+  {
+    "author": "Raivo",
+    "cookTime": 20,
+    "createdAt": "",
+    "description": "Maitsev ja rikkalik Mac'n'Cheese burrito veiselihaga, mis ühendab grillitud liha ja juustuse pasta.",
+    "id": 2,
+    "images": [
+      "data:image/jpeg;base64,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"
+    ],
+    "ingredients": [
+      {
+        "group": "Marinaad",
+        "name": "apelsini mahl",
+        "notes": "",
+        "quantity": "240",
+        "unit": "ml"
+      },
+      {
+        "group": "Marinaad",
+        "name": "sojakaste",
+        "notes": "",
+        "quantity": "120",
+        "unit": "ml"
+      },
+      {
+        "group": "Marinaad",
+        "name": "laimimahl",
+        "notes": "3 laimi mahl",
+        "quantity": "1.5",
+        "unit": "spl"
+      },
+      {
+        "group": "Marinaad",
+        "name": "küüslauk",
+        "notes": "",
+        "quantity": "12",
+        "unit": "küünt"
+      },
+      {
+        "group": "Marinaad",
+        "name": "jahvatatud köömned",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Marinaad",
+        "name": "sool",
+        "notes": "Tegelikult maitse järgi - arvesta teiste toiduainete soolasisaldusega",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Marinaad",
+        "name": "must pipar",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Marinaad",
+        "name": "sibul",
+        "notes": "",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "group": "Marinaad",
+        "name": "tšilli kaun",
+        "notes": "",
+        "quantity": "3",
+        "unit": "tk"
+      },
+      {
+        "group": "Marinaad",
+        "name": "chipotle adobo kaste",
+        "notes": "Võib ka mitte lisada kui pole saada",
+        "quantity": "220",
+        "unit": "ml"
+      },
+      {
+        "group": "Marinaad",
+        "name": "mesi",
+        "notes": "",
+        "quantity": "40",
+        "unit": "g"
+      },
+      {
+        "group": "Marinaad",
+        "name": "avokaadoõli",
+        "notes": "Võib kasutada ka nt oliiviõli",
+        "quantity": "30",
+        "unit": "g"
+      },
+      {
+        "group": "Marinaad",
+        "name": "koriander",
+        "notes": "Üks kimp. Kui koriander ei maitse, nagu mulle, siis võib ära jätta.",
+        "quantity": "1",
+        "unit": "tk"
+      },
+      {
+        "group": "Liha",
+        "name": "veiseliha",
+        "notes": "Näitekeks flank steak vm vähem läbikasvanud tükk",
+        "quantity": "2000",
+        "unit": "g"
+      },
+      {
+        "group": "",
+        "name": "pasta",
+        "notes": "Kuiv kaal. Mõni lühem ja väikse makaronisort nt mini penne, sedanini rigati vms",
+        "quantity": "500",
+        "unit": "g"
+      },
+      {
+        "group": "Juustune kaste",
+        "name": "määrdejuust",
+        "notes": "Ligikaudne kogus - võib ka rohkem",
+        "quantity": "275",
+        "unit": "g"
+      },
+      {
+        "group": "Juustune kaste",
+        "name": "cheddar juust",
+        "notes": "",
+        "quantity": "300",
+        "unit": "g"
+      },
+      {
+        "group": "Juustune kaste",
+        "name": "piim",
+        "notes": "",
+        "quantity": "240",
+        "unit": "ml"
+      },
+      {
+        "group": "Juustune kaste",
+        "name": "sool",
+        "notes": "maitse järgi",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "group": "Juustune kaste",
+        "name": "must pipar",
+        "notes": "maitse järgi",
+        "quantity": "",
+        "unit": ""
+      },
+      {
+        "group": "Creamy carne asada sauce",
+        "name": "kreeka jogurt",
+        "notes": "madala rasvasisaldusega",
+        "quantity": "200",
+        "unit": "g"
+      },
+      {
+        "group": "Creamy carne asada sauce",
+        "name": "piim",
+        "notes": "Kuni soovitud konsistentsini",
+        "quantity": "30",
+        "unit": "ml"
+      },
+      {
+        "group": "Pakkimine",
+        "name": "tortilla",
+        "notes": "Ligikaudne suurus 25cm",
+        "quantity": "20",
+        "unit": "tk"
+      }
+    ],
+    "instructions": [
+      {
+        "description": "Püreesta marinaadi koostisosad blenderis ühtlaseks massiks.",
+        "step": 1
+      },
+      {
+        "description": "Vasarda liha ja maitsesta soolaga.",
+        "step": 2
+      },
+      {
+        "description": "Kata liha ca 70% marinaadiga (ülejäänud marinaad pane külmikusse ja säilita eraldi hilisemaks) ja hoia üleöö külmikus fooliumi all.",
+        "step": 3
+      },
+      {
+        "description": "Küpseta liha grillil või pannil 3-4 minutit.",
+        "step": 4
+      },
+      {
+        "description": "Viiluta liha õhukesteks, suupärasteks tükkideks kaussi. Lisa tükkidele enamik alles jäänud marinaad ja sega hoolikalt läbi kuni kõik tükid on marinaadised.",
+        "step": 5
+      },
+      {
+        "description": "Keeda pasta.",
+        "step": 6
+      },
+      {
+        "description": "Valmista juustukaste ja lisa see pastale.",
+        "step": 7
+      },
+      {
+        "description": "Lisa liha ja keera kõik kokku burritoks.",
+        "step": 9
+      },
+      {
+        "description": "Valmista kreemjas kaste piimast, veel üle jäänud marinaadist ja kreeka jogurtist. Lisa veidi iga burrito sisse.",
+        "step": 8
+      },
+      {
+        "description": "Külmutamiseks paki hõbe- või küpsetuspaberisse ja pane sügavkülma. Lase kindlasti enne toatemperatuurile jahtuda kui sügavkülma paned! Võid ka jahutada tavakülmikus, et vältida jää tekkimist sügavkülma.",
+        "step": 10
+      }
+    ],
+    "prepTime": 720,
+    "servings": 20,
+    "tags": ["burrito", "carne asada", "Mac'n'Cheese", "sügavkülma"],
+    "title": "Mac'n'Cheese burritod veiselihaga",
+    "updatedAt": "2024-08-02T17:55:18.117Z"
+  },
+  {
+    "author": "Raivo",
+    "cookTime": 45,
+    "createdAt": "",
+    "description": "Ideaalne kiireks ja maitsvaks eineks.",
+    "id": 3,
+    "images": [
+      "https://parimadretseptid.ee/wp-content/uploads/2023/06/Burrito-veiselihaga-retsept.jpg"
+    ],
+    "ingredients": [
+      {
+        "group": "Pakkimine",
+        "name": "tortilla",
+        "notes": "Ligikaudne suurus 25cm",
+        "quantity": "20",
+        "unit": "tk"
+      },
+      {
+        "group": "Liha",
+        "name": "veisehakkliha",
+        "notes": "",
+        "quantity": "1500",
+        "unit": "g"
+      },
+      {
+        "group": "Maitseained",
+        "name": "sool",
+        "notes": "Maitse järgi - arvesta teiste toiduainete soolasisaldusega",
+        "quantity": "1.5",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "sibul",
+        "notes": "Keskmise suurusega",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "group": "Maitseained",
+        "name": "küüslauk",
+        "notes": "",
+        "quantity": "2",
+        "unit": "küünt"
+      },
+      {
+        "group": "Maitseained",
+        "name": "jahvatatud paprika",
+        "notes": "",
+        "quantity": "1.5",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "tšillipulber",
+        "notes": "",
+        "quantity": "0.5",
+        "unit": "spl"
+      },
+      {
+        "group": "Kaste",
+        "name": "punane enchilada kaste või tacokaste",
+        "notes": "Võib kasutada nt punast väheteravat tacokastet",
+        "quantity": "200",
+        "unit": "g"
+      },
+      {
+        "group": "Täide",
+        "name": "kreeka jogurt",
+        "notes": "",
+        "quantity": "400",
+        "unit": "g"
+      },
+      {
+        "group": "Pico de gallo",
+        "name": "tomat",
+        "notes": "tükeldatud",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "group": "Pico de gallo",
+        "name": "sibul",
+        "notes": "tükeldatud",
+        "quantity": "0.5",
+        "unit": "tk"
+      },
+      {
+        "group": "Pico de gallo",
+        "name": "jalopeno",
+        "notes": "tükeldatud",
+        "quantity": "1",
+        "unit": "tk"
+      },
+      {
+        "group": "Pico de gallo",
+        "name": "laimi mahl",
+        "notes": "",
+        "quantity": "0.5",
+        "unit": "spl"
+      },
+      {
+        "group": "Täide",
+        "name": "cheddar juust",
+        "notes": "Riivitud",
+        "quantity": "280",
+        "unit": "g"
+      },
+      {
+        "group": "Täide",
+        "name": "tšilli",
+        "notes": "",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "group": "Täide",
+        "name": "riis",
+        "notes": "Kuivkaal",
+        "quantity": "200",
+        "unit": "g"
+      },
+      {
+        "group": "Täide",
+        "name": "mesi",
+        "notes": "",
+        "quantity": "40",
+        "unit": "g"
+      },
+      {
+        "group": "Täide",
+        "name": "veiselihapuljong",
+        "notes": "FoodStudio",
+        "quantity": "350",
+        "unit": "ml"
+      }
+    ],
+    "instructions": [
+      {
+        "description": "Pruunista pannil sibul ja peenestatud küüslauk. Võta need pannilt ja siis pruunista samal pannil hakkliha.",
+        "step": 1
+      },
+      {
+        "description": "Lisa pruunistatud hakklihale maitseained ja punane enchilada või taco kaste ning veiselihapuljong ja lase keema. Sega korralikult.",
+        "step": 2
+      },
+      {
+        "description": "Lisa segule riis ja kuumuta kuni riis on pehme ning enamik vedelikku kadunud.",
+        "step": 3
+      },
+      {
+        "description": "Lisa segule kreeka jogurt, pico de gallo, cheddar juust, tükeldatud tšillid ja mesi. Sega korralikult.",
+        "step": 4
+      },
+      {
+        "description": "Jahuta segu toatemperatuurini.",
+        "step": 5
+      },
+      {
+        "description": "Pane segu tortilladele ja rulli burritodeks.",
+        "step": 6
+      },
+      {
+        "description": "Külmutamiseks paki hõbe- või küpsetuspaberisse ja pane sügavkülma. Lase kindlasti enne toatemperatuurile jahtuda kui sügavkülma paned! Võid ka jahutada tavakülmikus, et vältida jää tekkimist sügavkülma.",
+        "step": 7
+      }
+    ],
+    "prepTime": 30,
+    "servings": 12,
+    "tags": ["veiseliha", "burrito", "sügavkülma"],
+    "title": "Veiselihaga queso burrito",
+    "updatedAt": "2024-08-02T18:05:37.970Z"
+  },
+  {
+    "author": "Raivo",
+    "cookTime": 480,
+    "createdAt": "",
+    "description": "Maitsvad Quesabirria burritod, täis rikkalikku veiseliha ja vürtsikat kastet.",
+    "id": 4,
+    "images": [
+      "https://www.mashed.com/img/gallery/we-tried-qdobas-new-quesabirria-burrito-and-quesadilla-they-bring-new-meaning-to-the-word-filling/whats-in-qdobas-new-quesabirria-burritos-and-quesadillas-1667525402.jpg"
+    ],
+    "ingredients": [
+      {
+        "group": "Pakkimine",
+        "name": "tortilla",
+        "notes": "Ligikaudne suurus 25cm",
+        "quantity": "20",
+        "unit": "tk"
+      },
+      {
+        "group": "Kaste",
+        "name": "sibul",
+        "notes": "tükeldatud",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "group": "Kaste",
+        "name": "küüslauk",
+        "notes": "purustatud",
+        "quantity": "10",
+        "unit": "küünt"
+      },
+      {
+        "group": "Kaste",
+        "name": "avokaadoõli",
+        "notes": "võib asendada oliiviõliga",
+        "quantity": "20",
+        "unit": "g"
+      },
+      {
+        "group": "Kaste",
+        "name": "tšilli",
+        "notes": "eemaldatud varred ja seemned",
+        "quantity": "10",
+        "unit": "tk"
+      },
+      {
+        "group": "Kaste",
+        "name": "veisepuljong",
+        "notes": "Foodstudio",
+        "quantity": "750",
+        "unit": "ml"
+      },
+      {
+        "group": "Kaste",
+        "name": "vesi",
+        "notes": "",
+        "quantity": "1",
+        "unit": "klaasi"
+      },
+      {
+        "group": "Maitseained",
+        "name": "sool",
+        "notes": "Maitse järgi - arvesta teiste toiduainete soolasisaldusega",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "jahvatatud köömned",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "kuivatatud pune",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "must pipar",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "paprika pulber",
+        "notes": "",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "Maitseained",
+        "name": "õunaäädikas",
+        "notes": "",
+        "quantity": "90",
+        "unit": "ml"
+      },
+      {
+        "group": "Maitseained",
+        "name": "purustatud tomatid või punane enchilada kaste",
+        "notes": "",
+        "quantity": "240",
+        "unit": "ml"
+      },
+      {
+        "group": "Liha",
+        "name": "veiseliha",
+        "notes": "Võib kasutada nt böfstrooganovi liha",
+        "quantity": "2000",
+        "unit": "g"
+      },
+      {
+        "group": "Maitseained",
+        "name": "loorberilehed",
+        "notes": "",
+        "quantity": "3",
+        "unit": "tk"
+      },
+      {
+        "group": "Täidis",
+        "name": "riis",
+        "notes": "kuivkaal",
+        "quantity": "400",
+        "unit": "g"
+      },
+      {
+        "group": "Täidis",
+        "name": "mozzarella",
+        "notes": "",
+        "quantity": "500",
+        "unit": "g"
+      },
+      {
+        "group": "Täidis",
+        "name": "kreeka jogurt või hapukoor",
+        "notes": "",
+        "quantity": "200",
+        "unit": "g"
+      },
+      {
+        "group": "Täidis",
+        "name": "sibul",
+        "notes": "tükeldatud",
+        "quantity": "2",
+        "unit": "tk"
+      }
+    ],
+    "instructions": [
+      {
+        "description": "Tükelda ja pruunista sibul õlis. Lisa peenestatud küüslauk, peenestatud tšilli, puljong ja vesi. Aja keema. Kuna lähevad blendrisse, sisi tükid ei pea olema väikesed.",
+        "step": 1
+      },
+      {
+        "description": "Blenderda koos purustatud tomatite või punase enchilada kastme, õunaäädika ja maitseainetega.",
+        "step": 2
+      },
+      {
+        "description": "Pane liha slow cookerisse või potti hauduma ja lisa blendertatud kaste peale. Lisa loorberilehed ja hauta ca 5 tundi madalal kuumusel kuni liha muutub segades massiks.",
+        "step": 3
+      },
+      {
+        "description": "Eemalda loorberilehed. Tükelda veiseliha ja lisa see tagasi kastmesse.",
+        "step": 4
+      },
+      {
+        "description": "Keeda riis vastavalt pakendi juhistele ja sega see burrito täidisega.",
+        "step": 5
+      },
+      {
+        "description": "Rulli täidis tortilladesse.",
+        "step": 6
+      },
+      {
+        "description": "Külmutamiseks paki hõbe- või küpsetuspaberisse ja pane sügavkülma. Lase kindlasti enne toatemperatuurile jahtuda kui sügavkülma paned! Võid ka jahutada tavakülmikus, et vältida jää tekkimist sügavkülma.",
+        "step": 7
+      }
+    ],
+    "prepTime": 20,
+    "servings": 18,
+    "tags": ["burrito", "veiseliha", "sügavkülma"],
+    "title": "Quesabirria burritod",
+    "updatedAt": "2024-08-02T17:58:25.644Z"
+  },
+  {
+    "author": "Raivo",
+    "cookTime": 30,
+    "createdAt": "",
+    "description": "Suitsupeekon annab argipäevasele lihtsale hakkliha-köögiviljasupile meeldivalt hõrgu suitsumaitse.",
+    "id": 5,
+    "images": ["https://p.ohtuleht.ee/59/i/2009/2/2/gkmyixff.4az.jpg"],
+    "ingredients": [
+      {
+        "group": "Puljong",
+        "name": "vesi",
+        "notes": "",
+        "quantity": "1.5",
+        "unit": "l"
+      },
+      {
+        "group": "Puljong",
+        "name": "veiselihapuljong",
+        "notes": "Foodstudio",
+        "quantity": "750",
+        "unit": "ml"
+      },
+      {
+        "group": "Köögiviljad",
+        "name": "porgand",
+        "notes": "keskmise suurusega",
+        "quantity": "3",
+        "unit": "tk"
+      },
+      {
+        "group": "Köögiviljad",
+        "name": "kartul",
+        "notes": "keskmise suurusega",
+        "quantity": "5",
+        "unit": "tk"
+      },
+      {
+        "group": "",
+        "name": "suitsupeekon",
+        "notes": "",
+        "quantity": "300",
+        "unit": "g"
+      },
+      {
+        "group": "",
+        "name": "veisehakkliha",
+        "notes": "",
+        "quantity": "900",
+        "unit": "g"
+      },
+      {
+        "group": "Maitseained",
+        "name": "must pipar",
+        "notes": "purustatud",
+        "quantity": "1",
+        "unit": "spl"
+      },
+      {
+        "group": "",
+        "name": "uba",
+        "notes": "konserv, red kidney beans, 300g?",
+        "quantity": "1",
+        "unit": "konserv"
+      }
+    ],
+    "instructions": [
+      {
+        "description": "Tükelda ja prae peekon. Aseta kõrvale, eraldunud rasv eemalda",
+        "step": 1
+      },
+      {
+        "description": "Samal pannil pruunista hakkliha",
+        "step": 2
+      },
+      {
+        "description": "Koori ja tükelda väikesteks tükkideks köögiviljad.",
+        "step": 3
+      },
+      {
+        "description": "Lisa potti vesi ja köögiviljad ning aja keema.",
+        "step": 4
+      },
+      {
+        "description": "Lisa puljong, hakkliha, peekon, oad ja maitsesta soola-pipraga. NB! Soola panemisel avsta, et peekon võib olla juba soolane!",
+        "step": 5
+      },
+      {
+        "description": "Hauta tasasel tulel, kuni köögiviljad on pehmed.",
+        "step": 6
+      },
+      {
+        "description": "Puista serveerimisel üle maitserohelisega, supi keskele pane veidi hapukoort.",
+        "step": 7
+      }
+    ],
+    "prepTime": 15,
+    "servings": 10,
+    "tags": ["supp", "hakkliha", "peekon", "kiire"],
+    "title": "Kiire hakklihasupp peekoniga",
+    "updatedAt": "2024-08-02T17:58:56.896Z"
+  }
+]

@@ -66,17 +66,19 @@ const RecipeProvider = ({ children }) => {
 
   const updateExistingRecipe = async (updatedRecipe) => {
     try {
-      const index = recipes.findIndex(
+      const allRecipes = await fetchRecipes();
+      const index = allRecipes.findIndex(
         (recipe) => recipe.id === updatedRecipe.id
       );
       if (index === -1) throw new Error(t("recipeNotFound"));
 
-      const updatedRecipes = recipes.map((recipe, i) =>
+      const updatedRecipes = allRecipes.map((recipe, i) =>
         i === index ? { ...recipe, ...updatedRecipe } : recipe
       );
 
       const newRecipes = await updateRecipes(updatedRecipes);
       setRecipes(newRecipes);
+      setError(null);
     } catch (error) {
       console.error(t("errors.updatingRecipes"), error);
       setError(t("errors.updatingRecipes"));

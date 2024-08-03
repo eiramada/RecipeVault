@@ -6,25 +6,75 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "talisibul", "quantity": 4, "unit": "tk", "notes": "" },
-      { "name": "porgandit", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "sellerit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "toorvorstikesi", "quantity": 400, "unit": "g", "notes": "" },
-      { "name": "penne", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "palsamiäädikat", "quantity": 4, "unit": "spl", "notes": "" },
-      { "name": "tšilli", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "fenkoliseemneid", "quantity": 1, "unit": "tl", "notes": "" }
+      {
+        "name": "talisibul",
+        "quantity": "4",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sellerit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "toorvorstikesi",
+        "quantity": "400",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "penne",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "palsamiäädikat",
+        "quantity": "4",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "tšilli",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "fenkoliseemneid",
+        "quantity": "1",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
-      { "step": 1, "description": "2 küünt küüslauku", "images": [] }
+      {
+        "step": 1,
+        "description": "2 küünt küüslauku",
+        "images": []
+      }
     ]
   },
   {
@@ -34,25 +84,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "sibulat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "aedube", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "kanarinnafileed", "quantity": 2, "unit": "tk", "notes": "" },
+      {
+        "name": "sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "aedube",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanarinnafileed",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "kookospähkli või oliiviõli",
-        "quantity": 2,
+        "quantity": "2",
         "unit": "sl",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "kookospiima", "quantity": 415, "unit": "ml", "notes": "" },
-      { "name": "basiilikut", "quantity": 12, "unit": "tk", "notes": "" }
+      {
+        "name": "kookospiima",
+        "quantity": "415",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "basiilikut",
+        "quantity": "12",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
       {
@@ -80,7 +159,11 @@
         "description": "Aja keema, seejärel vahenda kuumust ja lase haududa 10 minutit.",
         "images": []
       },
-      { "step": 6, "description": "Vajadusel lisa maitseaineid.", "images": [] }
+      {
+        "step": 6,
+        "description": "Vajadusel lisa maitseaineid.",
+        "images": []
+      }
     ]
   },
   {
@@ -90,25 +173,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "pruune konservube",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "purg",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "paprikat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "värske koriander", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "sidruni mahla", "quantity": 0.25, "unit": "tk", "notes": "" },
-      { "name": "soola", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "pipart", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "paprikat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "värske koriander",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sidruni mahla",
+        "quantity": "0.25",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "soola",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pipart",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
       {
@@ -125,20 +237,25 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "linaseemneid", "quantity": 1, "unit": "tk", "notes": "" },
+      {
+        "name": "linaseemneid",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "päevalille ja kõrvitsaseemneid",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "tk",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": [
@@ -166,35 +283,40 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "kooritud ja südamikuta ananassi",
-        "quantity": 300,
+        "quantity": "300",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "päevalilleseemneid või seesamiseemneid",
-        "quantity": 2,
+        "quantity": "2",
         "unit": "sl",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "hakitut piparmündilehti",
-        "quantity": 0.5,
+        "quantity": "0.5",
         "unit": "peotäit",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": [
-      { "step": 1, "description": "Sega kõik kokku mõnnalt", "images": [] }
+      {
+        "step": 1,
+        "description": "Sega kõik kokku mõnnalt",
+        "images": []
+      }
     ]
   },
   {
@@ -204,20 +326,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "paprikat", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "porgandit", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "kurki", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "kirsstomatit", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "hummust", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "näkileiba", "quantity": 1, "unit": "kogus", "notes": "" }
+      {
+        "name": "paprikat",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kurki",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kirsstomatit",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "hummust",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "näkileiba",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -228,26 +384,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kurki", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "avokaadot", "quantity": 1, "unit": "tk", "notes": "" },
+      {
+        "name": "kurki",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "avokaadot",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "beebispinatit",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "peotäis",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "soola", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "pipart", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "sidrunimahla", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "oliiviõli", "quantity": 1, "unit": "kogus", "notes": "" }
+      {
+        "name": "soola",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pipart",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sidrunimahla",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "oliiviõli",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -258,21 +449,26 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "puuvilja (pirn/õun/kiivi/greip/apelsin)",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "tk",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "mandleid", "quantity": 1, "unit": "peotäis", "notes": "" }
+      {
+        "name": "mandleid",
+        "quantity": "1",
+        "unit": "peotäis",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -283,21 +479,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "suur sibulat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "porgandit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "punane paprika", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "roheline paprika", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "kalkunihakkliha", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "vett", "quantity": 1, "unit": "dl", "notes": "" },
-      { "name": "küünt küüslauku", "quantity": 2, "unit": "tk", "notes": "" }
+      {
+        "name": "suur sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punane paprika",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "roheline paprika",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kalkunihakkliha",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vett",
+        "quantity": "1",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küünt küüslauku",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
       {
@@ -305,7 +541,11 @@
         "description": "Koori ja viiluta porgand ja sibul.",
         "images": []
       },
-      { "step": 2, "description": "Puhasta ja tükelda seemned.", "images": [] },
+      {
+        "step": 2,
+        "description": "Puhasta ja tükelda seemned.",
+        "images": []
+      },
       {
         "step": 3,
         "description": "Aja poti põhjas õli kuumaks ja pruunista hakkliha.",
@@ -321,7 +561,11 @@
         "description": "Seejärel lisa vesi ja purusta küüslauk, hauta 10-15 minutit.",
         "images": []
       },
-      { "step": 6, "description": "Maitsesta soola-pipraga.", "images": [] },
+      {
+        "step": 6,
+        "description": "Maitsesta soola-pipraga.",
+        "images": []
+      },
       {
         "step": 7,
         "description": "Serveeri riisi või millegi muuga.",
@@ -336,30 +580,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "kõrvenõgeselehti",
-        "quantity": 2,
+        "quantity": "2",
         "unit": "peotäit",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "hakitut murulauku", "quantity": 2, "unit": "sl", "notes": "" },
-      { "name": "petersellilehti", "quantity": 1, "unit": "sl", "notes": "" },
+      {
+        "name": "hakitut murulauku",
+        "quantity": "2",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "petersellilehti",
+        "quantity": "1",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "purustatud pähkleid",
-        "quantity": 2,
+        "quantity": "2",
         "unit": "sl",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "oliiviõli", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "sidrunimahla", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "oliiviõli",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sidrunimahla",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
       {
@@ -376,22 +644,33 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "külmutatud herneid",
-        "quantity": 800,
+        "quantity": "800",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "kanapuljong", "quantity": 750, "unit": "ml", "notes": "" },
-      { "name": "saia", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "kanapuljong",
+        "quantity": "750",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "saia",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -402,21 +681,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "lipsupastat", "quantity": 400, "unit": "g", "notes": "" },
-      { "name": "vett", "quantity": 1, "unit": "l", "notes": "" },
-      { "name": "suhkruhernekaunu", "quantity": 130, "unit": "g", "notes": "" },
-      { "name": "krevette", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "kirsstomateid", "quantity": 150, "unit": "g", "notes": "" },
-      { "name": "teriyaki kastet", "quantity": 50, "unit": "ml", "notes": "" },
-      { "name": "laimimahla", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "lipsupastat",
+        "quantity": "400",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vett",
+        "quantity": "1",
+        "unit": "l",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suhkruhernekaunu",
+        "quantity": "130",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "krevette",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kirsstomateid",
+        "quantity": "150",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "teriyaki kastet",
+        "quantity": "50",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "laimimahla",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -427,21 +746,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kana rinnafilee", "quantity": 240, "unit": "g", "notes": "" },
-      { "name": "muna", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "nisujahu", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "maisihelbeid", "quantity": 1, "unit": "pakk", "notes": "" },
-      { "name": "soola", "quantity": 2, "unit": "tl", "notes": "" },
-      { "name": "pipart", "quantity": 1, "unit": "tl", "notes": "" },
-      { "name": "õli", "quantity": 2, "unit": "spl", "notes": "" }
+      {
+        "name": "kana rinnafilee",
+        "quantity": "240",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "muna",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "nisujahu",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "maisihelbeid",
+        "quantity": "1",
+        "unit": "pakk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "soola",
+        "quantity": "2",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pipart",
+        "quantity": "1",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "õli",
+        "quantity": "2",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -452,33 +811,75 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "veiselihastrooganov",
-        "quantity": 450,
+        "quantity": "450",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "sibulat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "küüslauku", "quantity": 1, "unit": "küünt", "notes": "" },
-      { "name": "suitsupeekonit", "quantity": 50, "unit": "g", "notes": "" },
-      { "name": "maisijahu", "quantity": 2, "unit": "spl", "notes": "" },
+      {
+        "name": "sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küüslauku",
+        "quantity": "1",
+        "unit": "küünt",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suitsupeekonit",
+        "quantity": "50",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "maisijahu",
+        "quantity": "2",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "veiselihapuljongit",
-        "quantity": 350,
+        "quantity": "350",
         "unit": "ml",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "pomit", "quantity": 0.25, "unit": "kg", "notes": "" },
-      { "name": "rõõsk koort", "quantity": 2, "unit": "dl", "notes": "" },
-      { "name": "hapukoort", "quantity": 1, "unit": "spl", "notes": "" }
+      {
+        "name": "pomi",
+        "quantity": "0.25",
+        "unit": "kg",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "rõõsk koor",
+        "quantity": "2",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "hapukoor",
+        "quantity": "1",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -489,26 +890,67 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kanakintsuliha", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "loorberilehte", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "kartulit", "quantity": 4, "unit": "tk", "notes": "" },
-      { "name": "porgandit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "muna", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "jahu", "quantity": 2, "unit": "sl", "notes": "" },
-      { "name": "beebispinatit", "quantity": 50, "unit": "g", "notes": "" },
+      {
+        "name": "kanakintsuliha",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "loorberileht",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kartul",
+        "quantity": "4",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgand",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "muna",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "jahu",
+        "quantity": "2",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "beebispinat",
+        "quantity": "50",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "külmutatud herneid",
-        "quantity": 100,
+        "quantity": "100",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": []
@@ -520,22 +962,33 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "külmutatud herneid",
-        "quantity": 800,
+        "quantity": "800",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "kanapuljong", "quantity": 750, "unit": "ml", "notes": "" },
-      { "name": "saia", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "kanapuljong",
+        "quantity": "750",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "saia",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -546,21 +999,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://omamaitse.delfi.ee/artikkel/85017561/10-nutikat-ideed-mida-teha-krevettidest",
     "ingredients": [
-      { "name": "lipsupastat", "quantity": 400, "unit": "g", "notes": "" },
-      { "name": "vett", "quantity": 1, "unit": "l", "notes": "" },
-      { "name": "suhkruhernekaunu", "quantity": 130, "unit": "g", "notes": "" },
-      { "name": "krevette", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "kirsstomateid", "quantity": 150, "unit": "g", "notes": "" },
-      { "name": "teriyaki kastet", "quantity": 50, "unit": "ml", "notes": "" },
-      { "name": "laimimahla", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "lipsupastat",
+        "quantity": "400",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vett",
+        "quantity": "1",
+        "unit": "l",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suhkruhernekaunu",
+        "quantity": "130",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "krevette",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kirsstomateid",
+        "quantity": "150",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "teriyaki kastet",
+        "quantity": "50",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "laimimahla",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -571,27 +1064,68 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://www.linnuliha.ee/retseptid/panniroog-kanaga/",
     "ingredients": [
       {
         "name": "jahutatud kanakintsuliha",
-        "quantity": 550,
+        "quantity": "550",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "kartulit", "quantity": 15, "unit": "tk", "notes": "" },
-      { "name": "oliiviõli", "quantity": 5, "unit": "sl", "notes": "" },
-      { "name": "võid", "quantity": 2, "unit": "sl", "notes": "" },
-      { "name": "küünt küüslauku", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "kanapuljongit", "quantity": 350, "unit": "ml", "notes": "" },
-      { "name": "sinepit", "quantity": 2, "unit": "sl", "notes": "" },
-      { "name": "vahukoort", "quantity": 2, "unit": "dl", "notes": "" }
+      {
+        "name": "kartulit",
+        "quantity": "15",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "oliiviõli",
+        "quantity": "5",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "võid",
+        "quantity": "2",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küünt küüslauku",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanapuljongit",
+        "quantity": "350",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sinepit",
+        "quantity": "2",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vahukoort",
+        "quantity": "2",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -602,24 +1136,47 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "veiselihapuljong",
-        "quantity": 750,
+        "quantity": "750",
         "unit": "ml",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "porgandit", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "kartulit", "quantity": 5, "unit": "tk", "notes": "" },
-      { "name": "suitsupeekonit", "quantity": 400, "unit": "g", "notes": "" },
-      { "name": "veisehakkliha", "quantity": 400, "unit": "g", "notes": "" }
+      {
+        "name": "porgandit",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kartulit",
+        "quantity": "5",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suitsupeekonit",
+        "quantity": "400",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "veisehakkliha",
+        "quantity": "400",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -630,27 +1187,68 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "veiselihastrooganov",
-        "quantity": 450,
+        "quantity": "450",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "paprikat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "austrikastet", "quantity": 3, "unit": "spl", "notes": "" },
-      { "name": "sojakastet", "quantity": 3, "unit": "spl", "notes": "" },
-      { "name": "seesamiseemneid", "quantity": 2, "unit": "spl", "notes": "" },
-      { "name": "maisitärklist", "quantity": 1, "unit": "tl", "notes": "" },
-      { "name": "riisi", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "küünt küüslauku", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "paprikat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "austrikastet",
+        "quantity": "3",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sojakastet",
+        "quantity": "3",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "seesamiseemneid",
+        "quantity": "2",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "maisitärklist",
+        "quantity": "1",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "riisi",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küünt küüslauku",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -661,21 +1259,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kanakintsuliha", "quantity": 0.5, "unit": "kg", "notes": "" },
-      { "name": "kanarinnafilee", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "loorberilehte", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "kanapuljongit", "quantity": 750, "unit": "ml", "notes": "" },
-      { "name": "porgandit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "kartulit", "quantity": 4, "unit": "tk", "notes": "" },
-      { "name": "ramen nuudleid", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "kanakintsuliha",
+        "quantity": "0.5",
+        "unit": "kg",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanarinnafilee",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "loorberilehte",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanapuljongit",
+        "quantity": "750",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kartulit",
+        "quantity": "4",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "ramen nuudleid",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -686,27 +1324,74 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "veisehakkliha", "quantity": 300, "unit": "g", "notes": "" },
-      { "name": "tšillihelbeid", "quantity": 1, "unit": "tl", "notes": "" },
-      { "name": "tomatipastat", "quantity": 1, "unit": "sl", "notes": "" },
-      { "name": "muna", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "punaseid läätsi", "quantity": 50, "unit": "g", "notes": "" },
-      { "name": "kirsstomateid", "quantity": 250, "unit": "g", "notes": "" },
-      { "name": "avokaadot", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "redist", "quantity": 8, "unit": "tk", "notes": "" },
+      {
+        "name": "veisehakkliha",
+        "quantity": "300",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "tšillihelbeid",
+        "quantity": "1",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "tomatipastat",
+        "quantity": "1",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "muna",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punaseid läätsi",
+        "quantity": "50",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kirsstomateid",
+        "quantity": "250",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "avokaadot",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "redist",
+        "quantity": "8",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "röstitud päevalilleseemneid",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "sl",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": []
@@ -718,22 +1403,33 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "lihakat viinerit",
-        "quantity": 2,
+        "quantity": "2",
         "unit": "karpi",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "peekonit", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "pitsamaitseainet", "quantity": 2, "unit": "spl", "notes": "" }
+      {
+        "name": "peekonit",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pitsamaitseainet",
+        "quantity": "2",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -744,26 +1440,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "seaguljašš", "quantity": 1, "unit": "kg", "notes": "" },
-      { "name": "sibulat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "nisujahu", "quantity": 3, "unit": "spl", "notes": "" },
+      {
+        "name": "seaguljašš",
+        "quantity": "1",
+        "unit": "kg",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "nisujahu",
+        "quantity": "3",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "veiselihapuljongit",
-        "quantity": 350,
+        "quantity": "350",
         "unit": "ml",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "pomit", "quantity": 3, "unit": "spl", "notes": "" },
-      { "name": "paprikapulbrit", "quantity": 1, "unit": "tl", "notes": "" },
-      { "name": "õli", "quantity": 3, "unit": "spl", "notes": "" }
+      {
+        "name": "pomit",
+        "quantity": "3",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "paprikapulbrit",
+        "quantity": "1",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "õli",
+        "quantity": "3",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -774,29 +1505,53 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://www.linnuliha.ee/retseptid/koorene-kanapasta/",
     "ingredients": [
       {
         "name": "jahutatud broilerifilee",
-        "quantity": 400,
+        "quantity": "400",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "spagette", "quantity": 300, "unit": "g", "notes": "" },
-      { "name": "suitsupeekonit", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "murulauku", "quantity": 3, "unit": "sl", "notes": "" },
-      { "name": "vahukoort", "quantity": 1.5, "unit": "dl", "notes": "" },
+      {
+        "name": "spagette",
+        "quantity": "300",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suitsupeekonit",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "murulauku",
+        "quantity": "3",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vahukoort",
+        "quantity": "1.5",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "tugevamaitselist juustu",
-        "quantity": 100,
+        "quantity": "100",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": []
@@ -808,22 +1563,68 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://toitumine.ee/wp-content/uploads/2015/09/Retseptid_mis_aitavad_sul_tervislikult_toituda_est.pdf",
     "ingredients": [
-      { "name": "kanakints", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "hakitud sibulat", "quantity": 1, "unit": "dl", "notes": "" },
-      { "name": "küünt küüslauku", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "punast paprikat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "pruuni riisi", "quantity": 1, "unit": "dl", "notes": "" },
-      { "name": "musti konservube", "quantity": 1, "unit": "dl", "notes": "" },
-      { "name": "vahemere ürdisegu", "quantity": 2, "unit": "tl", "notes": "" },
-      { "name": "kanapuljongit", "quantity": 2, "unit": "dl", "notes": "" }
+      {
+        "name": "kanakints",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "hakitud sibulat",
+        "quantity": "1",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küünt küüslauku",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punast paprikat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pruuni riisi",
+        "quantity": "1",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "musti konservube",
+        "quantity": "1",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vahemere ürdisegu",
+        "quantity": "2",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanapuljongit",
+        "quantity": "2",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -834,26 +1635,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://www.rimi.ee/retseptid/poissmehe-saslokisalat/11134",
     "ingredients": [
-      { "name": "kartulit", "quantity": 5, "unit": "tk", "notes": "" },
+      {
+        "name": "kartulit",
+        "quantity": "5",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "rohelist salatit",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "kogus",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "tomatit", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "kodujuustu", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "šašlõkki", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "redist", "quantity": 1, "unit": "kogus", "notes": "" },
-      { "name": "kurki", "quantity": 1, "unit": "kogus", "notes": "" }
+      {
+        "name": "tomatit",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kodujuustu",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "šašlõkki",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "redist",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kurki",
+        "quantity": "1",
+        "unit": "kogus",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -864,20 +1700,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "veisehakkliha", "quantity": 300, "unit": "g", "notes": "" },
-      { "name": "kanarinnafilee", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "pitsataignapulber", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "pomi pitsa&pasta", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "riivjuustu", "quantity": 500, "unit": "g", "notes": "" },
-      { "name": "pitsamaitseainet", "quantity": 2, "unit": "spl", "notes": "" }
+      {
+        "name": "veisehakkliha",
+        "quantity": "300",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanarinnafilee",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pitsataignapulber",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pomi pitsa&pasta",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "riivjuustu",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pitsamaitseainet",
+        "quantity": "2",
+        "unit": "spl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -888,21 +1758,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://www.linnuliha.ee/retseptid/vitamiinid-toidulaualt-rostitud-kikerherne-kanasalat/",
     "ingredients": [
-      { "name": "broilerifilee", "quantity": 300, "unit": "g", "notes": "" },
-      { "name": "kikerherneid", "quantity": 1, "unit": "konserv", "notes": "" },
-      { "name": "avokaadot", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "tomatit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "jääsalatit", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "punast sibulat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "riivjuustu", "quantity": 200, "unit": "g", "notes": "" }
+      {
+        "name": "broilerifilee",
+        "quantity": "300",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kikerherneid",
+        "quantity": "1",
+        "unit": "konserv",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "avokaadot",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "tomatit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "jääsalatit",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punast sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "riivjuustu",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -913,25 +1823,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://figuurisobrad.ee/figuurisoprade-retsept/selge-forellisupp",
     "ingredients": [
-      { "name": "varssellerit", "quantity": 170, "unit": "g", "notes": "" },
-      { "name": "porgandit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "kartulit", "quantity": 4, "unit": "tk", "notes": "" },
-      { "name": "vett", "quantity": 3, "unit": "l", "notes": "" },
+      {
+        "name": "varssellerit",
+        "quantity": "170",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kartulit",
+        "quantity": "4",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vett",
+        "quantity": "3",
+        "unit": "l",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "nahata forellifileed",
-        "quantity": 450,
+        "quantity": "450",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "kalapuljongit", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "kalapuljongit",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -942,19 +1881,47 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://www.ohtuleht.ee/toidutare/937133/soe-varske-kartuli-ja-peekoni-salat",
     "ingredients": [
-      { "name": "värsked kartulid", "quantity": 1, "unit": "kg", "notes": "" },
-      { "name": "suitsupeekonit", "quantity": 220, "unit": "g", "notes": "" },
-      { "name": "jääsalatit", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "hapukoort", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "majonees", "quantity": 1, "unit": "dl", "notes": "" }
+      {
+        "name": "värsked kartulid",
+        "quantity": "1",
+        "unit": "kg",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suitsupeekonit",
+        "quantity": "220",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "jääsalatit",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "hapukoort",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "majonees",
+        "quantity": "1",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -965,21 +1932,61 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "suitsuliha", "quantity": 600, "unit": "g", "notes": "" },
-      { "name": "sibulat", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "porgandit", "quantity": 8, "unit": "tk", "notes": "" },
-      { "name": "kaalikas", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "kartulit", "quantity": 16, "unit": "tk", "notes": "" },
-      { "name": "kapsapea", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "puljongit", "quantity": 750, "unit": "g", "notes": "" }
+      {
+        "name": "suitsuliha",
+        "quantity": "600",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "8",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kaalikas",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kartulit",
+        "quantity": "16",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kapsapea",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "puljongit",
+        "quantity": "750",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -990,20 +1997,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://www.taimetoit.ee/2015/01/koogivilja-klimbisupp.html",
     "ingredients": [
-      { "name": "nisujahu", "quantity": 90, "unit": "g", "notes": "" },
-      { "name": "vett või piima", "quantity": 120, "unit": "ml", "notes": "" },
-      { "name": "sibulat", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "porgandit", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "kartulit", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "küüslauku", "quantity": 3, "unit": "küünt", "notes": "" }
+      {
+        "name": "nisujahu",
+        "quantity": "90",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "vett või piima",
+        "quantity": "120",
+        "unit": "ml",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kartulit",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küüslauku",
+        "quantity": "3",
+        "unit": "küünt",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -1014,23 +2055,75 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://vandra.ecoop.ee/et/retseptid/kodune-kanakarri",
     "ingredients": [
-      { "name": "broilerifilee", "quantity": 600, "unit": "g", "notes": "" },
-      { "name": "sibulat", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "porgandit", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "punane paprikat", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "värske koriander", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "karrit", "quantity": 50, "unit": "g", "notes": "" },
-      { "name": "köögiviljakoor", "quantity": 2, "unit": "dl", "notes": "" },
-      { "name": "kanapuljongit", "quantity": 2, "unit": "dl", "notes": "" },
-      { "name": "laimi", "quantity": 50, "unit": "g", "notes": "" }
+      {
+        "name": "broilerifilee",
+        "quantity": "600",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punane paprikat",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "värske koriander",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "karrit",
+        "quantity": "50",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "köögiviljakoor",
+        "quantity": "2",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "kanapuljongit",
+        "quantity": "2",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "laimi",
+        "quantity": "50",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -1041,27 +2134,68 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://nami-nami.ee/retsept/2349/jamie_oliveri_chilli_con_carne",
     "ingredients": [
-      { "name": "sibulat", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "küüslauku", "quantity": 1, "unit": "küünt", "notes": "" },
-      { "name": "tšillipulbrit", "quantity": 2, "unit": "tl", "notes": "" },
-      { "name": "punane tšilli", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "veisehakkliha", "quantity": 400, "unit": "g", "notes": "" },
+      {
+        "name": "sibulat",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küüslauku",
+        "quantity": "1",
+        "unit": "küünt",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "tšillipulbrit",
+        "quantity": "2",
+        "unit": "tl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punane tšilli",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "veisehakkliha",
+        "quantity": "400",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "päikesekuivatatud tomateid",
-        "quantity": 200,
+        "quantity": "200",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "tomatipastat", "quantity": 800, "unit": "g", "notes": "" },
-      { "name": "punaseid ube", "quantity": 800, "unit": "g", "notes": "" }
+      {
+        "name": "tomatipastat",
+        "quantity": "800",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "punaseid ube",
+        "quantity": "800",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -1072,24 +2206,53 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "leiba", "quantity": 1, "unit": "pakk", "notes": "" },
-      { "name": "juustu leivale", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "sinki leivale", "quantity": 200, "unit": "g", "notes": "" },
-      { "name": "muna", "quantity": 6, "unit": "tk", "notes": "" },
-      { "name": "puder", "quantity": 1, "unit": "tk", "notes": "" },
       {
-        "name": "Köögikoort (Raivo koor)",
-        "quantity": 1,
+        "name": "leiba",
+        "quantity": "1",
+        "unit": "pakk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "juustu leivale",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sinki leivale",
+        "quantity": "200",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "muna",
+        "quantity": "6",
         "unit": "tk",
-        "notes": ""
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "puder",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "köögikoort (raivo koor)",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": []
@@ -1101,18 +2264,40 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kurk", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "tomatit", "quantity": 1, "unit": "pakk", "notes": "" },
-      { "name": "salatit", "quantity": 1, "unit": "pakk", "notes": "" },
-      { "name": "avokaadot", "quantity": 4, "unit": "tk", "notes": "" }
+      {
+        "name": "kurk",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "tomatit",
+        "quantity": "1",
+        "unit": "pakk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "salatit",
+        "quantity": "1",
+        "unit": "pakk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "avokaadot",
+        "quantity": "4",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -1123,18 +2308,40 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kaerahelbeid", "quantity": 250, "unit": "g", "notes": "" },
-      { "name": "võid", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "suhkrut", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "muna", "quantity": 2, "unit": "tk", "notes": "" }
+      {
+        "name": "kaerahelbeid",
+        "quantity": "250",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "võid",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "suhkrut",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "muna",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
       {
@@ -1151,20 +2358,54 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
-      { "name": "kodune hakkliha", "quantity": 900, "unit": "g", "notes": "" },
-      { "name": "muna", "quantity": 5, "unit": "tk", "notes": "" },
-      { "name": "piima", "quantity": 5, "unit": "dl", "notes": "" },
-      { "name": "pannkoogijahu", "quantity": 100, "unit": "g", "notes": "" },
-      { "name": "sibulat", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "veisepuljongit", "quantity": 1.5, "unit": "l", "notes": "" }
+      {
+        "name": "kodune hakkliha",
+        "quantity": "900",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "muna",
+        "quantity": "5",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "piima",
+        "quantity": "5",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "pannkoogijahu",
+        "quantity": "100",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "veisepuljongit",
+        "quantity": "1.5",
+        "unit": "l",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -1175,27 +2416,68 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "https://nami-nami.ee/retsept/9889/veiselihahautis",
     "ingredients": [
       {
         "name": "lihaveise kuubikud",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "kg",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "oliiviõli", "quantity": 2, "unit": "sl", "notes": "" },
-      { "name": "sibulat", "quantity": 2, "unit": "tk", "notes": "" },
-      { "name": "küüslauku", "quantity": 4, "unit": "küünt", "notes": "" },
-      { "name": "nisujahu", "quantity": 2, "unit": "sl", "notes": "" },
-      { "name": "puljongit", "quantity": 5, "unit": "dl", "notes": "" },
-      { "name": "porgandit", "quantity": 3, "unit": "tk", "notes": "" },
-      { "name": "sellerit", "quantity": 2, "unit": "tk", "notes": "" }
+      {
+        "name": "oliiviõli",
+        "quantity": "2",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küüslauku",
+        "quantity": "4",
+        "unit": "küünt",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "nisujahu",
+        "quantity": "2",
+        "unit": "sl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "puljongit",
+        "quantity": "5",
+        "unit": "dl",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "3",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sellerit",
+        "quantity": "2",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": []
   },
@@ -1206,33 +2488,75 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "rohelised läätsed",
-        "quantity": 150,
+        "quantity": "150",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "sea sisefileed", "quantity": 500, "unit": "g", "notes": "" },
+      {
+        "name": "sea sisefileed",
+        "quantity": "500",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
       {
         "name": "köögiviljapuljongi konsentraati",
-        "quantity": 15,
+        "quantity": "15",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
-      { "name": "mett", "quantity": 25, "unit": "g", "notes": "" },
-      { "name": "täistera sinep", "quantity": 20, "unit": "g", "notes": "" },
-      { "name": "küüslauku", "quantity": 1, "unit": "küünt", "notes": "" },
-      { "name": "porgandit", "quantity": 1, "unit": "tk", "notes": "" },
-      { "name": "sellerit", "quantity": 2, "unit": "vart", "notes": "" },
-      { "name": "sibulat", "quantity": 1, "unit": "tk", "notes": "" }
+      {
+        "name": "mett",
+        "quantity": "25",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "täistera sinep",
+        "quantity": "20",
+        "unit": "g",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "küüslauku",
+        "quantity": "1",
+        "unit": "küünt",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "porgandit",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sellerit",
+        "quantity": "2",
+        "unit": "vart",
+        "notes": "",
+        "group": ""
+      },
+      {
+        "name": "sibulat",
+        "quantity": "1",
+        "unit": "tk",
+        "notes": "",
+        "group": ""
+      }
     ],
     "instructions": [
       {
@@ -1279,61 +2603,67 @@
     "author": "",
     "prepTime": 0,
     "cookTime": 0,
-    "totalTime": 0,
     "servings": 0,
     "createdAt": "",
     "updatedAt": "",
     "images": [],
     "tags": [],
-    "link": "",
     "ingredients": [
       {
         "name": "veiseliha steik",
-        "quantity": 300,
+        "quantity": "300",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "vahukoort",
-        "quantity": 200,
+        "quantity": "200",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "türgi ube",
-        "quantity": 125,
+        "quantity": "125",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "kartuleid",
-        "quantity": 750,
+        "quantity": "750",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "küüslauku",
-        "quantity": 2,
+        "quantity": "2",
         "unit": "küünt",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "sinepit",
-        "quantity": 40,
+        "quantity": "40",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "rohelist pipart",
-        "quantity": 15,
+        "quantity": "15",
         "unit": "tk",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
         "name": "võid",
-        "quantity": 1,
+        "quantity": "1",
         "unit": "tk",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": [
@@ -1396,85 +2726,95 @@
     "author": "Toidusahver",
     "prepTime": 15,
     "cookTime": 30,
-    "totalTime": 45,
     "servings": 4,
     "createdAt": "2024-06-19T00:00:00Z",
     "updatedAt": "2024-06-19T00:00:00Z",
     "images": [],
-    "link": ["https://toidusahver.blogspot.com/2011/09/lihtne-pasta-bolognese.html"],
     "tags": ["pasta", "bolognese", "easy", "Italian"],
     "ingredients": [
       {
-        "name": "Hakkliha",
-        "quantity": 400,
+        "name": "hakkliha",
+        "quantity": "400",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Keskmine sibul",
-        "quantity": 1,
+        "name": "keskmine sibul",
+        "quantity": "1",
         "unit": "",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Punane paprika",
-        "quantity": 1,
+        "name": "punane paprika",
+        "quantity": "1",
         "unit": "",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Küüslauk",
-        "quantity": 1,
+        "name": "küüslauk",
+        "quantity": "1",
         "unit": "küüs",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Purustatud tomatid",
-        "quantity": 500,
+        "name": "purustatud tomatid",
+        "quantity": "500",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Pune ehk oregano",
-        "quantity": 1,
+        "name": "pune ehk oregano",
+        "quantity": "1",
         "unit": "tl",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Mesi",
-        "quantity": 2,
+        "name": "mesi",
+        "quantity": "2",
         "unit": "tl",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Sool ja pipar",
-        "quantity": null,
+        "name": "sool ja pipar",
+        "quantity": "",
         "unit": "",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Tšillihelbed",
-        "quantity": null,
+        "name": "tšillihelbed",
+        "quantity": "",
         "unit": "",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Õli",
-        "quantity": null,
+        "name": "õli",
+        "quantity": "",
         "unit": "",
-        "notes": "praadimiseks"
+        "notes": "praadimiseks",
+        "group": ""
       },
       {
-        "name": "Spagetid",
-        "quantity": 400,
+        "name": "spagetid",
+        "quantity": "400",
         "unit": "g",
-        "notes": ""
+        "notes": "",
+        "group": ""
       },
       {
-        "name": "Parmesani juust",
-        "quantity": null,
+        "name": "parmesani juust",
+        "quantity": "",
         "unit": "",
-        "notes": ""
+        "notes": "",
+        "group": ""
       }
     ],
     "instructions": [

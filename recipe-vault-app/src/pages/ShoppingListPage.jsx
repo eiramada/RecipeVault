@@ -24,8 +24,10 @@ const ShoppingListPage = () => {
       const recipe = recipes.find((r) => Number(r.id) === Number(recipeId));
       if (recipe) {
         recipe.ingredients.forEach(({ name, quantity, unit, notes }) => {
+          const lowerCaseName = name.toLowerCase();
           const existingItem = shoppingList.find(
-            (item) => item.name === name && item.unit === unit
+            (item) =>
+              item.name.toLowerCase() === lowerCaseName && item.unit === unit
           );
 
           if (existingItem) {

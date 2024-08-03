@@ -28,6 +28,8 @@ const ImageList = ({ images, onImagesChange }) => {
     onImagesChange(images.filter((_, i) => i !== index));
   };
 
+  const filteredImages = images.filter((image) => image !== "Placeholder.webp");
+
   return (
     <div>
       <Grid container spacing={2} alignItems="center">
@@ -51,7 +53,7 @@ const ImageList = ({ images, onImagesChange }) => {
         </Grid>
       </Grid>
       <List>
-        {images.map((image, index) => (
+        {filteredImages.map((image, index) => (
           <ListItem key={index} sx={{ p: 0, m: 0 }}>
             <Grid container spacing={2} alignItems="center">
               <Grid item xs={isMobile ? 12 : 11.5}>

@@ -2,7 +2,7 @@
   "appTitle": "Recipe Vault",
   "home": "Home",
   "recipes": "Recipes",
-  "menuPlanTitle": "Menu Plan",
+  "menuPlanTitle": "Menu",
   "shoppingList": "Shopping List",
   "profile": "Profile",
   "allRightsReserved": "All rights reserved.",
@@ -106,7 +106,7 @@
     "updatingShoppingList": "Error updating shopping list"
   },
   "saveList": "Save List",
-  "markedRecipes": "Marked Recipes",
+  "markedRecipes": "Marked Recipes for Menu",
   "allRecipes": "All Recipes",
   "selectRecipeTitle": "Select Recipe",
   "selectRecipeInputLabel": "Select Recipe"

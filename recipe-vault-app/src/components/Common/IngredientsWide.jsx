@@ -1,6 +1,13 @@
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Grid, IconButton, List, ListItem, TextField } from "@mui/material";
+import {
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  TextField,
+  Typography,
+} from "@mui/material";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
@@ -9,7 +16,7 @@ import {
   handleRemoveIngredient,
 } from "../../utils/ingerdientUtils";
 
-const Ingredients = ({ ingredients, onIngredientsChange }) => {
+const IngredientsWide = ({ ingredients, onIngredientsChange }) => {
   const { t } = useTranslation();
 
   const [newIngredient, setNewIngredient] = useState({
@@ -20,6 +27,14 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const groupedIngredients = ingredients.reduce((acc, ingredient) => {
+    if (!acc[ingredient.group]) {
+      acc[ingredient.group] = [];
+    }
+    acc[ingredient.group].push(ingredient);
+    return acc;
+  }, {});
 
   return (
     <>
@@ -54,7 +69,7 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
               handleFieldChange(
                 e,
                 true,
-                null,
+                "new",
                 newIngredient,
                 setNewIngredient,
                 ingredients,
@@ -64,8 +79,8 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
               )
             }
             fullWidth
-            error={!!errors.quantity}
-            helperText={errors.quantity}
+            error={!!errors.new?.quantity}
+            helperText={errors.new?.quantity}
           />
         </Grid>
         <Grid item xs={2.5}>
@@ -137,122 +152,128 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
       </Grid>
 
       <List sx={{ p: 0, m: 0, pt: 2 }}>
-        {ingredients &&
-          ingredients.map((ingredient, index) => (
-            <ListItem key={index} sx={{ p: 0, m: 0, pb: 2 }}>
-              <Grid container spacing={2} alignItems="center">
-                <Grid item xs={3.5}>
-                  <TextField
-                    label={t("name")}
-                    name="name"
-                    value={ingredient.name}
-                    onChange={(e) =>
-                      handleFieldChange(
-                        e,
-                        false,
-                        index,
-                        newIngredient,
-                        setNewIngredient,
-                        ingredients,
-                        onIngredientsChange,
-                        setErrors,
-                        t
-                      )
-                    }
-                    fullWidth
-                  />
-                </Grid>
-                <Grid item xs={2.5}>
-                  <TextField
-                    label={t("quantity")}
-                    name="quantity"
-                    value={ingredient.quantity}
-                    onChange={(e) =>
-                      handleFieldChange(
-                        e,
-                        false,
-                        index,
-                        newIngredient,
-                        setNewIngredient,
-                        ingredients,
-                        onIngredientsChange,
-                        setErrors,
-                        t
-                      )
-                    }
-                    fullWidth
-                    error={!!errors.quantity}
-                    helperText={errors.quantity}
-                  />
-                </Grid>
-                <Grid item xs={2.5}>
-                  <TextField
-                    label={t("unit")}
-                    name="unit"
-                    value={ingredient.unit}
-                    onChange={(e) =>
-                      handleFieldChange(
-                        e,
-                        false,
-                        index,
-                        newIngredient,
-                        setNewIngredient,
-                        ingredients,
-                        onIngredientsChange,
-                        setErrors,
-                        t
-                      )
-                    }
-                    fullWidth
-                    error={!!errors.unit}
-                    helperText={errors.unit}
-                  />
-                </Grid>
-                <Grid item xs={3}>
-                  <TextField
-                    label={t("notes")}
-                    name="notes"
-                    value={ingredient.notes}
-                    onChange={(e) =>
-                      handleFieldChange(
-                        e,
-                        false,
-                        index,
-                        newIngredient,
-                        setNewIngredient,
-                        ingredients,
-                        onIngredientsChange,
-                        setErrors,
-                        t
-                      )
-                    }
-                    fullWidth
-                  />
-                </Grid>
-                <Grid
-                  item
-                  xs={0.5}
-                  style={{ display: "flex", justifyContent: "center" }}
-                >
-                  <IconButton
-                    onClick={() =>
-                      handleRemoveIngredient(
-                        index,
-                        ingredients,
-                        onIngredientsChange
-                      )
-                    }
-                    edge="end"
+        {Object.keys(groupedIngredients).map((group) => (
+          <React.Fragment key={group}>
+            <Typography variant="subtitle1" color="textSecondary">
+              {group}
+            </Typography>
+            {groupedIngredients[group].map((ingredient, index) => (
+              <ListItem key={index} sx={{ p: 0, m: 0, pb: 2 }}>
+                <Grid container spacing={2} alignItems="center">
+                  <Grid item xs={3.5}>
+                    <TextField
+                      label={t("name")}
+                      name="name"
+                      value={ingredient.name}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          e,
+                          false,
+                          index,
+                          newIngredient,
+                          setNewIngredient,
+                          ingredients,
+                          onIngredientsChange,
+                          setErrors,
+                          t
+                        )
+                      }
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid item xs={2.5}>
+                    <TextField
+                      label={t("quantity")}
+                      name="quantity"
+                      value={ingredient.quantity}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          e,
+                          false,
+                          index,
+                          newIngredient,
+                          setNewIngredient,
+                          ingredients,
+                          onIngredientsChange,
+                          setErrors,
+                          t
+                        )
+                      }
+                      fullWidth
+                      error={!!errors[index]?.quantity}
+                      helperText={errors[index]?.quantity}
+                    />
+                  </Grid>
+                  <Grid item xs={2.5}>
+                    <TextField
+                      label={t("unit")}
+                      name="unit"
+                      value={ingredient.unit}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          e,
+                          false,
+                          index,
+                          newIngredient,
+                          setNewIngredient,
+                          ingredients,
+                          onIngredientsChange,
+                          setErrors,
+                          t
+                        )
+                      }
+                      fullWidth
+                      error={!!errors.unit}
+                      helperText={errors.unit}
+                    />
+                  </Grid>
+                  <Grid item xs={3}>
+                    <TextField
+                      label={t("notes")}
+                      name="notes"
+                      value={ingredient.notes}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          e,
+                          false,
+                          index,
+                          newIngredient,
+                          setNewIngredient,
+                          ingredients,
+                          onIngredientsChange,
+                          setErrors,
+                          t
+                        )
+                      }
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid
+                    item
+                    xs={0.5}
+                    style={{ display: "flex", justifyContent: "center" }}
                   >
-                    <DeleteIcon />
-                  </IconButton>
+                    <IconButton
+                      onClick={() =>
+                        handleRemoveIngredient(
+                          index,
+                          ingredients,
+                          onIngredientsChange
+                        )
+                      }
+                      edge="end"
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Grid>
                 </Grid>
-              </Grid>
-            </ListItem>
-          ))}
+              </ListItem>
+            ))}
+          </React.Fragment>
+        ))}
       </List>
     </>
   );
 };
 
-export default Ingredients;
+export default IngredientsWide;

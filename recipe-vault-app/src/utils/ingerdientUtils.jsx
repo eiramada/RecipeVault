@@ -7,7 +7,7 @@ export const validateField = (name, value, t) => {
 };
 
 export const handleFieldChange = (
-  e,
+  event,
   isNew,
   index,
   newIngredient,
@@ -17,17 +17,38 @@ export const handleFieldChange = (
   setErrors,
   t
 ) => {
-  const { name, value } = e.target;
-  const error = validateField(name, value, t);
+  const { name, value } = event.target;
+  let updatedValue = value;
+
+  if (name === "quantity") {
+    updatedValue = value.replace(",", ".");
+    if (isNaN(updatedValue)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [index]: {
+          ...prevErrors[index],
+          quantity: t("validationErrors.positiveNumber"),
+        },
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [index]: { ...prevErrors[index], quantity: "" },
+      }));
+    }
+  }
+
   if (isNew) {
-    setNewIngredient((prev) => ({ ...prev, [name]: value }));
+    setNewIngredient((prevIngredient) => ({
+      ...prevIngredient,
+      [name]: updatedValue,
+    }));
   } else {
     const updatedIngredients = ingredients.map((ingredient, i) =>
-      i === index ? { ...ingredient, [name]: value } : ingredient
+      i === index ? { ...ingredient, [name]: updatedValue } : ingredient
     );
     onIngredientsChange(updatedIngredients);
   }
-  setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
 };
 
 export const handleAddIngredient = (
@@ -40,14 +61,15 @@ export const handleAddIngredient = (
 ) => {
   const quantityError = validateField("quantity", newIngredient.quantity, t);
   const unitError = validateField("unit", newIngredient.unit, t);
+
   if (!quantityError && !unitError && newIngredient.name.trim()) {
     onIngredientsChange([...ingredients, newIngredient]);
     setNewIngredient({ name: "", quantity: "", unit: "", notes: "" });
+    setErrors({});
   } else {
     setErrors((prevErrors) => ({
       ...prevErrors,
-      quantity: quantityError,
-      unit: unitError,
+      new: { quantity: quantityError, unit: unitError },
     }));
   }
 };

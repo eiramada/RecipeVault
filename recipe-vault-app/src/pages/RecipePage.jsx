@@ -63,6 +63,14 @@ const RecipePage = () => {
     return <Typography>{t("recipeNotFound")}</Typography>;
   }
 
+  const totalTime = (recipe.prepTime || 0) + (recipe.cookTime || 0);
+
+  const groupedIngredients = recipe.ingredients.reduce((acc, ingredient) => {
+    if (!acc[ingredient.group]) acc[ingredient.group] = [];
+    acc[ingredient.group].push(ingredient);
+    return acc;
+  }, {});
+
   return (
     <Container>
       <Box
@@ -122,7 +130,7 @@ const RecipePage = () => {
               </Grid>
               <Grid item xs={6}>
                 <Typography variant="body2">
-                  <strong>{t("totalTime")}:</strong> {recipe.totalTime}
+                  <strong>{t("totalTime")}:</strong> {totalTime}
                 </Typography>
               </Grid>
               <Grid item xs={6}>
@@ -140,16 +148,22 @@ const RecipePage = () => {
       </Typography>
       <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
         <List>
-          {recipe.ingredients &&
-            recipe.ingredients.map((ingredient, index) => (
-              <ListItem key={index}>
-                <ListItemText
-                  primary={`${ingredient.name} - ${ingredient.quantity} ${
-                    ingredient.unit
-                  } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
-                />
+          {Object.entries(groupedIngredients).map(([group, ingredients]) => (
+            <React.Fragment key={group}>
+              <ListItem>
+                <ListItemText primary={group} />
               </ListItem>
-            ))}
+              {ingredients.map((ingredient, index) => (
+                <ListItem key={index}>
+                  <ListItemText
+                    primary={`${ingredient.name} - ${ingredient.quantity} ${
+                      ingredient.unit
+                    } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
+                  />
+                </ListItem>
+              ))}
+            </React.Fragment>
+          ))}
         </List>
       </Paper>
 
@@ -169,27 +183,23 @@ const RecipePage = () => {
 
       <TagList tags={recipe.tags} />
 
-      <Typography variant="h6" component="h3" gutterBottom>
-        {t("images")}
-      </Typography>
-      {recipe.images?.length > 0 ? (
-        <Grid container spacing={2}>
-          {recipe.images.map((image, index) => (
-            <Grid item xs={12} sm={6} key={index}>
-              <img
-                src={image}
-                alt={`Recipe ${index + 1}`}
-                style={{ width: "100%" }}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      ) : (
-        <img
-          src="/Placeholder.webp"
-          alt="Placeholder"
-          style={{ width: "100%" }}
-        />
+      {recipe.images?.length > 0 && (
+        <>
+          <Typography variant="h6" component="h3" gutterBottom>
+            {t("images")}
+          </Typography>
+          <Grid container spacing={2}>
+            {recipe.images.map((image, index) => (
+              <Grid item xs={12} sm={6} key={index}>
+                <img
+                  src={image}
+                  alt={`Recipe ${index + 1}`}
+                  style={{ width: "100%" }}
+                />
+              </Grid>
+            ))}
+          </Grid>
+        </>
       )}
     </Container>
   );

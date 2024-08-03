@@ -164,7 +164,6 @@
     "images": [
       "https://images.prismic.io/eataly-us/ed3fcec7-7994-426d-a5e4-a24be5a95afd_pizza-recipe-main.jpg",
       "https://www.sainsburysmagazine.co.uk/uploads/media/2400x1800/09/7699-Margherita-pizza.jpg?v=1-0"
-    
     ],
     "tags": ["Italian", "Pizza", "Main Course"],
     "servings": 4,
@@ -260,7 +259,6 @@
     ],
     "images": [
       "https://eatinginaninstant.com/wp-content/uploads/2022/08/IP-Chicken-Alfredo-8-1200-500x375.jpg"
-      
     ],
     "tags": ["Italian", "Pasta", "Main Course"],
     "servings": 4,
@@ -350,7 +348,7 @@
       }
     ],
     "images": [
-"https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg"
+      "https://natashaskitchen.com/wp-content/uploads/2019/01/Caesar-Salad-Recipe-3.jpg"
     ],
     "tags": ["Salad", "Appetizer", "Italian"],
     "servings": 4,
@@ -444,9 +442,7 @@
         "images": ["https://picsum.photos/200"]
       }
     ],
-    "images": [
-     
-    ],
+    "images": [],
     "tags": ["Mexican", "Tacos", "Main Course"],
     "servings": 4,
     "prepTime": 10,
@@ -551,9 +547,7 @@
         "description": "Season with salt and pepper to taste. Garnish with sesame seeds and serve immediately."
       }
     ],
-    "images": [
-
-    ],
+    "images": [],
     "tags": ["Vegetarian", "Asian", "Main Course"],
     "servings": 4,
     "prepTime": 15,
@@ -569,7 +563,9 @@
     "createdAt": "2024-06-19T12:05:57.764Z",
     "description": "Lihtne ja hea",
     "id": 12351,
-    "images": ["https://www.seriouseats.com/thmb/2nouHHsjM0bN1vwXMOZGUkLFsJ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__12__20171115-chicken-soup-vicky-wasik-11-80db1a04d84a43a089e0559efdddd517.jpg"],
+    "images": [
+      "https://www.seriouseats.com/thmb/2nouHHsjM0bN1vwXMOZGUkLFsJ8=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/__opt__aboutcom__coeus__resources__content_migration__serious_eats__seriouseats.com__recipes__images__2017__12__20171115-chicken-soup-vicky-wasik-11-80db1a04d84a43a089e0559efdddd517.jpg"
+    ],
     "ingredients": [
       {
         "name": "kana kintsuliha",
@@ -646,13 +642,169 @@
     ],
     "prepTime": 15,
     "servings": 8,
-    "tags": [
-      "Supp",
-      "Kana",
-      "Kiire"
-    ],
+    "tags": ["Supp", "Kana", "Kiire"],
     "title": "Kanasupp",
     "totalTime": 45,
     "updatedAt": "2024-06-19T12:05:57.764Z"
+  },
+
+  {
+    "author": "Raivo",
+    "cookTime": 240,
+    "createdAt": "2024-07-01T18:53:37.760Z",
+    "description": "Valmistada kas haudepotis või slow cookeris. Valida suurem pott.",
+    "id": 12352,
+    "ingredients": [
+      {
+        "name": "Kana kintsuliha",
+        "notes": "",
+        "quantity": "1.5",
+        "unit": "kg"
+      },
+      {
+        "name": "Taco maitseainesegu",
+        "notes": "",
+        "quantity": "2",
+        "unit": "pakk"
+      },
+      {
+        "name": "Laimi mahl",
+        "notes": "",
+        "quantity": "1",
+        "unit": "sl"
+      },
+      {
+        "name": "Kanapuljongit",
+        "notes": "FoodStudio kanapuljong, võib ka asendada köögiviljapuljongiga",
+        "quantity": "750",
+        "unit": "ml"
+      },
+      {
+        "name": "Soola",
+        "notes": "Maitse järgi tegelikult",
+        "quantity": "1",
+        "unit": "sl"
+      },
+      {
+        "name": "Küüslauk",
+        "notes": "Keskmise suurusega küüned",
+        "quantity": "2",
+        "unit": "küünt"
+      },
+      {
+        "name": "Tortilla",
+        "notes": "Ligikaudne kogus",
+        "quantity": "15",
+        "unit": "tk"
+      },
+      {
+        "name": "Hõbepaber",
+        "notes": "Pakendamiseks, et panna sügavkülma",
+        "quantity": "1",
+        "unit": "rull"
+      },
+      {
+        "name": "Riisi",
+        "notes": "Kogus täpsustada",
+        "quantity": "1",
+        "unit": "kg"
+      },
+      {
+        "name": "Pipar",
+        "notes": "Maitse järgi",
+        "quantity": "0.5",
+        "unit": "sl"
+      },
+      {
+        "name": "Vesi",
+        "notes": "",
+        "quantity": "2",
+        "unit": "klaasi"
+      },
+      {
+        "name": "Tomat",
+        "notes": "Keskmise suurusega",
+        "quantity": "5",
+        "unit": "tk"
+      },
+      {
+        "name": "Jalopeno",
+        "notes": "Mitte väga teravad",
+        "quantity": "3",
+        "unit": "tk"
+      },
+      {
+        "name": "Sibul",
+        "notes": "Keskmise suurusega",
+        "quantity": "2",
+        "unit": "tk"
+      },
+      {
+        "name": "Kreeka jogurt",
+        "notes": "Võib olla ka nt hapukoor",
+        "quantity": "500",
+        "unit": "g"
+      },
+      {
+        "name": "Cheddar juust",
+        "notes": "",
+        "quantity": "150",
+        "unit": "g"
+      },
+      {
+        "name": "Mozarella",
+        "notes": "",
+        "quantity": "120",
+        "unit": "g"
+      }
+    ],
+    "instructions": [
+      {
+        "description": "Pese kana külma vee all ja kontrolli, et poleks luu tükke liha küljes. Lase näppude vahelt läbi.",
+        "step": 1
+      },
+      {
+        "description": "Lisa potti kana (võid eelnevalt tükeldada, et küpseks kiiremini), peenestatud küüslauk, sool, puljong, pipar, laimi mahl, taco maitseainesegu.",
+        "step": 2
+      },
+      {
+        "description": "Sega läbi ja seejärel kuumuta keemiseni.",
+        "step": 3
+      },
+      {
+        "description": "Hauta 3-4 tundi kuni kõik on pehme ja segades saab ühtlane mass (ei ole enam kana tükke pärast läbi segamist).",
+        "step": 4
+      },
+      {
+        "description": "Lisa riis ja vajadusel vesi. Riisi-vedeliku vahekord peaks olema ca 1,5 ühikut vedelikku 1 ühiku riisi kohta.",
+        "step": 5
+      },
+      {
+        "description": "Hauta veel ca 20-30 minutit, kuni riis on pehme.",
+        "step": 6
+      },
+      {
+        "description": "Samal ajal kui lisatud riis haudub, tükelda kuubikuteks tomat, sibul, jalopeno jm köögiviljad, mida soovid lisada.",
+        "step": 7
+      },
+      {
+        "description": "Kui riis on pehme, lisa tükeldatud köögiviljad, kreeka jogurt, riivitud chedder ja mozarella juust ning sega kõik hoolega läbi.",
+        "step": 8
+      },
+      {
+        "description": "Nüüd jaga kogus ca 18 tortilla jaoks ja keera need kokku. Kõigepalt keera külgedelt tortilla veidi segu peale, siis tagant ning seejärel rulli kokku.",
+        "step": 9
+      },
+      {
+        "description": "Külmutamiseks paki hõbepaberisse ja pane sügavkülma. Lase kindlasti enne toatemperatuurile jahtuda kui sügavkülma paned!",
+        "step": 10
+      }
+    ],
+    "prepTime": 20,
+    "servings": 17,
+    "tags": ["Freezer"],
+    "title": "Juustune kana-riisi wrap",
+    "totalTime": 260,
+    "updatedAt": "2024-08-01T20:38:22.958Z"
   }
 ]

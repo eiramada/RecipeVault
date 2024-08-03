@@ -5,7 +5,8 @@ import {
   IconButton,
   List,
   ListItem,
-  TextField
+  TextField,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,7 +17,7 @@ import {
   handleRemoveIngredient,
 } from "../../utils/ingerdientUtils";
 
-const Ingredients = ({ ingredients, onIngredientsChange }) => {
+const IngredientsMobile = ({ ingredients, onIngredientsChange }) => {
   const { t } = useTranslation();
 
   const [newIngredient, setNewIngredient] = useState({
@@ -27,6 +28,14 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
   });
 
   const [errors, setErrors] = useState({});
+
+  const groupedIngredients = ingredients.reduce((acc, ingredient) => {
+    if (!acc[ingredient.group]) {
+      acc[ingredient.group] = [];
+    }
+    acc[ingredient.group].push(ingredient);
+    return acc;
+  }, {});
 
   return (
     <Box className={styles.ingredientsContainer}>
@@ -60,7 +69,7 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
               handleFieldChange(
                 e,
                 true,
-                null,
+                "new",
                 newIngredient,
                 setNewIngredient,
                 ingredients,
@@ -70,8 +79,8 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
               )
             }
             className={styles.halfWidthInput}
-            error={!!errors.quantity}
-            helperText={errors.quantity}
+            error={!!errors.new?.quantity}
+            helperText={errors.new?.quantity}
           />
           <TextField
             label={t("unit")}
@@ -136,35 +145,18 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
       </Box>
 
       <List sx={{ p: 0, m: 0, pt: 2 }}>
-        {ingredients &&
-          ingredients.map((ingredient, index) => (
-            <ListItem key={index} sx={{ p: 0, m: 0, pb: 2 }}>
-              <Box className={styles.ingredientItem}>
-                <TextField
-                  label={t("name")}
-                  name="name"
-                  value={ingredient.name}
-                  onChange={(e) =>
-                    handleFieldChange(
-                      e,
-                      false,
-                      index,
-                      newIngredient,
-                      setNewIngredient,
-                      ingredients,
-                      onIngredientsChange,
-                      setErrors,
-                      t
-                    )
-                  }
-                  fullWidth
-                  className={styles.fullWidthInput}
-                />
-                <Box className={styles.inlineFields}>
+        {Object.keys(groupedIngredients).map((group) => (
+          <React.Fragment key={group}>
+            <Typography variant="subtitle1" color="textSecondary">
+              {group}
+            </Typography>
+            {groupedIngredients[group].map((ingredient, index) => (
+              <ListItem key={index} sx={{ p: 0, m: 0, pb: 2 }}>
+                <Box className={styles.ingredientItem}>
                   <TextField
-                    label={t("quantity")}
-                    name="quantity"
-                    value={ingredient.quantity}
+                    label={t("name")}
+                    name="name"
+                    value={ingredient.name}
                     onChange={(e) =>
                       handleFieldChange(
                         e,
@@ -178,14 +170,57 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
                         t
                       )
                     }
-                    className={styles.halfWidthInput}
-                    error={!!errors.quantity}
-                    helperText={errors.quantity}
+                    fullWidth
+                    className={styles.fullWidthInput}
                   />
+                  <Box className={styles.inlineFields}>
+                    <TextField
+                      label={t("quantity")}
+                      name="quantity"
+                      value={ingredient.quantity}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          e,
+                          false,
+                          index,
+                          newIngredient,
+                          setNewIngredient,
+                          ingredients,
+                          onIngredientsChange,
+                          setErrors,
+                          t
+                        )
+                      }
+                      className={styles.halfWidthInput}
+                      error={!!errors[index]?.quantity}
+                      helperText={errors[index]?.quantity}
+                    />
+                    <TextField
+                      label={t("unit")}
+                      name="unit"
+                      value={ingredient.unit}
+                      onChange={(e) =>
+                        handleFieldChange(
+                          e,
+                          false,
+                          index,
+                          newIngredient,
+                          setNewIngredient,
+                          ingredients,
+                          onIngredientsChange,
+                          setErrors,
+                          t
+                        )
+                      }
+                      className={styles.halfWidthInput}
+                      error={!!errors.unit}
+                      helperText={errors.unit}
+                    />
+                  </Box>
                   <TextField
-                    label={t("unit")}
-                    name="unit"
-                    value={ingredient.unit}
+                    label={t("notes")}
+                    name="notes"
+                    value={ingredient.notes}
                     onChange={(e) =>
                       handleFieldChange(
                         e,
@@ -199,51 +234,31 @@ const Ingredients = ({ ingredients, onIngredientsChange }) => {
                         t
                       )
                     }
-                    className={styles.halfWidthInput}
-                    error={!!errors.unit}
-                    helperText={errors.unit}
+                    fullWidth
+                    className={styles.fullWidthInput}
                   />
+                  <Box className={styles.deleteButton}>
+                    <IconButton
+                      onClick={() =>
+                        handleRemoveIngredient(
+                          index,
+                          ingredients,
+                          onIngredientsChange
+                        )
+                      }
+                      edge="end"
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </Box>
                 </Box>
-                <TextField
-                  label={t("notes")}
-                  name="notes"
-                  value={ingredient.notes}
-                  onChange={(e) =>
-                    handleFieldChange(
-                      e,
-                      false,
-                      index,
-                      newIngredient,
-                      setNewIngredient,
-                      ingredients,
-                      onIngredientsChange,
-                      setErrors,
-                      t
-                    )
-                  }
-                  fullWidth
-                  className={styles.fullWidthInput}
-                />
-                <Box className={styles.deleteButton}>
-                  <IconButton
-                    onClick={() =>
-                      handleRemoveIngredient(
-                        index,
-                        ingredients,
-                        onIngredientsChange
-                      )
-                    }
-                    edge="end"
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </Box>
-              </Box>
-            </ListItem>
-          ))}
+              </ListItem>
+            ))}
+          </React.Fragment>
+        ))}
       </List>
     </Box>
   );
 };
 
-export default Ingredients;
+export default IngredientsMobile;

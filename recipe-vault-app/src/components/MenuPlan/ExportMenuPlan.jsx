@@ -1,7 +1,7 @@
-import React from "react";
 import { Button } from "@mui/material";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import React from "react";
 import { useTranslation } from "react-i18next";
 
 const ExportMenuPlan = ({ menuPlan, recipes, daysOfWeek, mealTimes }) => {
@@ -17,6 +17,7 @@ const ExportMenuPlan = ({ menuPlan, recipes, daysOfWeek, mealTimes }) => {
 
   const exportAsPDF = () => {
     const doc = new jsPDF();
+    doc.setFont("helvetica");
 
     doc.text(t("weeklyMenuPlan"), 20, 10);
     const tableColumn = [
@@ -66,26 +67,37 @@ const ExportMenuPlan = ({ menuPlan, recipes, daysOfWeek, mealTimes }) => {
       rows.push(row);
     });
 
-    let csvContent = "data:text/csv;charset=utf-8,";
+    let csvContent = "\uFEFF";
     rows.forEach((rowArray) => {
-      const row = rowArray.join(",");
+      const row = rowArray.map(value => `"${value}"`).join(",");
       csvContent += row + "\r\n";
     });
 
-    const encodedUri = encodeURI(csvContent);
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
     const link = document.createElement("a");
-    link.setAttribute("href", encodedUri);
+    const url = URL.createObjectURL(blob);
+    link.setAttribute("href", url);
     link.setAttribute("download", "menu_plan.csv");
     document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
   };
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={() => handleExport("pdf")} style={{ marginRight: "10px" }}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => handleExport("pdf")}
+        style={{ marginRight: "10px" }}
+      >
         {t("exportPDF")}
       </Button>
-      <Button variant="contained" color="secondary" onClick={() => handleExport("csv")}>
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => handleExport("csv")}
+      >
         {t("exportCSV")}
       </Button>
     </>
