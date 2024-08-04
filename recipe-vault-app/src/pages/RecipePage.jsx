@@ -60,12 +60,18 @@ const RecipePage = () => {
   }
 
   if (!recipe) {
-    return <Typography>{t("recipeNotFound")}</Typography>;
+    return (
+      <Container>
+        <Typography variant="h6" align="center">
+          {t("recipeNotFound")}
+        </Typography>
+      </Container>
+    );
   }
 
   const totalTime = (recipe.prepTime || 0) + (recipe.cookTime || 0);
 
-  const groupedIngredients = recipe.ingredients.reduce((acc, ingredient) => {
+  const groupedIngredients = recipe.ingredients?.reduce((acc, ingredient) => {
     if (!acc[ingredient.group]) acc[ingredient.group] = [];
     acc[ingredient.group].push(ingredient);
     return acc;
@@ -143,29 +149,35 @@ const RecipePage = () => {
         </Grid>
       </Grid>
 
-      <Typography variant="h6" component="h3" gutterBottom mt={2}>
-        {t("ingredients")}
-      </Typography>
-      <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
-        <List>
-          {Object.entries(groupedIngredients).map(([group, ingredients]) => (
-            <React.Fragment key={group}>
-              <ListItem>
-                <ListItemText primary={group} />
-              </ListItem>
-              {ingredients.map((ingredient, index) => (
-                <ListItem key={index}>
-                  <ListItemText
-                    primary={`${ingredient.name} - ${ingredient.quantity} ${
-                      ingredient.unit
-                    } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
-                  />
-                </ListItem>
+      {recipe.ingredients && recipe.ingredients.length > 0 && (
+        <>
+          <Typography variant="h6" component="h3" gutterBottom mt={2}>
+            {t("ingredients")}
+          </Typography>
+          <Paper elevation={3} sx={{ p: 2, mb: 2 }}>
+            <List>
+              {Object.entries(groupedIngredients).map(([group, ingredients]) => (
+                <React.Fragment key={group}>
+                  {group && (
+                    <ListItem>
+                      <ListItemText primary={group} />
+                    </ListItem>
+                  )}
+                  {ingredients.map((ingredient, index) => (
+                    <ListItem key={index}>
+                      <ListItemText
+                        primary={`${ingredient.name} - ${ingredient.quantity} ${
+                          ingredient.unit
+                        } ${ingredient.notes ? `(${ingredient.notes})` : ""}`}
+                      />
+                    </ListItem>
+                  ))}
+                </React.Fragment>
               ))}
-            </React.Fragment>
-          ))}
-        </List>
-      </Paper>
+            </List>
+          </Paper>
+        </>
+      )}
 
       <Typography variant="h6" component="h3" gutterBottom>
         {t("instructions")}

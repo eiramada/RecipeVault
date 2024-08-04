@@ -20,12 +20,11 @@ const RecipeEditor = ({ isEditMode = false }) => {
   const navigate = useNavigate();
   const { recipes, addNewRecipe, updateExistingRecipe } =
     useContext(RecipeContext);
-  const {
-    existingRecipe,
-    setExistingRecipe,
-    findExistingRecipe,
-    populateFormWithExistingRecipe,
-  } = useRecipeData(recipes, id, isEditMode);
+  const { existingRecipe, populateFormWithExistingRecipe } = useRecipeData(
+    recipes,
+    id,
+    isEditMode
+  );
 
   const [ingredients, setIngredients] = useState([]);
   const [instructions, setInstructions] = useState([]);
@@ -83,7 +82,6 @@ const RecipeEditor = ({ isEditMode = false }) => {
       )
     )
       return;
-
     setLoading(true);
     const formValues = {
       title: titleRef.current.value,
@@ -101,7 +99,8 @@ const RecipeEditor = ({ isEditMode = false }) => {
       ingredients,
       instructions,
       images,
-      tags
+      tags,
+      recipes
     );
 
     try {

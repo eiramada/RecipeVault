@@ -1,6 +1,9 @@
 
 //utils/recipeUtils.jsx
 export const generateNewId = (recipes) => {
+  if (!Array.isArray(recipes)) {
+    throw new Error("Invalid recipes array");
+  }
   return recipes.length ? Number(recipes[recipes.length - 1].id) + 1 : 1;
 };
 
