@@ -24,6 +24,7 @@ const IngredientsWide = ({ ingredients, onIngredientsChange }) => {
     quantity: "",
     unit: "",
     notes: "",
+    group: "",
   });
 
   const [errors, setErrors] = useState({});

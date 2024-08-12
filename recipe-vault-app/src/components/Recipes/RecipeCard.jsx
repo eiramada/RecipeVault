@@ -80,6 +80,7 @@ const RecipeCard = ({ recipe }) => {
               textOverflow: "ellipsis",
               WebkitLineClamp: 2,
               height: "3em",
+              color: "#007BFF", 
             }}
           >
             {truncateText(recipe.title, 40)}{" "}

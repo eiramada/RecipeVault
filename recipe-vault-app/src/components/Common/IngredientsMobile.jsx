@@ -25,6 +25,7 @@ const IngredientsMobile = ({ ingredients, onIngredientsChange }) => {
     quantity: "",
     unit: "",
     notes: "",
+    group: "",
   });
 
   const [errors, setErrors] = useState({});
